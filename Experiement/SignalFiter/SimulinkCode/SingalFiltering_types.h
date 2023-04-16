@@ -1,0 +1,7 @@
+#ifndef RTW_HEADER_SingalFiltering_types_h_
+#define RTW_HEADER_SingalFiltering_types_h_
+
+typedef struct tag_RTM_SingalFiltering_T RT_MODEL_SingalFiltering_T;
+
+#endif
+
