@@ -1,0 +1,6 @@
+#include <stdlib.h>
+char* intToString(double n){
+  char* ret = (char*)malloc(24);
+  sprintf(ret, "%lf", n);
+  return ret;
+}

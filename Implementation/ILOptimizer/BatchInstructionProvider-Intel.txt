@@ -1,0 +1,87 @@
+**vectorRegisterWidth**
+value = "128"
+
+
+**headFileList**
+"immintrin", "smmintrin", "emmintrin"
+
+
+// 数据类型定义
+// 格式如下：
+// type, batchSize
+**simdGraphStrToDataTypeMap**
+key = "i32, 4;" value = "__m128i",
+key = "f32, 4;" value = "__m128",
+
+
+// 每一个支持的指令采用唯一的图字符串描述，匹配指令时，也将子图转化为字符串形式，直接匹配字符串
+// 单条指令的图字符串的格式为：
+// op1, type, modifier, shape, batchSize, I_I1, I_I2, O_O1;\
+// op2, type, modifier, shape, batchSize, I_I3, I_O1, O_O2;
+// 这里写出全部可能的匹配情况，特别是对于
+// A   B
+//  \ /
+//   C
+// 这种，A、B可互换的情况，要写 A;B;C; 和 B;A;C; 两种形式
+// 还有对于复合的运算，导致多个输入数据顺序可能不一致的也要都写出来
+**simdGraphStrToCalculationInstructionMap**
+
+key = "Add, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_add_epi32 (%I_1, %I_2)",
+key = "Add, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_add_ps    (%I_1, %I_2)",
+
+key = "Sub, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_sub_epi32 (%I_1, %I_2)",
+key = "Sub, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_sub_ps    (%I_1, %I_2)",
+
+key = "Mul, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_mul_epi32 (%I_1, %I_2)",
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_mul_ps    (%I_1, %I_2)",
+
+key = "Div, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = _mm_div_ps    (%I_1, %I_2)",
+
+//由于加法计算不分先后所以乘加有两种表示形式
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, f32, N, N, 4, I_O1, I_I3, O_O2;" value = "%O_1 = _mm_fmadd_ps  (%I_1, %I_2, %I_3)",
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, f32, N, N, 4, I_I3, I_O1, O_O2;" value = "%O_1 = _mm_fmadd_ps  (%I_1, %I_2, %I_3)",
+
+
+// 数据类型转换指令
+// 格式如下：
+// typeSrc, typeDst, batchSize
+**simdGraphStrToTypeConvertInstructionMap**
+
+key = "i32, f32, 4;" value = "%O_1 = _mm_cvtepi32_ps (%I_1)",
+key = "f32, i32, 4;" value = "%O_1 = _mm_cvtps_epi32 (%I_1)",
+
+
+// 数据加载指令
+// 格式如下：
+// type, batchSize, loadSize
+**simdGraphStrToDataLoadInstructionMap**
+
+key = "i32, 4, 4;" value = "%O_1 = _mm_set_epi32 (((int*)&%I_1)[3], ((int*)&%I_1)[2], ((int*)&%I_1)[1], ((int*)&%I_1)[0])",
+key = "f32, 4, 4;" value = "%O_1 = _mm_loadu_ps    (%I_1)",
+key = "i32, 4, 1;" value = "%O_1 = _mm_set1_epi32 (%I_1)",
+key = "f32, 4, 1;" value = "%O_1 = _mm_set1_ps    (%I_1)",
+
+
+// 数据存储指令
+// 格式如下：
+// type, batchSize
+**simdGraphStrToDataStoreInstructionMap**
+
+key = "i32, 4;" value = "(%O_1)[0] = ((int*)& %I_1)[0];\
+                         (%O_1)[1] = ((int*)& %I_1)[1];\
+                         (%O_1)[2] = ((int*)& %I_1)[2];\
+                         (%O_1)[3] = ((int*)& %I_1)[3];",
+key = "f32, 4;" value = "_mm_storeu_ps  (%O_1, %I_1)",
+
+**simdGraphStrToCalculationInstructionNormalMap**
+
+key = "Div, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "((int*)& %O_1)[0] = ((int*)& %I_1 )[0] / ((int*)& %I_2 )[0];\
+                                                      ((int*)& %O_1)[1] = ((int*)& %I_1 )[1] / ((int*)& %I_2 )[1];\
+                                                      ((int*)& %O_1)[2] = ((int*)& %I_1 )[2] / ((int*)& %I_2 )[2];\
+                                                      ((int*)& %O_1)[3] = ((int*)& %I_1 )[3] / ((int*)& %I_2 )[3];",
+key = "Shr, i32, N, N, 4, I_I1, P_P1, O_O1;" value = "((int*)& %O_1)[0] = ((int*)& %I_1 )[0] >> %P_1;\
+                                                       ((int*)& %O_1)[1] = ((int*)& %I_1 )[1] >> %P_1;\
+                                                       ((int*)& %O_1)[2] = ((int*)& %I_1 )[2] >> %P_1;\
+                                                       ((int*)& %O_1)[3] = ((int*)& %I_1 )[3] >> %P_1;",
