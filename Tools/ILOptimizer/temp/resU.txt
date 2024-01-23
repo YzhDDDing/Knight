@@ -1,0 +1,4 @@
+CBMC version 5.10 (cbmc-5.10) 32-bit i386 windows
+Parsing C:\Users\yuzehong\Desktop\CodeGeneratorToolset\ILOptimizer/temp/mainU.c
+Converting
+Type-checking mainU

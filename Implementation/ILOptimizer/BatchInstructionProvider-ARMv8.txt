@@ -1,0 +1,92 @@
+**vectorRegisterWidth**
+value = "128"
+
+
+**headFileList**
+"arm_neon"
+
+
+// 数据类型定义
+// 格式如下：
+// type, batchSize
+**simdGraphStrToDataTypeMap**
+key = "i32, 4;" value = "int32x4_t",
+key = "f32, 4;" value = "float32x4_t",
+
+
+// 每一个支持的指令采用唯一的图字符串描述，匹配指令时，也将子图转化为字符串形式，直接匹配字符串
+// 单条指令的图字符串的格式为：
+// op1, type, modifier, shape, batchSize, I_I1, I_I2, O_O1;\
+// op2, type, modifier, shape, batchSize, I_I3, I_O1, O_O2;
+// 这里写出全部可能的匹配情况，特别是对于
+// A   B
+//  \ /
+//   C
+// 这种，A、B可互换的情况，要写 A;B;C; 和 B;A;C; 两种形式
+// 还有对于复合的运算，导致多个输入数据顺序可能不一致的也要都写出来
+**simdGraphStrToCalculationInstructionMap**
+
+key = "Add, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vaddq_s32 (%I_1, %I_2)",
+key = "Add, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vaddq_f32 (%I_1, %I_2)",
+
+key = "Sub, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vsubq_s32 (%I_1, %I_2)",
+key = "Sub, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vsubq_f32 (%I_1, %I_2)",
+
+key = "Shr, i32, N, N, 4, I_I1, P_P1, O_O1;" value = "%O_1 = vshrq_n_s32 (%I_1, %P_1)",
+
+key = "Mul, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vmulq_s32 (%I_1, %I_2)",
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "%O_1 = vmulq_f32 (%I_1, %I_2)",
+
+//由于加法计算不分先后所以乘加有两种表示形式
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, f32, N, N, 4, I_O1, I_I3, O_O2;" value = "%O_1 = vmlaq_f32  (%I_3, %I_1, %I_2)",
+key = "Mul, f32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, f32, N, N, 4, I_I3, I_O1, O_O2;" value = "%O_1 = vmlaq_f32  (%I_3, %I_1, %I_2)",
+
+
+key = "Mul, i32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, i32, N, N, 4, I_O1, I_I3, O_O2;" value = "%O_1 = vmlaq_s32  (%I_3, %I_1, %I_2)",
+key = "Mul, i32, N, N, 4, I_I1, I_I2, O_O1;\
+       Add, i32, N, N, 4, I_I3, I_O1, O_O2;" value = "%O_1 = vmlaq_s32  (%I_3, %I_1, %I_2)",
+
+
+
+// 数据类型转换指令
+// 格式如下：
+// typeSrc, typeDst, batchSize
+**simdGraphStrToTypeConvertInstructionMap**
+
+key = "i32, f32, 4;" value = "%O_1 = vcvtq_f32_s32 (%I_1)",
+key = "f32, i32, 4;" value = "%O_1 = vcvtq_s32_f32 (%I_1)",
+
+
+// 数据加载指令
+// 格式如下：
+// type, batchSize, loadSize
+**simdGraphStrToDataLoadInstructionMap**
+
+key = "i32, 4, 4;" value = "%O_1 = vld1q_s32   (%I_1)",
+key = "f32, 4, 4;" value = "%O_1 = vld1q_f32   (%I_1)",
+key = "i32, 4, 1;" value = "%O_1 = vdupq_n_s32 (%I_1)",
+key = "f32, 4, 1;" value = "%O_1 = vdupq_n_f32 (%I_1)",
+
+
+// 数据存储指令
+// 格式如下：
+// type, batchSize
+**simdGraphStrToDataStoreInstructionMap**
+
+key = "i32, 4;" value = "vst1q_s32  (%O_1, %I_1)",
+key = "f32, 4;" value = "vst1q_f32  (%O_1, %I_1)",
+
+
+**simdGraphStrToCalculationInstructionNormalMap**
+
+key = "Div, i32, N, N, 4, I_I1, I_I2, O_O1;" value = "((int*)& %O_1)[0] = ((int*)& %I_1 )[0] / ((int*)& %I_2 )[0];\
+                                                      ((int*)& %O_1)[1] = ((int*)& %I_1 )[1] / ((int*)& %I_2 )[1];\
+                                                      ((int*)& %O_1)[2] = ((int*)& %I_1 )[2] / ((int*)& %I_2 )[2];\
+                                                      ((int*)& %O_1)[3] = ((int*)& %I_1 )[3] / ((int*)& %I_2 )[3];",
+key = "Div, f32, N, N, 4, I_I1, I_I2, O_O1;" value = "((float*)& %O_1)[0] = ((float*)& %I_1 )[0] / ((float*)& %I_2 )[0];\
+                                                      ((float*)& %O_1)[1] = ((float*)& %I_1 )[1] / ((float*)& %I_2 )[1];\
+                                                      ((float*)& %O_1)[2] = ((float*)& %I_1 )[2] / ((float*)& %I_2 )[2];\
+                                                      ((float*)& %O_1)[3] = ((float*)& %I_1 )[3] / ((float*)& %I_2 )[3];",
