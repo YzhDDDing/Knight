@@ -1,0 +1,7 @@
+#ifndef RTW_HEADER_RoboticArmController_types_h_
+#define RTW_HEADER_RoboticArmController_types_h_
+
+typedef struct tag_RTM_RoboticArmController_T RT_MODEL_RoboticArmController_T;
+
+#endif
+

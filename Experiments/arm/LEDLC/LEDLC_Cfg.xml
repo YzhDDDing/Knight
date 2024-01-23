@@ -1,0 +1,9 @@
+<Root>
+    <ModelInfo>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="LEDLC_init"/>
+        <MainExecFunction Name="LEDLC_step"/>
+        <MainCompositeState Name="RT_MODEL_LEDLC_T"/>
+    </ModelInfo>
+</Root>
+

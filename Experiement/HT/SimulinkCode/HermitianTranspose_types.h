@@ -1,7 +1,0 @@
-#ifndef RTW_HEADER_HermitianTranspose_types_h_
-#define RTW_HEADER_HermitianTranspose_types_h_
-
-typedef struct tag_RTM_HermitianTranspose_T RT_MODEL_HermitianTranspose_T;
-
-#endif
-

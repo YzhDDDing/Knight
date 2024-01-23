@@ -1,0 +1,587 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="CPUTaskModel_init"/>
+        <MainExecFunction Name="CPUTaskModel_step"/>
+        <MainCompositeState Name="RT_MODEL_CPUTaskModel_T"/>
+    </Config>
+    <File Name="CPUTaskModel">
+        <HeadFile Name="string"/>
+        <Struct Name="DW_CPUTaskModel_T">
+            <Member Name="A" Type="int32_T" ArraySize="16"/>
+            <Member Name="Aflag" Type="int8_T" ArraySize="16"/>
+            <Member Name="Init" Type="int8_T"/>
+        </Struct>
+        <Struct Name="creal32_T">
+            <Member Name="re" Type="real32_T"/>
+            <Member Name="im" Type="real32_T"/>
+        </Struct>
+        <Struct Name="creal64_T">
+            <Member Name="re" Type="real64_T"/>
+            <Member Name="im" Type="real64_T"/>
+        </Struct>
+        <Struct Name="creal_T">
+            <Member Name="re" Type="real_T"/>
+            <Member Name="im" Type="real_T"/>
+        </Struct>
+        <Struct Name="cint8_T">
+            <Member Name="re" Type="int8_T"/>
+            <Member Name="im" Type="int8_T"/>
+        </Struct>
+        <Struct Name="cuint8_T">
+            <Member Name="re" Type="uint8_T"/>
+            <Member Name="im" Type="uint8_T"/>
+        </Struct>
+        <Struct Name="cint16_T">
+            <Member Name="re" Type="int16_T"/>
+            <Member Name="im" Type="int16_T"/>
+        </Struct>
+        <Struct Name="cuint16_T">
+            <Member Name="re" Type="uint16_T"/>
+            <Member Name="im" Type="uint16_T"/>
+        </Struct>
+        <Struct Name="cint32_T">
+            <Member Name="re" Type="int32_T"/>
+            <Member Name="im" Type="int32_T"/>
+        </Struct>
+        <Struct Name="cuint32_T">
+            <Member Name="re" Type="uint32_T"/>
+            <Member Name="im" Type="uint32_T"/>
+        </Struct>
+        <Struct Name="TaskCounters_CPUTaskModel_T">
+            <Member Name="TID" Type="uint16_T" ArraySize="2"/>
+        </Struct>
+        <Struct Name="TIME_CPUTaskModel_T">
+            <Member Name="TaskCounters" Type="TaskCounters_CPUTaskModel_T"/>
+        </Struct>
+        <Struct Name="B_CPUTaskModel_T">
+            <Member Name="TempMember" Type="int"/>
+        </Struct>
+        <Struct Name="tag_RTM_CPUTaskModel_T">
+            <Member Name="errorStatus" Type="char_T" IsAddress="1"/>
+            <Member Name="blockIO" Type="B_CPUTaskModel_T" IsAddress="1"/>
+            <Member Name="dwork" Type="DW_CPUTaskModel_T" IsAddress="1"/>
+            <Member Name="Timing" Type="TIME_CPUTaskModel_T"/>
+        </Struct>
+        <Macro Name="RT_PI" Value="3.14159265358979323846" HasIfnodefCheck=""/>
+        <Macro Name="RT_PIF" Value="3.1415927F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10" Value="2.30258509299404568402" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10F" Value="2.3025851F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10E" Value="0.43429448190325182765" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10EF" Value="0.43429449F" HasIfnodefCheck=""/>
+        <Macro Name="RT_E" Value="2.7182818284590452354" HasIfnodefCheck=""/>
+        <Macro Name="RT_EF" Value="2.7182817F" HasIfnodefCheck=""/>
+        <Macro Name="false" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="true" Value="1" HasIfnodefCheck=""/>
+        <Macro Name="NULL" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="UNUSED_PARAMETER(x)" Value="(void)(x)" HasIfnodefCheck=""/>
+        <Macro Name="rtmGetErrorStatus(rtm)" Value="((rtm)-&gt;errorStatus)" HasIfnodefCheck=""/>
+        <Macro Name="rtmSetErrorStatus(rtm,val)" Value="((rtm)-&gt;errorStatus=(val))" HasIfnodefCheck=""/>
+        <TypeDefine Name="signed char" Value="int8_T"/>
+        <TypeDefine Name="unsigned char" Value="uint8_T"/>
+        <TypeDefine Name="short" Value="int16_T"/>
+        <TypeDefine Name="unsigned short" Value="uint16_T"/>
+        <TypeDefine Name="int" Value="int32_T"/>
+        <TypeDefine Name="unsigned int" Value="uint32_T"/>
+        <TypeDefine Name="float" Value="real32_T"/>
+        <TypeDefine Name="double" Value="real64_T"/>
+        <TypeDefine Name="double" Value="real_T"/>
+        <TypeDefine Name="double" Value="time_T"/>
+        <TypeDefine Name="unsigned char" Value="boolean_T"/>
+        <TypeDefine Name="int" Value="int_T"/>
+        <TypeDefine Name="unsigned int" Value="uint_T"/>
+        <TypeDefine Name="unsigned long" Value="ulong_T"/>
+        <TypeDefine Name="char" Value="char_T"/>
+        <TypeDefine Name="unsigned char" Value="uchar_T"/>
+        <TypeDefine Name="char_T" Value="byte_T"/>
+        <TypeDefine Name="creal32_T" Value="creal32_T"/>
+        <TypeDefine Name="creal64_T" Value="creal64_T"/>
+        <TypeDefine Name="creal_T" Value="creal_T"/>
+        <TypeDefine Name="cint8_T" Value="cint8_T"/>
+        <TypeDefine Name="cuint8_T" Value="cuint8_T"/>
+        <TypeDefine Name="cint16_T" Value="cint16_T"/>
+        <TypeDefine Name="cuint16_T" Value="cuint16_T"/>
+        <TypeDefine Name="cint32_T" Value="cint32_T"/>
+        <TypeDefine Name="cuint32_T" Value="cuint32_T"/>
+        <TypeDefine Name="void *" Value="pointer_T"/>
+        <TypeDefine Name="int" Value="ZCEventType"/>
+        <TypeDefine Name="struct _ssMdlInfo" Value="_ssMdlInfo"/>
+        <TypeDefine Name="tag_RTM_CPUTaskModel_T" Value="RT_MODEL_CPUTaskModel_T"/>
+        <TypeDefine Name="DW_CPUTaskModel_T" Value="DW_CPUTaskModel_T"/>
+        <TypeDefine Name="TaskCounters_CPUTaskModel_T" Value="TaskCounters_CPUTaskModel_T"/>
+        <TypeDefine Name="TIME_CPUTaskModel_T" Value="TIME_CPUTaskModel_T"/>
+        <GlobalVariable Name="CPUTaskModel_instance" Type="tag_RTM_CPUTaskModel_T"/>
+        <GlobalVariable Name="CPUTaskModel_DW_instance" Type="DW_CPUTaskModel_T"/>
+        <GlobalVariable Name="CPUTaskModel_B_instance" Type="B_CPUTaskModel_T"/>
+        <Function Name="CPUTaskModel_step" Type="FunctionExec" ReturnType="void">
+            <Ref Path="CPUTaskModel"/>
+            <Input Name="CPUTaskModel_M" Type="RT_MODEL_CPUTaskModel_T" IsAddress="1"/>
+            <Input Name="CPUTaskModel_U_op" Type="int32_T"/>
+            <Input Name="CPUTaskModel_U_taskId" Type="int32_T"/>
+            <Input Name="CPUTaskModel_U_para" Type="int32_T"/>
+            <Output Name="CPUTaskModel_Y_res" Type="int32_T"/>
+            <Output Name="CPUTaskModel_Y_out" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="CPUTaskModel_step">
+                    <LocalVariable Name="CPUTaskModel_DW" Type="DW_CPUTaskModel_T" IsAddress="1" DefaultValue="CPUTaskModel_M-&gt;dwork"/>
+                    <LocalVariable Name="rtb_Assignment" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_Assignment1" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead1" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_j" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_l" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_o" Type="int32_T" ArraySize="16"/>
+                    <LocalVariable Name="find_n" Type="int32_T"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <LocalVariable Name="s11_iter" Type="int32_T"/>
+                    <LocalVariable Name="s26_iter" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Assignment1_c" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_Assignment1_m" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_Assignment_m" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead_b" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead_g" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead_h" Type="int8_T" ArraySize="16"/>
+                    <LocalVariable Name="rtb_DataStoreRead_k" Type="int8_T"/>
+                    <Expression Expression="rtb_DataStoreRead_k = CPUTaskModel_DW-&gt;Init"/>
+                    <If Condition="rtb_DataStoreRead_k &lt;= 0">
+                        <Expression Expression="CPUTaskModel_DW-&gt;Init = 1"/>
+                        <For Condition="s26_iter &lt; 16">
+                            <Initial>
+                                <Expression Expression="s26_iter = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="s26_iter++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_ForIterator_h" Type="int32_T"/>
+                            <Expression Expression="rtb_ForIterator_h = s26_iter"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead_nq" Type="int8_T"/>
+                                <Expression Expression="rtb_DataStoreRead_nq = CPUTaskModel_DW-&gt;Aflag[i]"/>
+                                <If Condition="s26_iter == 0">
+                                    <Expression Expression="rtb_Assignment_m[i] = rtb_DataStoreRead_nq"/>
+                                </If>
+                                <Else/>
+                            </For>
+                            <Expression Expression="rtb_Assignment_m[rtb_ForIterator_h] = 0"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="CPUTaskModel_DW-&gt;Aflag[i] = rtb_Assignment_m[i]"/>
+                            </For>
+                        </For>
+                    </If>
+                    <Else/>
+                    <Switch Condition="CPUTaskModel_U_op">
+                        <Case Value="1"/>
+                        <LocalVariable Name="rtb_DataStoreRead2_d" Type="int32_T"/>
+                        <Expression Expression="CPUTaskMo_FunctionCallSubsystem(&amp;find_n, &amp;s26_iter)"/>
+                        <For Condition="s11_iter &lt; 16">
+                            <Initial>
+                                <Expression Expression="s11_iter = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="s11_iter++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_DataStoreRead2_c" Type="int32_T"/>
+                            <LocalVariable Name="rtb_ForIterator_m" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch3_b" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector_a" Type="int8_T"/>
+                            <LocalVariable Name="rtb_Switch2_p" Type="int8_T"/>
+                            <LocalVariable Name="rtb_OR_a" Type="boolean_T"/>
+                            <Expression Expression="rtb_ForIterator_m = s11_iter"/>
+                            <Expression Expression="rtb_DataStoreRead2_c = find_n"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="rtb_DataStoreRead1_j[i] = CPUTaskModel_DW-&gt;A[i]"/>
+                                <Expression Expression="rtb_DataStoreRead_g[i] = CPUTaskModel_DW-&gt;Aflag[i]"/>
+                            </For>
+                            <Expression Expression="rtb_Selector_a = rtb_DataStoreRead_g[rtb_ForIterator_m]"/>
+                            <If Condition="rtb_DataStoreRead2_c != 0"/>
+                            <Else/>
+                            <If Condition="rtb_Selector_a != 0"/>
+                            <Else/>
+                            <Expression Expression="rtb_OR_a = ((rtb_DataStoreRead2_c != 0) || (rtb_Selector_a != 0))"/>
+                            <If Condition="rtb_OR_a">
+                                <LocalVariable Name="rtb_Selector1_n" Type="int32_T"/>
+                                <Expression Expression="rtb_Selector1_n = rtb_DataStoreRead1_j[rtb_ForIterator_m]"/>
+                                <Expression Expression="rtb_Switch = rtb_Selector1_n"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch = CPUTaskModel_U_taskId"/>
+                            </Else>
+                            <If Condition="s11_iter == 0">
+                                <For Condition="i &lt; 16">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_Assignment[i] = rtb_DataStoreRead1_j[i]"/>
+                                </For>
+                            </If>
+                            <Else/>
+                            <Expression Expression="rtb_Assignment[rtb_ForIterator_m] = rtb_Switch"/>
+                            <If Condition="rtb_OR_a">
+                                <Expression Expression="rtb_Switch2_p = rtb_Selector_a"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch2_p = 1"/>
+                            </Else>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="CPUTaskModel_DW-&gt;A[i] = rtb_Assignment[i]"/>
+                                <If Condition="s11_iter == 0">
+                                    <Expression Expression="rtb_Assignment1_c[i] = rtb_DataStoreRead_g[i]"/>
+                                </If>
+                                <Else/>
+                            </For>
+                            <Expression Expression="rtb_Assignment1_c[rtb_ForIterator_m] = rtb_Switch2_p"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="CPUTaskModel_DW-&gt;Aflag[i] = rtb_Assignment1_c[i]"/>
+                            </For>
+                            <LocalVariable Name="rtb_DataStoreRead3_p" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch1_o" Type="int32_T"/>
+                            <LocalVariable Name="rtb_AND_f" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_NOT_i" Type="boolean_T"/>
+                            <Expression Expression="rtb_DataStoreRead3_p = find_n"/>
+                            <Expression Expression="rtb_NOT_i = (rtb_DataStoreRead3_p == 0)"/>
+                            <If Condition="rtb_OR_a"/>
+                            <Else/>
+                            <If Condition="rtb_NOT_i"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND_f = (rtb_OR_a &amp;&amp; rtb_NOT_i)"/>
+                            <Expression Expression="rtb_Switch1_o = !rtb_AND_f"/>
+                            <Expression Expression="find_n = rtb_Switch1_o"/>
+                            <If Condition="rtb_OR_a">
+                                <LocalVariable Name="rtb_DataStoreRead4_h" Type="int32_T"/>
+                                <Expression Expression="rtb_DataStoreRead4_h = s26_iter"/>
+                                <Expression Expression="rtb_Switch3_b = rtb_DataStoreRead4_h"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch3_b = rtb_ForIterator_m"/>
+                            </Else>
+                            <Expression Expression="s26_iter = rtb_Switch3_b"/>
+                        </For>
+                        <Expression Expression="rtb_DataStoreRead2_d = find_n"/>
+                        <If Condition="rtb_DataStoreRead2_d != 0">
+                            <Expression Expression="find_n = 1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="find_n = -1"/>
+                        </Else>
+                        <Break/>
+                        <Case Value="2"/>
+                        <Expression Expression="CPUTaskMo_FunctionCallSubsystem(&amp;find_n, &amp;s26_iter)"/>
+                        <For Condition="s11_iter &lt; 16">
+                            <Initial>
+                                <Expression Expression="s11_iter = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="s11_iter++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_DataStoreRead2_iv" Type="int32_T"/>
+                            <LocalVariable Name="rtb_ForIterator_mv" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch3_e" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector_n" Type="int8_T"/>
+                            <LocalVariable Name="rtb_Switch2_i" Type="int8_T"/>
+                            <LocalVariable Name="rtb_OR_j" Type="boolean_T"/>
+                            <Expression Expression="rtb_ForIterator_mv = s11_iter"/>
+                            <Expression Expression="rtb_DataStoreRead2_iv = find_n"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="rtb_DataStoreRead_b[i] = CPUTaskModel_DW-&gt;Aflag[i]"/>
+                                <Expression Expression="rtb_DataStoreRead1_o[i] = CPUTaskModel_DW-&gt;A[i]"/>
+                            </For>
+                            <LocalVariable Name="rtb_Selector1_a" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Subtract_e" Type="int32_T"/>
+                            <LocalVariable Name="rtb_NOT1_f" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_OR1" Type="boolean_T"/>
+                            <Expression Expression="rtb_Selector_n = rtb_DataStoreRead_b[rtb_ForIterator_mv]"/>
+                            <Expression Expression="rtb_NOT1_f = (rtb_Selector_n == 0)"/>
+                            <If Condition="rtb_DataStoreRead2_iv != 0"/>
+                            <Else/>
+                            <If Condition="rtb_NOT1_f"/>
+                            <Else/>
+                            <Expression Expression="rtb_OR1 = ((rtb_DataStoreRead2_iv != 0) || rtb_NOT1_f)"/>
+                            <Expression Expression="rtb_Selector1_a = rtb_DataStoreRead1_o[rtb_ForIterator_mv]"/>
+                            <Expression Expression="rtb_Subtract_e = rtb_Selector1_a - CPUTaskModel_U_taskId"/>
+                            <If Condition="rtb_OR1"/>
+                            <Else/>
+                            <If Condition="rtb_Subtract_e != 0"/>
+                            <Else/>
+                            <Expression Expression="rtb_OR_j = (rtb_OR1 || (rtb_Subtract_e != 0))"/>
+                            <If Condition="rtb_OR_j">
+                                <LocalVariable Name="rtb_DataStoreRead4_l" Type="int32_T"/>
+                                <Expression Expression="rtb_DataStoreRead4_l = s26_iter"/>
+                                <Expression Expression="rtb_Switch3_e = rtb_DataStoreRead4_l"/>
+                                <Expression Expression="rtb_Switch2_i = rtb_Selector_n"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch3_e = rtb_ForIterator_mv"/>
+                                <Expression Expression="rtb_Switch2_i = 0"/>
+                            </Else>
+                            <Expression Expression="s26_iter = rtb_Switch3_e"/>
+                            <If Condition="s11_iter == 0">
+                                <For Condition="i &lt; 16">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_Assignment1_m[i] = rtb_DataStoreRead_b[i]"/>
+                                </For>
+                            </If>
+                            <Else/>
+                            <Expression Expression="rtb_Assignment1_m[rtb_ForIterator_mv] = rtb_Switch2_i"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="CPUTaskModel_DW-&gt;Aflag[i] = rtb_Assignment1_m[i]"/>
+                            </For>
+                            <LocalVariable Name="rtb_DataStoreRead3_i" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch1_l" Type="int32_T"/>
+                            <LocalVariable Name="rtb_AND_p" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_NOT_k" Type="boolean_T"/>
+                            <Expression Expression="rtb_DataStoreRead3_i = find_n"/>
+                            <Expression Expression="rtb_NOT_k = (rtb_DataStoreRead3_i == 0)"/>
+                            <If Condition="rtb_OR_j"/>
+                            <Else/>
+                            <If Condition="rtb_NOT_k"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND_p = (rtb_OR_j &amp;&amp; rtb_NOT_k)"/>
+                            <Expression Expression="rtb_Switch1_l = !rtb_AND_p"/>
+                            <Expression Expression="find_n = rtb_Switch1_l"/>
+                        </For>
+                        <Break/>
+                        <Case Value="3"/>
+                        <Expression Expression="CPUTaskMo_FunctionCallSubsystem(&amp;find_n, &amp;s26_iter)"/>
+                        <For Condition="s11_iter &lt; 16">
+                            <Initial>
+                                <Expression Expression="s11_iter = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="s11_iter++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_DataStoreRead2_f" Type="int32_T"/>
+                            <LocalVariable Name="rtb_DataStoreRead3_a" Type="int32_T"/>
+                            <LocalVariable Name="rtb_ForIterator_n" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector1_e" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch1_j" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch2" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch3_p" Type="int32_T"/>
+                            <LocalVariable Name="rtb_AND_e" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_NOT_n" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_OR_l" Type="boolean_T"/>
+                            <Expression Expression="rtb_ForIterator_n = s11_iter"/>
+                            <Expression Expression="rtb_DataStoreRead2_f = find_n"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="rtb_DataStoreRead_h[i] = CPUTaskModel_DW-&gt;Aflag[i]"/>
+                                <Expression Expression="rtb_DataStoreRead1_l[i] = CPUTaskModel_DW-&gt;A[i]"/>
+                            </For>
+                            <LocalVariable Name="rtb_Subtract_o" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector_i" Type="int8_T"/>
+                            <LocalVariable Name="rtb_NOT1_o" Type="boolean_T"/>
+                            <Expression Expression="rtb_Selector_i = rtb_DataStoreRead_h[rtb_ForIterator_n]"/>
+                            <Expression Expression="rtb_NOT1_o = (rtb_Selector_i == 0)"/>
+                            <Expression Expression="rtb_Selector1_e = rtb_DataStoreRead1_l[rtb_ForIterator_n]"/>
+                            <Expression Expression="rtb_Subtract_o = rtb_Selector1_e - CPUTaskModel_U_taskId"/>
+                            <If Condition="rtb_DataStoreRead2_f != 0"/>
+                            <Else/>
+                            <If Condition="rtb_NOT1_o"/>
+                            <Else/>
+                            <If Condition="rtb_Subtract_o != 0"/>
+                            <Else/>
+                            <Expression Expression="rtb_OR_l = ((rtb_DataStoreRead2_f != 0) || rtb_NOT1_o || (rtb_Subtract_o != 0))"/>
+                            <If Condition="rtb_OR_l">
+                                <LocalVariable Name="rtb_DataStoreRead4_d" Type="int32_T"/>
+                                <Expression Expression="rtb_DataStoreRead4_d = s26_iter"/>
+                                <Expression Expression="rtb_Switch3_p = rtb_DataStoreRead4_d"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch3_p = rtb_ForIterator_n"/>
+                            </Else>
+                            <Expression Expression="s26_iter = rtb_Switch3_p"/>
+                            <Expression Expression="rtb_DataStoreRead3_a = find_n"/>
+                            <Expression Expression="rtb_NOT_n = (rtb_DataStoreRead3_a == 0)"/>
+                            <If Condition="rtb_OR_l"/>
+                            <Else/>
+                            <If Condition="rtb_NOT_n"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND_e = (rtb_OR_l &amp;&amp; rtb_NOT_n)"/>
+                            <Expression Expression="rtb_Switch1_j = !rtb_AND_e"/>
+                            <Expression Expression="find_n = rtb_Switch1_j"/>
+                            <If Condition="rtb_OR_l">
+                                <Expression Expression="rtb_Switch2 = rtb_Selector1_e"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch2 = CPUTaskModel_U_para"/>
+                            </Else>
+                            <If Condition="s11_iter == 0">
+                                <For Condition="i &lt; 16">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_Assignment1[i] = rtb_DataStoreRead1_l[i]"/>
+                                </For>
+                            </If>
+                            <Else/>
+                            <Expression Expression="rtb_Assignment1[rtb_ForIterator_n] = rtb_Switch2"/>
+                            <For Condition="i &lt; 16">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="CPUTaskModel_DW-&gt;A[i] = rtb_Assignment1[i]"/>
+                            </For>
+                        </For>
+                        <Break/>
+                        <Case Value="4"/>
+                        <Expression Expression="CPUTaskMo_FunctionCallSubsystem(&amp;find_n, &amp;s26_iter)"/>
+                        <For Condition="i &lt; 16">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_DataStoreRead2" Type="int32_T"/>
+                            <LocalVariable Name="rtb_DataStoreRead3" Type="int32_T"/>
+                            <LocalVariable Name="rtb_ForIterator" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector1" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Subtract" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch1" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Switch3" Type="int32_T"/>
+                            <LocalVariable Name="rtb_Selector" Type="int8_T"/>
+                            <LocalVariable Name="rtb_AND" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_NOT" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_NOT1" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_OR" Type="boolean_T"/>
+                            <Expression Expression="rtb_DataStoreRead[i] = CPUTaskModel_DW-&gt;Aflag[i]"/>
+                            <Expression Expression="rtb_DataStoreRead1[i] = CPUTaskModel_DW-&gt;A[i]"/>
+                            <Expression Expression="rtb_ForIterator = i"/>
+                            <Expression Expression="rtb_DataStoreRead2 = find_n"/>
+                            <Expression Expression="rtb_Selector = rtb_DataStoreRead[rtb_ForIterator]"/>
+                            <Expression Expression="rtb_NOT1 = (rtb_Selector == 0)"/>
+                            <Expression Expression="rtb_Selector1 = rtb_DataStoreRead1[rtb_ForIterator]"/>
+                            <Expression Expression="rtb_Subtract = rtb_Selector1 - CPUTaskModel_U_taskId"/>
+                            <If Condition="rtb_DataStoreRead2 != 0"/>
+                            <Else/>
+                            <If Condition="rtb_NOT1"/>
+                            <Else/>
+                            <If Condition="rtb_Subtract != 0"/>
+                            <Else/>
+                            <Expression Expression="rtb_OR = ((rtb_DataStoreRead2 != 0) || rtb_NOT1 || (rtb_Subtract != 0))"/>
+                            <If Condition="rtb_OR">
+                                <LocalVariable Name="rtb_DataStoreRead4" Type="int32_T"/>
+                                <Expression Expression="rtb_DataStoreRead4 = s26_iter"/>
+                                <Expression Expression="rtb_Switch3 = rtb_DataStoreRead4"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Switch3 = rtb_ForIterator"/>
+                            </Else>
+                            <Expression Expression="s26_iter = rtb_Switch3"/>
+                            <Expression Expression="rtb_DataStoreRead3 = find_n"/>
+                            <Expression Expression="rtb_NOT = (rtb_DataStoreRead3 == 0)"/>
+                            <If Condition="rtb_OR"/>
+                            <Else/>
+                            <If Condition="rtb_NOT"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND = (rtb_OR &amp;&amp; rtb_NOT)"/>
+                            <Expression Expression="rtb_Switch1 = !rtb_AND"/>
+                            <Expression Expression="find_n = rtb_Switch1"/>
+                        </For>
+                        <Break/>
+                        <Default/>
+                        <Expression Expression="find_n = -1"/>
+                        <Expression Expression="s26_iter = -1"/>
+                        <Break/>
+                    </Switch>
+                    <Expression Expression="*CPUTaskModel_Y_res = find_n"/>
+                    <Expression Expression="*CPUTaskModel_Y_out = s26_iter"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="CPUTaskModel_init" Type="FunctionInit" ReturnType="void">
+            <Ref Path="CPUTaskModel"/>
+            <Input Name="CPUTaskModel_M" Type="RT_MODEL_CPUTaskModel_T" IsAddress="1"/>
+            <Output Name="CPUTaskModel_U_op" Type="int32_T"/>
+            <Output Name="CPUTaskModel_U_taskId" Type="int32_T"/>
+            <Output Name="CPUTaskModel_U_para" Type="int32_T"/>
+            <Output Name="CPUTaskModel_Y_res" Type="int32_T"/>
+            <Output Name="CPUTaskModel_Y_out" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="CPUTaskModel_init">
+                    <Expression Expression="CPUTaskModel_M-&gt;blockIO = &amp;CPUTaskModel_B_instance"/>
+                    <Expression Expression="CPUTaskModel_M-&gt;dwork = &amp;CPUTaskModel_DW_instance"/>
+                    <LocalVariable Name="CPUTaskModel_DW" Type="DW_CPUTaskModel_T" IsAddress="1" DefaultValue="CPUTaskModel_M-&gt;dwork"/>
+                    <Expression Expression="(void)memset((void*)CPUTaskModel_DW, 0, sizeof(DW_CPUTaskModel_T))"/>
+                    <Expression Expression="*CPUTaskModel_U_op = 0"/>
+                    <Expression Expression="*CPUTaskModel_U_taskId = 0"/>
+                    <Expression Expression="*CPUTaskModel_U_para = 0"/>
+                    <Expression Expression="*CPUTaskModel_Y_res = 0"/>
+                    <Expression Expression="*CPUTaskModel_Y_out = 0"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="CPUTaskMo_FunctionCallSubsystem" Type="FunctionNormal" ReturnType="void">
+            <Input Name="rtd_find_n" Type="int32_T" IsAddress="1"/>
+            <Input Name="rtd_ret_index_a" Type="int32_T" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CPUTaskMo_FunctionCallSubsystem">
+                    <Expression Expression="*rtd_find_n = 0"/>
+                    <Expression Expression="*rtd_ret_index_a = -1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="CPUTaskModel_data"/>
+</Root>

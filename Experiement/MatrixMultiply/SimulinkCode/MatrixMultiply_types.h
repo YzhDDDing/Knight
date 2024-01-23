@@ -1,7 +1,0 @@
-#ifndef RTW_HEADER_MatrixMultiply_types_h_
-#define RTW_HEADER_MatrixMultiply_types_h_
-
-typedef struct tag_RTM_MatrixMultiply_T RT_MODEL_MatrixMultiply_T;
-
-#endif
-

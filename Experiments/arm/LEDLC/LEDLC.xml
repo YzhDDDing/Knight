@@ -1,0 +1,497 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="LEDLC_init"/>
+        <MainExecFunction Name="LEDLC_step"/>
+        <MainCompositeState Name="RT_MODEL_LEDLC_T"/>
+    </Config>
+    <File Name="LEDLC">
+        <HeadFile Name="string"/>
+        <Struct Name="B_LEDLC_T">
+            <Member Name="Merge" Type="int32_T"/>
+            <Member Name="Switch" Type="int32_T"/>
+        </Struct>
+        <Struct Name="DW_LEDLC_T">
+            <Member Name="Data" Type="real32_T" ArraySize="256"/>
+            <Member Name="Error" Type="int32_T"/>
+            <Member Name="Init" Type="int32_T"/>
+            <Member Name="Terminate" Type="int32_T"/>
+            <Member Name="Satisfied" Type="int32_T" ArraySize="256"/>
+            <Member Name="State" Type="int32_T"/>
+        </Struct>
+        <Struct Name="creal32_T">
+            <Member Name="re" Type="real32_T"/>
+            <Member Name="im" Type="real32_T"/>
+        </Struct>
+        <Struct Name="creal64_T">
+            <Member Name="re" Type="real64_T"/>
+            <Member Name="im" Type="real64_T"/>
+        </Struct>
+        <Struct Name="creal_T">
+            <Member Name="re" Type="real_T"/>
+            <Member Name="im" Type="real_T"/>
+        </Struct>
+        <Struct Name="cint8_T">
+            <Member Name="re" Type="int8_T"/>
+            <Member Name="im" Type="int8_T"/>
+        </Struct>
+        <Struct Name="cuint8_T">
+            <Member Name="re" Type="uint8_T"/>
+            <Member Name="im" Type="uint8_T"/>
+        </Struct>
+        <Struct Name="cint16_T">
+            <Member Name="re" Type="int16_T"/>
+            <Member Name="im" Type="int16_T"/>
+        </Struct>
+        <Struct Name="cuint16_T">
+            <Member Name="re" Type="uint16_T"/>
+            <Member Name="im" Type="uint16_T"/>
+        </Struct>
+        <Struct Name="cint32_T">
+            <Member Name="re" Type="int32_T"/>
+            <Member Name="im" Type="int32_T"/>
+        </Struct>
+        <Struct Name="cuint32_T">
+            <Member Name="re" Type="uint32_T"/>
+            <Member Name="im" Type="uint32_T"/>
+        </Struct>
+        <Struct Name="TaskCounters_LEDLC_T">
+            <Member Name="TID" Type="uint16_T" ArraySize="2"/>
+        </Struct>
+        <Struct Name="TIME_LEDLC_T">
+            <Member Name="TaskCounters" Type="TaskCounters_LEDLC_T"/>
+        </Struct>
+        <Struct Name="tag_RTM_LEDLC_T">
+            <Member Name="errorStatus" Type="char_T" IsAddress="1"/>
+            <Member Name="blockIO" Type="B_LEDLC_T" IsAddress="1"/>
+            <Member Name="dwork" Type="DW_LEDLC_T" IsAddress="1"/>
+            <Member Name="Timing" Type="TIME_LEDLC_T"/>
+        </Struct>
+        <Macro Name="RT_PI" Value="3.14159265358979323846" HasIfnodefCheck=""/>
+        <Macro Name="RT_PIF" Value="3.1415927F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10" Value="2.30258509299404568402" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10F" Value="2.3025851F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10E" Value="0.43429448190325182765" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10EF" Value="0.43429449F" HasIfnodefCheck=""/>
+        <Macro Name="RT_E" Value="2.7182818284590452354" HasIfnodefCheck=""/>
+        <Macro Name="RT_EF" Value="2.7182817F" HasIfnodefCheck=""/>
+        <Macro Name="false" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="true" Value="1" HasIfnodefCheck=""/>
+        <Macro Name="NULL" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="UNUSED_PARAMETER(x)" Value="(void)(x)" HasIfnodefCheck=""/>
+        <Macro Name="rtmGetErrorStatus(rtm)" Value="((rtm)-&gt;errorStatus)" HasIfnodefCheck=""/>
+        <Macro Name="rtmSetErrorStatus(rtm,val)" Value="((rtm)-&gt;errorStatus=(val))" HasIfnodefCheck=""/>
+        <TypeDefine Name="signed char" Value="int8_T"/>
+        <TypeDefine Name="unsigned char" Value="uint8_T"/>
+        <TypeDefine Name="short" Value="int16_T"/>
+        <TypeDefine Name="unsigned short" Value="uint16_T"/>
+        <TypeDefine Name="int" Value="int32_T"/>
+        <TypeDefine Name="unsigned int" Value="uint32_T"/>
+        <TypeDefine Name="float" Value="real32_T"/>
+        <TypeDefine Name="double" Value="real64_T"/>
+        <TypeDefine Name="double" Value="real_T"/>
+        <TypeDefine Name="double" Value="time_T"/>
+        <TypeDefine Name="unsigned char" Value="boolean_T"/>
+        <TypeDefine Name="int" Value="int_T"/>
+        <TypeDefine Name="unsigned int" Value="uint_T"/>
+        <TypeDefine Name="unsigned long" Value="ulong_T"/>
+        <TypeDefine Name="char" Value="char_T"/>
+        <TypeDefine Name="unsigned char" Value="uchar_T"/>
+        <TypeDefine Name="char_T" Value="byte_T"/>
+        <TypeDefine Name="creal32_T" Value="creal32_T"/>
+        <TypeDefine Name="creal64_T" Value="creal64_T"/>
+        <TypeDefine Name="creal_T" Value="creal_T"/>
+        <TypeDefine Name="cint8_T" Value="cint8_T"/>
+        <TypeDefine Name="cuint8_T" Value="cuint8_T"/>
+        <TypeDefine Name="cint16_T" Value="cint16_T"/>
+        <TypeDefine Name="cuint16_T" Value="cuint16_T"/>
+        <TypeDefine Name="cint32_T" Value="cint32_T"/>
+        <TypeDefine Name="cuint32_T" Value="cuint32_T"/>
+        <TypeDefine Name="void *" Value="pointer_T"/>
+        <TypeDefine Name="int" Value="ZCEventType"/>
+        <TypeDefine Name="struct _ssMdlInfo" Value="_ssMdlInfo"/>
+        <TypeDefine Name="tag_RTM_LEDLC_T" Value="RT_MODEL_LEDLC_T"/>
+        <TypeDefine Name="B_LEDLC_T" Value="B_LEDLC_T"/>
+        <TypeDefine Name="DW_LEDLC_T" Value="DW_LEDLC_T"/>
+        <TypeDefine Name="TaskCounters_LEDLC_T" Value="TaskCounters_LEDLC_T"/>
+        <TypeDefine Name="TIME_LEDLC_T" Value="TIME_LEDLC_T"/>
+        <GlobalVariable Name="LEDLC_instance" Type="tag_RTM_LEDLC_T"/>
+        <GlobalVariable Name="LEDLC_DW_instance" Type="DW_LEDLC_T"/>
+        <GlobalVariable Name="LEDLC_B_instance" Type="B_LEDLC_T"/>
+        <Function Name="LEDLC_step" Type="FunctionExec" ReturnType="void">
+            <Ref Path="LEDLC"/>
+            <Input Name="LEDLC_M" Type="RT_MODEL_LEDLC_T" IsAddress="1"/>
+            <Input Name="LEDLC_U_t" Type="real32_T"/>
+            <Output Name="LEDLC_Y_Output" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="LEDLC_step">
+                    <LocalVariable Name="LEDLC_B" Type="B_LEDLC_T" IsAddress="1" DefaultValue="LEDLC_M-&gt;blockIO"/>
+                    <LocalVariable Name="LEDLC_DW" Type="DW_LEDLC_T" IsAddress="1" DefaultValue="LEDLC_M-&gt;dwork"/>
+                    <LocalVariable Name="rtb_Assignment1" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment_j" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_f" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_b" Type="int32_T"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_p" Type="int32_T"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_p" Type="int32_T"/>
+                    <LocalVariable Name="rtb_DataStoreRead_e" Type="int32_T"/>
+                    <LocalVariable Name="rtb_DataStoreRead_m" Type="int32_T"/>
+                    <LocalVariable Name="s41_iter" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Assignment" Type="real32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment_n" Type="real32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead" Type="real32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_nn" Type="real32_T"/>
+                    <Expression Expression="rtb_DataStoreRead1_p = LEDLC_DW-&gt;Init"/>
+                    <If Condition="rtb_DataStoreRead1_p == 0">
+                        <Expression Expression="LEDLC_DW-&gt;Init = 1"/>
+                        <Expression Expression="LEDLC_DW-&gt;Terminate = 0"/>
+                        <Expression Expression="LEDLC_DW-&gt;State = 0"/>
+                        <For Condition="s41_iter &lt; 256">
+                            <Initial>
+                                <Expression Expression="s41_iter = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="s41_iter++"/>
+                            </Iterator>
+                            <LocalVariable Name="rtb_ForIterator_j" Type="int32_T"/>
+                            <Expression Expression="rtb_ForIterator_j = s41_iter"/>
+                            <For Condition="i &lt; 256">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="rtb_DataStoreRead_nn = LEDLC_DW-&gt;Data[i]"/>
+                                <If Condition="s41_iter == 0">
+                                    <Expression Expression="rtb_Assignment_n[i] = rtb_DataStoreRead_nn"/>
+                                </If>
+                                <Else/>
+                            </For>
+                            <Expression Expression="rtb_Assignment_n[rtb_ForIterator_j] = 0.0F"/>
+                            <For Condition="i &lt; 256">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="LEDLC_DW-&gt;Data[i] = rtb_Assignment_n[i]"/>
+                                <Expression Expression="rtb_DataStoreRead1_b = LEDLC_DW-&gt;Satisfied[i]"/>
+                                <If Condition="s41_iter == 0">
+                                    <Expression Expression="rtb_Assignment1[i] = rtb_DataStoreRead1_b"/>
+                                </If>
+                                <Else/>
+                            </For>
+                            <Expression Expression="rtb_Assignment1[rtb_ForIterator_j] = 0"/>
+                            <For Condition="i &lt; 256">
+                                <Initial>
+                                    <Expression Expression="i = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="i++"/>
+                                </Iterator>
+                                <Expression Expression="LEDLC_DW-&gt;Satisfied[i] = rtb_Assignment1[i]"/>
+                            </For>
+                        </For>
+                    </If>
+                    <Else/>
+                    <Expression Expression="s41_iter = -1"/>
+                    <For Condition="i &lt; 256">
+                        <Initial>
+                            <Expression Expression="i = 0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="i++"/>
+                        </Iterator>
+                        <LocalVariable Name="rtb_DataStoreRead_p" Type="int32_T"/>
+                        <LocalVariable Name="rtb_ForIterator_d" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Selector_a" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Switch_f" Type="int32_T"/>
+                        <LocalVariable Name="rtb_AND_k0" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_dj" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_p4" Type="boolean_T"/>
+                        <Expression Expression="rtb_DataStoreRead1_f[i] = LEDLC_DW-&gt;Satisfied[i]"/>
+                        <Expression Expression="rtb_ForIterator_d = i"/>
+                        <Expression Expression="rtb_DataStoreRead_p = s41_iter"/>
+                        <Expression Expression="rtb_Compare_dj = (rtb_DataStoreRead_p == -1)"/>
+                        <Expression Expression="rtb_Selector_a = rtb_DataStoreRead1_f[rtb_ForIterator_d]"/>
+                        <Expression Expression="rtb_Compare_p4 = (rtb_Selector_a == 0)"/>
+                        <If Condition="rtb_Compare_dj"/>
+                        <Else/>
+                        <If Condition="rtb_Compare_p4"/>
+                        <Else/>
+                        <Expression Expression="rtb_AND_k0 = (rtb_Compare_dj &amp;&amp; rtb_Compare_p4)"/>
+                        <If Condition="rtb_AND_k0">
+                            <Expression Expression="rtb_Switch_f = rtb_ForIterator_d"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="rtb_Switch_f = rtb_DataStoreRead_p"/>
+                        </Else>
+                        <Expression Expression="s41_iter = rtb_Switch_f"/>
+                    </For>
+                    <Expression Expression="rtb_DataStoreRead2_p = s41_iter"/>
+                    <If Condition="rtb_DataStoreRead2_p != -1">
+                        <LocalVariable Name="rtb_DataStoreRead_c" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Switch" Type="real32_T"/>
+                        <LocalVariable Name="rtb_AND_o" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_i" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_p" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_p = (LEDLC_U_t &lt;= 2.0F)"/>
+                        <Expression Expression="rtb_Compare_i = (LEDLC_U_t &gt;= 1.0F)"/>
+                        <If Condition="rtb_Compare_p"/>
+                        <Else/>
+                        <If Condition="rtb_Compare_i"/>
+                        <Else/>
+                        <Expression Expression="rtb_AND_o = (rtb_Compare_p &amp;&amp; rtb_Compare_i)"/>
+                        <If Condition="rtb_AND_o">
+                            <Expression Expression="rtb_Switch = 1.5F"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="rtb_Switch = LEDLC_U_t"/>
+                        </Else>
+                        <Expression Expression="rtb_DataStoreRead_c = s41_iter"/>
+                        <For Condition="i &lt; 256">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <Expression Expression="rtb_DataStoreRead_nn = LEDLC_DW-&gt;Data[i]"/>
+                            <Expression Expression="rtb_Assignment[i] = rtb_DataStoreRead_nn"/>
+                        </For>
+                        <Expression Expression="rtb_Assignment[rtb_DataStoreRead_c] = rtb_Switch"/>
+                        <For Condition="i &lt; 256">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <Expression Expression="LEDLC_DW-&gt;Data[i] = rtb_Assignment[i]"/>
+                        </For>
+                    </If>
+                    <Else/>
+                    <Expression Expression="rtb_DataStoreRead_e = LEDLC_DW-&gt;Terminate"/>
+                    <If Condition="rtb_DataStoreRead_e &lt;= 0">
+                        <Expression Expression="LEDLC_DW-&gt;Terminate = 1"/>
+                    </If>
+                    <Else/>
+                    <For Condition="i &lt; 256">
+                        <Initial>
+                            <Expression Expression="i = 0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="i++"/>
+                        </Iterator>
+                        <Expression Expression="rtb_DataStoreRead[i] = LEDLC_DW-&gt;Data[i]"/>
+                    </For>
+                    <For Condition="s41_iter &lt; 256">
+                        <Initial>
+                            <Expression Expression="s41_iter = 0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="s41_iter++"/>
+                        </Iterator>
+                        <LocalVariable Name="rtb_ForIterator" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Switch1" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Switch2" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Switch_a" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Add" Type="real32_T"/>
+                        <LocalVariable Name="rtb_Gain" Type="real32_T"/>
+                        <LocalVariable Name="rtb_Selector" Type="real32_T"/>
+                        <LocalVariable Name="rtb_Selector1" Type="real32_T"/>
+                        <LocalVariable Name="rtb_AND_a" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_RelationalOperator" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_RelationalOperator1" Type="boolean_T"/>
+                        <Expression Expression="rtb_ForIterator = s41_iter"/>
+                        <Expression Expression="rtb_Selector = rtb_DataStoreRead[rtb_ForIterator]"/>
+                        <If Condition="rtb_ForIterator != 0">
+                            <LocalVariable Name="rtb_AddConstant1" Type="int32_T"/>
+                            <Expression Expression="rtb_AddConstant1 = rtb_ForIterator"/>
+                            <Expression Expression="rtb_Switch_a = rtb_AddConstant1 - 1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="rtb_Switch_a = 0"/>
+                        </Else>
+                        <Expression Expression="rtb_Selector1 = rtb_DataStoreRead[rtb_Switch_a]"/>
+                        <Expression Expression="rtb_Add = rtb_Selector + rtb_Selector1"/>
+                        <Expression Expression="rtb_Gain = 2.34F * rtb_Add"/>
+                        <Expression Expression="rtb_RelationalOperator = (rtb_Gain &lt;= 18.4)"/>
+                        <Expression Expression="rtb_RelationalOperator1 = (rtb_Gain &gt;= 1.2)"/>
+                        <If Condition="rtb_RelationalOperator"/>
+                        <Else/>
+                        <If Condition="rtb_RelationalOperator1"/>
+                        <Else/>
+                        <Expression Expression="rtb_AND_a = (rtb_RelationalOperator &amp;&amp; rtb_RelationalOperator1)"/>
+                        <If Condition="rtb_AND_a">
+                            <LocalVariable Name="rtb_DataStoreRead1_nn" Type="int32_T"/>
+                            <Expression Expression="rtb_DataStoreRead1_nn = LEDLC_DW-&gt;Terminate"/>
+                            <Expression Expression="rtb_Switch1 = rtb_DataStoreRead1_nn"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="rtb_Switch1 = 0"/>
+                        </Else>
+                        <Expression Expression="LEDLC_DW-&gt;Terminate = rtb_Switch1"/>
+                        <Expression Expression="rtb_Switch2 = rtb_AND_a"/>
+                        <For Condition="i &lt; 256">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <Expression Expression="rtb_DataStoreRead1_b = LEDLC_DW-&gt;Satisfied[i]"/>
+                            <If Condition="s41_iter == 0">
+                                <Expression Expression="rtb_Assignment_j[i] = rtb_DataStoreRead1_b"/>
+                            </If>
+                            <Else/>
+                        </For>
+                        <Expression Expression="rtb_Assignment_j[rtb_ForIterator] = rtb_Switch2"/>
+                        <For Condition="i &lt; 256">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <Expression Expression="LEDLC_DW-&gt;Satisfied[i] = rtb_Assignment_j[i]"/>
+                        </For>
+                    </For>
+                    <Expression Expression="rtb_DataStoreRead_m = LEDLC_DW-&gt;Terminate"/>
+                    <If Condition="rtb_DataStoreRead_m != 0">
+                        <LocalVariable Name="rtb_DataStoreRead_pu" Type="int32_T"/>
+                        <Expression Expression="rtb_DataStoreRead_pu = LEDLC_DW-&gt;State"/>
+                        <Switch Condition="rtb_DataStoreRead_pu">
+                            <Case Value="0"/>
+                            <Expression Expression="LEDLC_DW-&gt;State = 1"/>
+                            <Expression Expression="LEDLC_B-&gt;Merge = 1"/>
+                            <Break/>
+                            <Case Value="1"/>
+                            <If Condition="LEDLC_U_t &gt;= 2.0F">
+                                <LocalVariable Name="rtb_AND_j" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_me" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_o" Type="boolean_T"/>
+                                <Expression Expression="rtb_Compare_me = (LEDLC_U_t &gt; 7.0F)"/>
+                                <Expression Expression="rtb_Compare_o = (LEDLC_U_t &lt; 11.0F)"/>
+                                <If Condition="rtb_Compare_me"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_o"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_j = (rtb_Compare_me &amp;&amp; rtb_Compare_o)"/>
+                                <If Condition="rtb_AND_j">
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -1"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -3"/>
+                                </Else>
+                            </If>
+                            <Else>
+                                <LocalVariable Name="rtb_AND_d" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_f" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_pf" Type="boolean_T"/>
+                                <Expression Expression="LEDLC_DW-&gt;State = 2"/>
+                                <Expression Expression="rtb_Compare_pf = (LEDLC_U_t &gt; 0.5F)"/>
+                                <Expression Expression="rtb_Compare_f = (LEDLC_U_t &lt; 1.0F)"/>
+                                <If Condition="rtb_Compare_pf"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_f"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_d = (rtb_Compare_pf &amp;&amp; rtb_Compare_f)"/>
+                                <If Condition="rtb_AND_d">
+                                    <Expression Expression="LEDLC_B-&gt;Merge = 1"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="LEDLC_B-&gt;Merge = 3"/>
+                                </Else>
+                            </Else>
+                            <Break/>
+                            <Case Value="2"/>
+                            <If Condition="LEDLC_U_t &gt; 9.0F">
+                                <LocalVariable Name="rtb_AND_l" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_ey" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_j" Type="boolean_T"/>
+                                <Expression Expression="rtb_Compare_ey = (LEDLC_U_t &gt; 19.0F)"/>
+                                <Expression Expression="rtb_Compare_j = (LEDLC_U_t &lt; 23.0F)"/>
+                                <If Condition="rtb_Compare_ey"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_j"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_l = (rtb_Compare_ey &amp;&amp; rtb_Compare_j)"/>
+                                <If Condition="rtb_AND_l">
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -1"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -3"/>
+                                </Else>
+                            </If>
+                            <Else>
+                                <LocalVariable Name="rtb_AND" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_b" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_k" Type="boolean_T"/>
+                                <Expression Expression="LEDLC_DW-&gt;State = 3"/>
+                                <Expression Expression="rtb_Compare_b = (LEDLC_U_t &gt; 2.5F)"/>
+                                <Expression Expression="rtb_Compare_k = (LEDLC_U_t &lt; 5.5F)"/>
+                                <If Condition="rtb_Compare_b"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_k"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND = (rtb_Compare_b &amp;&amp; rtb_Compare_k)"/>
+                                <If Condition="rtb_AND">
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -1"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="LEDLC_B-&gt;Merge = -3"/>
+                                </Else>
+                            </Else>
+                            <Break/>
+                            <Case Value="3"/>
+                            <Expression Expression="LEDLC_DW-&gt;State = 4"/>
+                            <Break/>
+                            <Case Value="4"/>
+                            <If Condition="LEDLC_U_t != -1.0F">
+                                <LocalVariable Name="rtb_Compare" Type="boolean_T"/>
+                                <Expression Expression="rtb_Compare = (LEDLC_U_t != 9.0F)"/>
+                                <If Condition="rtb_Compare">
+                                    <Expression Expression="LEDLC_B-&gt;Switch = -1"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="LEDLC_B-&gt;Switch = -3"/>
+                                </Else>
+                            </If>
+                            <Else/>
+                            <Expression Expression="LEDLC_B-&gt;Merge = LEDLC_B-&gt;Switch"/>
+                            <Break/>
+                            <Default/>
+                            <Expression Expression="LEDLC_B-&gt;Merge = -1"/>
+                            <Break/>
+                        </Switch>
+                    </If>
+                    <Else/>
+                    <Expression Expression="*LEDLC_Y_Output = LEDLC_B-&gt;Merge"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="LEDLC_init" Type="FunctionInit" ReturnType="void">
+            <Ref Path="LEDLC"/>
+            <Input Name="LEDLC_M" Type="RT_MODEL_LEDLC_T" IsAddress="1"/>
+            <Output Name="LEDLC_U_t" Type="real32_T"/>
+            <Output Name="LEDLC_Y_Output" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="LEDLC_init">
+                    <Expression Expression="LEDLC_M-&gt;blockIO = &amp;LEDLC_B_instance"/>
+                    <Expression Expression="LEDLC_M-&gt;dwork = &amp;LEDLC_DW_instance"/>
+                    <LocalVariable Name="LEDLC_B" Type="B_LEDLC_T" IsAddress="1" DefaultValue="LEDLC_M-&gt;blockIO"/>
+                    <LocalVariable Name="LEDLC_DW" Type="DW_LEDLC_T" IsAddress="1" DefaultValue="LEDLC_M-&gt;dwork"/>
+                    <Expression Expression="(void)memset(((void*)LEDLC_B), 0, sizeof(B_LEDLC_T))"/>
+                    <Expression Expression="(void)memset((void*)LEDLC_DW, 0, sizeof(DW_LEDLC_T))"/>
+                    <Expression Expression="*LEDLC_U_t = 0.0F"/>
+                    <Expression Expression="*LEDLC_Y_Output = 0"/>
+                    <Expression Expression="LEDLC_B-&gt;Merge = 0"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="LEDLC_data"/>
+</Root>

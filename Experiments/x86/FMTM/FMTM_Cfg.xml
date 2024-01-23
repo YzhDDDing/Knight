@@ -1,0 +1,9 @@
+<Root>
+    <ModelInfo>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="FMTM_init"/>
+        <MainExecFunction Name="FMTM_step"/>
+        <MainCompositeState Name="RT_MODEL_FMTM_T"/>
+    </ModelInfo>
+</Root>
+

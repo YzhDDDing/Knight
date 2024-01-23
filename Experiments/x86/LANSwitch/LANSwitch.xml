@@ -1,0 +1,754 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="LANSwitch_init"/>
+        <MainExecFunction Name="LANSwitch_step"/>
+        <MainCompositeState Name="RT_MODEL_LANSwitch_T"/>
+    </Config>
+    <File Name="LANSwitch">
+        <HeadFile Name="string"/>
+        <Struct Name="B_LANSwitch_T">
+            <Member Name="OutportBufferForMSG" Type="int32_T"/>
+            <Member Name="Switch_i" Type="int32_T"/>
+            <Member Name="Switch_p" Type="int32_T"/>
+        </Struct>
+        <Struct Name="DW_LANSwitch_T">
+            <Member Name="PortPool" Type="int32_T" ArraySize="256"/>
+            <Member Name="PortPoolF" Type="int32_T" ArraySize="256"/>
+        </Struct>
+        <Struct Name="ConstB_LANSwitch_T">
+            <Member Name="Constant" Type="int32_T"/>
+        </Struct>
+        <Struct Name="creal32_T">
+            <Member Name="re" Type="real32_T"/>
+            <Member Name="im" Type="real32_T"/>
+        </Struct>
+        <Struct Name="creal64_T">
+            <Member Name="re" Type="real64_T"/>
+            <Member Name="im" Type="real64_T"/>
+        </Struct>
+        <Struct Name="creal_T">
+            <Member Name="re" Type="real_T"/>
+            <Member Name="im" Type="real_T"/>
+        </Struct>
+        <Struct Name="cint8_T">
+            <Member Name="re" Type="int8_T"/>
+            <Member Name="im" Type="int8_T"/>
+        </Struct>
+        <Struct Name="cuint8_T">
+            <Member Name="re" Type="uint8_T"/>
+            <Member Name="im" Type="uint8_T"/>
+        </Struct>
+        <Struct Name="cint16_T">
+            <Member Name="re" Type="int16_T"/>
+            <Member Name="im" Type="int16_T"/>
+        </Struct>
+        <Struct Name="cuint16_T">
+            <Member Name="re" Type="uint16_T"/>
+            <Member Name="im" Type="uint16_T"/>
+        </Struct>
+        <Struct Name="cint32_T">
+            <Member Name="re" Type="int32_T"/>
+            <Member Name="im" Type="int32_T"/>
+        </Struct>
+        <Struct Name="cuint32_T">
+            <Member Name="re" Type="uint32_T"/>
+            <Member Name="im" Type="uint32_T"/>
+        </Struct>
+        <Struct Name="TaskCounters_LANSwitch_T">
+            <Member Name="TID" Type="uint16_T" ArraySize="2"/>
+        </Struct>
+        <Struct Name="TIME_LANSwitch_T">
+            <Member Name="TaskCounters" Type="TaskCounters_LANSwitch_T"/>
+        </Struct>
+        <Struct Name="tag_RTM_LANSwitch_T">
+            <Member Name="errorStatus" Type="char_T" IsAddress="1"/>
+            <Member Name="blockIO" Type="B_LANSwitch_T" IsAddress="1"/>
+            <Member Name="dwork" Type="DW_LANSwitch_T" IsAddress="1"/>
+            <Member Name="Timing" Type="TIME_LANSwitch_T"/>
+        </Struct>
+        <Macro Name="RT_PI" Value="3.14159265358979323846" HasIfnodefCheck=""/>
+        <Macro Name="RT_PIF" Value="3.1415927F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10" Value="2.30258509299404568402" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10F" Value="2.3025851F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10E" Value="0.43429448190325182765" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10EF" Value="0.43429449F" HasIfnodefCheck=""/>
+        <Macro Name="RT_E" Value="2.7182818284590452354" HasIfnodefCheck=""/>
+        <Macro Name="RT_EF" Value="2.7182817F" HasIfnodefCheck=""/>
+        <Macro Name="false" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="true" Value="1" HasIfnodefCheck=""/>
+        <Macro Name="NULL" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="UNUSED_PARAMETER(x)" Value="(void)(x)" HasIfnodefCheck=""/>
+        <Macro Name="rtmGetErrorStatus(rtm)" Value="((rtm)-&gt;errorStatus)" HasIfnodefCheck=""/>
+        <Macro Name="rtmSetErrorStatus(rtm,val)" Value="((rtm)-&gt;errorStatus=(val))" HasIfnodefCheck=""/>
+        <TypeDefine Name="signed char" Value="int8_T"/>
+        <TypeDefine Name="unsigned char" Value="uint8_T"/>
+        <TypeDefine Name="short" Value="int16_T"/>
+        <TypeDefine Name="unsigned short" Value="uint16_T"/>
+        <TypeDefine Name="int" Value="int32_T"/>
+        <TypeDefine Name="unsigned int" Value="uint32_T"/>
+        <TypeDefine Name="float" Value="real32_T"/>
+        <TypeDefine Name="double" Value="real64_T"/>
+        <TypeDefine Name="double" Value="real_T"/>
+        <TypeDefine Name="double" Value="time_T"/>
+        <TypeDefine Name="unsigned char" Value="boolean_T"/>
+        <TypeDefine Name="int" Value="int_T"/>
+        <TypeDefine Name="unsigned int" Value="uint_T"/>
+        <TypeDefine Name="unsigned long" Value="ulong_T"/>
+        <TypeDefine Name="char" Value="char_T"/>
+        <TypeDefine Name="unsigned char" Value="uchar_T"/>
+        <TypeDefine Name="char_T" Value="byte_T"/>
+        <TypeDefine Name="creal32_T" Value="creal32_T"/>
+        <TypeDefine Name="creal64_T" Value="creal64_T"/>
+        <TypeDefine Name="creal_T" Value="creal_T"/>
+        <TypeDefine Name="cint8_T" Value="cint8_T"/>
+        <TypeDefine Name="cuint8_T" Value="cuint8_T"/>
+        <TypeDefine Name="cint16_T" Value="cint16_T"/>
+        <TypeDefine Name="cuint16_T" Value="cuint16_T"/>
+        <TypeDefine Name="cint32_T" Value="cint32_T"/>
+        <TypeDefine Name="cuint32_T" Value="cuint32_T"/>
+        <TypeDefine Name="void *" Value="pointer_T"/>
+        <TypeDefine Name="int" Value="ZCEventType"/>
+        <TypeDefine Name="struct _ssMdlInfo" Value="_ssMdlInfo"/>
+        <TypeDefine Name="tag_RTM_LANSwitch_T" Value="RT_MODEL_LANSwitch_T"/>
+        <TypeDefine Name="B_LANSwitch_T" Value="B_LANSwitch_T"/>
+        <TypeDefine Name="DW_LANSwitch_T" Value="DW_LANSwitch_T"/>
+        <TypeDefine Name="ConstB_LANSwitch_T" Value="ConstB_LANSwitch_T"/>
+        <TypeDefine Name="TaskCounters_LANSwitch_T" Value="TaskCounters_LANSwitch_T"/>
+        <TypeDefine Name="TIME_LANSwitch_T" Value="TIME_LANSwitch_T"/>
+        <GlobalVariable Name="LANSwitch_instance" Type="tag_RTM_LANSwitch_T"/>
+        <GlobalVariable Name="LANSwitch_DW_instance" Type="DW_LANSwitch_T"/>
+        <GlobalVariable Name="LANSwitch_B_instance" Type="B_LANSwitch_T"/>
+        <Function Name="LANSwitch_step" Type="FunctionExec" ReturnType="void">
+            <Ref Path="LANSwitch"/>
+            <Input Name="LANSwitch_M" Type="RT_MODEL_LANSwitch_T" IsAddress="1"/>
+            <Input Name="LANSwitch_U_PortId" Type="int32_T"/>
+            <Input Name="LANSwitch_U_CMD" Type="int32_T"/>
+            <Input Name="LANSwitch_U_Arg1" Type="int32_T"/>
+            <Input Name="LANSwitch_U_Arg2" Type="int32_T"/>
+            <Input Name="LANSwitch_U_Arg3" Type="int32_T"/>
+            <Output Name="LANSwitch_Y_Result" Type="int32_T"/>
+            <Output Name="LANSwitch_Y_MSG" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="LANSwitch_step">
+                    <LocalVariable Name="LANSwitch_B" Type="B_LANSwitch_T" IsAddress="1" DefaultValue="LANSwitch_M-&gt;blockIO"/>
+                    <LocalVariable Name="LANSwitch_DW" Type="DW_LANSwitch_T" IsAddress="1" DefaultValue="LANSwitch_M-&gt;dwork"/>
+                    <LocalVariable Name="rtb_Assignment" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment1" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment1_o" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment_h" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_l" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_c" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_e" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_p" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_e" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_l" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_n" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="Found_E" Type="int32_T"/>
+                    <LocalVariable Name="Switch_m" Type="int32_T"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Merge" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Merge1" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Switch_l" Type="int32_T"/>
+                    <LocalVariable Name="s43_iter" Type="int32_T"/>
+                    <LocalVariable Name="Switch_l4" Type="boolean_T"/>
+                    <Switch Condition="LANSwitch_U_CMD">
+                        <Case Value="10001"/>
+                        <LocalVariable Name="rtb_Compare_c" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_c = (LANSwitch_U_PortId == 0)"/>
+                        <If Condition="rtb_Compare_c">
+                            <Expression Expression="LANSwitch_Error(&amp;rtb_Merge, &amp;rtb_Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="Found" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_AND_k" Type="boolean_T"/>
+                            <Expression Expression="Found = false"/>
+                            <Expression Expression="Found_E = -1"/>
+                            <For Condition="s43_iter &lt; 256">
+                                <Initial>
+                                    <Expression Expression="s43_iter = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="s43_iter++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead1_f" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_b" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_oy" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND_d" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_AND_pv" Type="boolean_T"/>
+                                <Expression Expression="rtb_ForIterator_oy = s43_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead_l[i] = LANSwitch_DW-&gt;PortPool[i]"/>
+                                    <Expression Expression="rtb_DataStoreRead2_e[i] = LANSwitch_DW-&gt;PortPoolF[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_g" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Selector_b" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Compare_p" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Equal_a" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector_b = rtb_DataStoreRead_l[rtb_ForIterator_oy]"/>
+                                <Expression Expression="rtb_Equal_a = (rtb_Selector_b == LANSwitch_U_PortId)"/>
+                                <Expression Expression="rtb_Selector1_g = rtb_DataStoreRead2_e[rtb_ForIterator_oy]"/>
+                                <Expression Expression="rtb_Compare_p = (rtb_Selector1_g == 1)"/>
+                                <If Condition="rtb_Equal_a"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_p"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_d = (rtb_Equal_a &amp;&amp; rtb_Compare_p)"/>
+                                <If Condition="rtb_AND_d">
+                                    <Expression Expression="Switch_l4 = true"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_DataStoreRead1_e" Type="boolean_T"/>
+                                    <Expression Expression="rtb_DataStoreRead1_e = Found"/>
+                                    <Expression Expression="Switch_l4 = rtb_DataStoreRead1_e"/>
+                                </Else>
+                                <Expression Expression="Found = Switch_l4"/>
+                                <Expression Expression="rtb_ForIterator_b = s43_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead2_p[i] = LANSwitch_DW-&gt;PortPoolF[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_n" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Compare_di" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_jk" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector1_n = rtb_DataStoreRead2_p[rtb_ForIterator_b]"/>
+                                <Expression Expression="rtb_Compare_di = (rtb_Selector1_n == 0)"/>
+                                <Expression Expression="rtb_DataStoreRead1_f = Found_E"/>
+                                <Expression Expression="rtb_Compare_jk = (rtb_DataStoreRead1_f == -1)"/>
+                                <If Condition="rtb_Compare_di"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_jk"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_pv = (rtb_Compare_di &amp;&amp; rtb_Compare_jk)"/>
+                                <If Condition="rtb_AND_pv">
+                                    <Expression Expression="Switch_m = rtb_ForIterator_b"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="Switch_m = rtb_DataStoreRead1_f"/>
+                                </Else>
+                                <Expression Expression="Found_E = Switch_m"/>
+                            </For>
+                            <LocalVariable Name="rtb_Compare_ej" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_Compare_m" Type="boolean_T"/>
+                            <Expression Expression="rtb_Compare_m = !Switch_l4"/>
+                            <Expression Expression="rtb_Compare_ej = (Switch_m != -1)"/>
+                            <If Condition="rtb_Compare_m"/>
+                            <Else/>
+                            <If Condition="rtb_Compare_ej"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND_k = (rtb_Compare_m &amp;&amp; rtb_Compare_ej)"/>
+                            <If Condition="rtb_AND_k">
+                                <LocalVariable Name="rtb_Compare_np" Type="boolean_T"/>
+                                <Expression Expression="rtb_Merge = 1"/>
+                                <For Condition="Found_E &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="Found_E = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="Found_E++"/>
+                                    </Iterator>
+                                    <LocalVariable Name="rtb_ForIterator_o" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch1_f" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch_c" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Equal_m" Type="boolean_T"/>
+                                    <Expression Expression="rtb_ForIterator_o = Found_E"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="rtb_DataStoreRead_e[i] = LANSwitch_DW-&gt;PortPool[i]"/>
+                                    </For>
+                                    <Expression Expression="rtb_Equal_m = (Switch_m == rtb_ForIterator_o)"/>
+                                    <If Condition="rtb_Equal_m">
+                                        <Expression Expression="rtb_Switch_c = LANSwitch_U_PortId"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector_i" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector_i = rtb_DataStoreRead_e[rtb_ForIterator_o]"/>
+                                        <Expression Expression="rtb_Switch_c = rtb_Selector_i"/>
+                                    </Else>
+                                    <If Condition="Found_E == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment_h[i] = rtb_DataStoreRead_e[i]"/>
+                                        </For>
+                                    </If>
+                                    <Else/>
+                                    <Expression Expression="rtb_Assignment_h[rtb_ForIterator_o] = rtb_Switch_c"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="LANSwitch_DW-&gt;PortPool[i] = rtb_Assignment_h[i]"/>
+                                        <Expression Expression="rtb_DataStoreRead1_l[i] = LANSwitch_DW-&gt;PortPoolF[i]"/>
+                                    </For>
+                                    <If Condition="rtb_Equal_m">
+                                        <Expression Expression="rtb_Switch1_f = 1"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector1_c" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector1_c = rtb_DataStoreRead1_l[rtb_ForIterator_o]"/>
+                                        <Expression Expression="rtb_Switch1_f = rtb_Selector1_c"/>
+                                    </Else>
+                                    <If Condition="Found_E == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment1_o[i] = rtb_DataStoreRead1_l[i]"/>
+                                        </For>
+                                    </If>
+                                    <Else/>
+                                    <Expression Expression="rtb_Assignment1_o[rtb_ForIterator_o] = rtb_Switch1_f"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="LANSwitch_DW-&gt;PortPoolF[i] = rtb_Assignment1_o[i]"/>
+                                    </For>
+                                </For>
+                                <Expression Expression="rtb_Compare_np = (Switch_m == 0)"/>
+                                <If Condition="rtb_Compare_np">
+                                    <Expression Expression="LANSwitch_B-&gt;Switch_p = 1"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_Switch1_p" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Compare_le" Type="boolean_T"/>
+                                    <Expression Expression="rtb_Compare_le = (Switch_m == 1)"/>
+                                    <If Condition="rtb_Compare_le">
+                                        <Expression Expression="rtb_Switch1_p = 2"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Switch2_d" Type="int32_T"/>
+                                        <LocalVariable Name="rtb_Compare_nr" Type="boolean_T"/>
+                                        <Expression Expression="rtb_Compare_nr = (Switch_m == 2)"/>
+                                        <If Condition="rtb_Compare_nr">
+                                            <Expression Expression="rtb_Switch2_d = 3"/>
+                                        </If>
+                                        <Else>
+                                            <Expression Expression="rtb_Switch2_d = 4"/>
+                                        </Else>
+                                        <Expression Expression="rtb_Switch1_p = rtb_Switch2_d"/>
+                                    </Else>
+                                    <Expression Expression="LANSwitch_B-&gt;Switch_p = rtb_Switch1_p"/>
+                                </Else>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Merge = -10002"/>
+                            </Else>
+                            <Expression Expression="rtb_Merge1 = LANSwitch_B-&gt;Switch_p"/>
+                        </Else>
+                        <Break/>
+                        <Case Value="10002"/>
+                        <LocalVariable Name="rtb_Compare_ck" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_ck = (LANSwitch_U_PortId == 0)"/>
+                        <If Condition="rtb_Compare_ck">
+                            <Expression Expression="LANSwitch_Error(&amp;rtb_Merge, &amp;rtb_Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_AND" Type="boolean_T"/>
+                            <Expression Expression="Switch_m = -1"/>
+                            <Expression Expression="Found_E = -1"/>
+                            <Expression Expression="LANSwitch_FindPortInPool(LANSwitch_U_PortId, &amp;s43_iter, &amp;Switch_m, LANSwitch_DW-&gt;PortPool, LANSwitch_DW-&gt;PortPoolF)"/>
+                            <For Condition="Switch_m &lt; 256">
+                                <Initial>
+                                    <Expression Expression="Switch_m = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="Switch_m++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead1" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_a" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND_e" Type="boolean_T"/>
+                                <Expression Expression="rtb_ForIterator_a = Switch_m"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead_n[i] = LANSwitch_DW-&gt;PortPool[i]"/>
+                                    <Expression Expression="rtb_DataStoreRead2_c[i] = LANSwitch_DW-&gt;PortPoolF[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_b" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Selector_a" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND1" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_ai" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_o5" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Equal_c" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector_a = rtb_DataStoreRead_n[rtb_ForIterator_a]"/>
+                                <Expression Expression="rtb_Equal_c = (LANSwitch_U_Arg1 == rtb_Selector_a)"/>
+                                <Expression Expression="rtb_Selector1_b = rtb_DataStoreRead2_c[rtb_ForIterator_a]"/>
+                                <Expression Expression="rtb_Compare_ai = (rtb_Selector1_b == 1)"/>
+                                <If Condition="rtb_Equal_c"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_ai"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND1 = (rtb_Equal_c &amp;&amp; rtb_Compare_ai)"/>
+                                <Expression Expression="rtb_DataStoreRead1 = Found_E"/>
+                                <Expression Expression="rtb_Compare_o5 = (rtb_DataStoreRead1 == -1)"/>
+                                <If Condition="rtb_AND1"/>
+                                <Else/>
+                                <If Condition="rtb_Compare_o5"/>
+                                <Else/>
+                                <Expression Expression="rtb_AND_e = (rtb_AND1 &amp;&amp; rtb_Compare_o5)"/>
+                                <If Condition="rtb_AND_e">
+                                    <Expression Expression="i = rtb_ForIterator_a"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="i = rtb_DataStoreRead1"/>
+                                </Else>
+                                <Expression Expression="Found_E = i"/>
+                            </For>
+                            <LocalVariable Name="rtb_Compare_f" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_Compare_i" Type="boolean_T"/>
+                            <Expression Expression="rtb_Compare_f = (s43_iter != -1)"/>
+                            <Expression Expression="rtb_Compare_i = (i != -1)"/>
+                            <If Condition="rtb_Compare_f"/>
+                            <Else/>
+                            <If Condition="rtb_Compare_i"/>
+                            <Else/>
+                            <Expression Expression="rtb_AND = (rtb_Compare_f &amp;&amp; rtb_Compare_i)"/>
+                            <If Condition="rtb_AND">
+                                <LocalVariable Name="rtb_Subtract" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Compare_nw" Type="boolean_T"/>
+                                <Expression Expression="rtb_Merge = LANSwitch_U_Arg1"/>
+                                <Expression Expression="rtb_Subtract = LANSwitch_U_Arg3 - LANSwitch_U_Arg2"/>
+                                <Expression Expression="rtb_Compare_nw = (rtb_Subtract == 1)"/>
+                                <If Condition="rtb_Compare_nw">
+                                    <Expression Expression="LANSwitch_B-&gt;Switch_i = 101"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_Switch1_l" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Compare_cv" Type="boolean_T"/>
+                                    <Expression Expression="rtb_Compare_cv = (rtb_Subtract == 2)"/>
+                                    <If Condition="rtb_Compare_cv">
+                                        <Expression Expression="rtb_Switch1_l = 102"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Switch2" Type="int32_T"/>
+                                        <LocalVariable Name="rtb_Compare_bl" Type="boolean_T"/>
+                                        <Expression Expression="rtb_Compare_bl = (rtb_Subtract == 3)"/>
+                                        <If Condition="rtb_Compare_bl">
+                                            <Expression Expression="rtb_Switch2 = 103"/>
+                                        </If>
+                                        <Else>
+                                            <LocalVariable Name="rtb_Switch3" Type="int32_T"/>
+                                            <LocalVariable Name="rtb_Compare_g" Type="boolean_T"/>
+                                            <Expression Expression="rtb_Compare_g = (rtb_Subtract == -1)"/>
+                                            <If Condition="rtb_Compare_g">
+                                                <Expression Expression="rtb_Switch3 = -101"/>
+                                            </If>
+                                            <Else>
+                                                <LocalVariable Name="rtb_Switch4" Type="int32_T"/>
+                                                <LocalVariable Name="rtb_Compare_hn" Type="boolean_T"/>
+                                                <Expression Expression="rtb_Compare_hn = (rtb_Subtract == -2)"/>
+                                                <If Condition="rtb_Compare_hn">
+                                                    <Expression Expression="rtb_Switch4 = -102"/>
+                                                </If>
+                                                <Else>
+                                                    <LocalVariable Name="rtb_Switch5" Type="int32_T"/>
+                                                    <LocalVariable Name="rtb_Compare_pyv" Type="boolean_T"/>
+                                                    <Expression Expression="rtb_Compare_pyv = (rtb_Subtract == -3)"/>
+                                                    <If Condition="rtb_Compare_pyv">
+                                                        <Expression Expression="rtb_Switch5 = -103"/>
+                                                    </If>
+                                                    <Else>
+                                                        <Expression Expression="rtb_Switch5 = rtb_Subtract"/>
+                                                    </Else>
+                                                    <Expression Expression="rtb_Switch4 = rtb_Switch5"/>
+                                                </Else>
+                                                <Expression Expression="rtb_Switch3 = rtb_Switch4"/>
+                                            </Else>
+                                            <Expression Expression="rtb_Switch2 = rtb_Switch3"/>
+                                        </Else>
+                                        <Expression Expression="rtb_Switch1_l = rtb_Switch2"/>
+                                    </Else>
+                                    <Expression Expression="LANSwitch_B-&gt;Switch_i = rtb_Switch1_l"/>
+                                </Else>
+                            </If>
+                            <Else>
+                                <Expression Expression="LANSwitch_Err(&amp;rtb_Merge)"/>
+                            </Else>
+                            <Expression Expression="rtb_Merge1 = LANSwitch_B-&gt;Switch_i"/>
+                        </Else>
+                        <Break/>
+                        <Case Value="10003"/>
+                        <LocalVariable Name="rtb_Compare_ct" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_ct = (LANSwitch_U_PortId == 0)"/>
+                        <If Condition="rtb_Compare_ct">
+                            <Expression Expression="LANSwitch_Error(&amp;rtb_Merge, &amp;rtb_Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_Compare_b" Type="boolean_T"/>
+                            <Expression Expression="Found_E = -1"/>
+                            <Expression Expression="LANSwitch_FindPortInPool(LANSwitch_U_PortId, &amp;s43_iter, &amp;Found_E, LANSwitch_DW-&gt;PortPool, LANSwitch_DW-&gt;PortPoolF)"/>
+                            <Expression Expression="rtb_Compare_b = (s43_iter != -1)"/>
+                            <If Condition="rtb_Compare_b">
+                                <Expression Expression="rtb_Merge = s43_iter"/>
+                                <Expression Expression="rtb_Merge1 = 1"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="rtb_Merge = -1"/>
+                                <Expression Expression="rtb_Merge1 = -1"/>
+                            </Else>
+                        </Else>
+                        <Break/>
+                        <Case Value="10004"/>
+                        <LocalVariable Name="rtb_Compare_k" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_k = (LANSwitch_U_PortId == 0)"/>
+                        <If Condition="rtb_Compare_k">
+                            <Expression Expression="LANSwitch_Error(&amp;rtb_Merge, &amp;rtb_Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_Compare" Type="uint8_T"/>
+                            <Expression Expression="Found_E = -1"/>
+                            <Expression Expression="LANSwitch_FindPortInPool(LANSwitch_U_PortId, &amp;rtb_Switch_l, &amp;Found_E, LANSwitch_DW-&gt;PortPool, LANSwitch_DW-&gt;PortPoolF)"/>
+                            <Expression Expression="rtb_Compare = (uint8_T)(rtb_Switch_l == -1)"/>
+                            <If Condition="rtb_Compare != 0">
+                                <Expression Expression="LANSwitch_Err(&amp;Found_E)"/>
+                            </If>
+                            <Else>
+                                <LocalVariable Name="rtb_PortId" Type="int32_T"/>
+                                <Expression Expression="rtb_PortId = LANSwitch_U_PortId"/>
+                                <For Condition="Found_E &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="Found_E = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="Found_E++"/>
+                                    </Iterator>
+                                    <LocalVariable Name="rtb_ForIterator" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch1" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Equal" Type="boolean_T"/>
+                                    <Expression Expression="rtb_ForIterator = Found_E"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="rtb_DataStoreRead[i] = LANSwitch_DW-&gt;PortPool[i]"/>
+                                    </For>
+                                    <Expression Expression="rtb_Equal = (rtb_PortId == rtb_ForIterator)"/>
+                                    <If Condition="rtb_Equal">
+                                        <Expression Expression="rtb_Switch = 0"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector = rtb_DataStoreRead[rtb_ForIterator]"/>
+                                        <Expression Expression="rtb_Switch = rtb_Selector"/>
+                                    </Else>
+                                    <If Condition="Found_E == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment[i] = rtb_DataStoreRead[i]"/>
+                                        </For>
+                                    </If>
+                                    <Else/>
+                                    <Expression Expression="rtb_Assignment[rtb_ForIterator] = rtb_Switch"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="LANSwitch_DW-&gt;PortPool[i] = rtb_Assignment[i]"/>
+                                        <Expression Expression="rtb_DataStoreRead2[i] = LANSwitch_DW-&gt;PortPoolF[i]"/>
+                                    </For>
+                                    <If Condition="rtb_Equal">
+                                        <Expression Expression="rtb_Switch1 = 0"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector1" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector1 = rtb_DataStoreRead2[rtb_ForIterator]"/>
+                                        <Expression Expression="rtb_Switch1 = rtb_Selector1"/>
+                                    </Else>
+                                    <If Condition="Found_E == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment1[i] = rtb_DataStoreRead2[i]"/>
+                                        </For>
+                                    </If>
+                                    <Else/>
+                                    <Expression Expression="rtb_Assignment1[rtb_ForIterator] = rtb_Switch1"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="LANSwitch_DW-&gt;PortPoolF[i] = rtb_Assignment1[i]"/>
+                                    </For>
+                                </For>
+                                <Expression Expression="Found_E = rtb_PortId"/>
+                                <Expression Expression="LANSwitch_B-&gt;OutportBufferForMSG = LANSwitch_ConstB.Constant"/>
+                            </Else>
+                            <Expression Expression="rtb_Merge1 = LANSwitch_B-&gt;OutportBufferForMSG"/>
+                            <Expression Expression="rtb_Merge = Found_E"/>
+                        </Else>
+                        <Break/>
+                        <Default/>
+                        <Expression Expression="rtb_Merge = -10000"/>
+                        <Expression Expression="rtb_Merge1 = 0"/>
+                        <Break/>
+                    </Switch>
+                    <Expression Expression="*LANSwitch_Y_Result = rtb_Merge"/>
+                    <Expression Expression="*LANSwitch_Y_MSG = rtb_Merge1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="LANSwitch_init" Type="FunctionInit" ReturnType="void">
+            <Ref Path="LANSwitch"/>
+            <Input Name="LANSwitch_M" Type="RT_MODEL_LANSwitch_T" IsAddress="1"/>
+            <Output Name="LANSwitch_U_PortId" Type="int32_T"/>
+            <Output Name="LANSwitch_U_CMD" Type="int32_T"/>
+            <Output Name="LANSwitch_U_Arg1" Type="int32_T"/>
+            <Output Name="LANSwitch_U_Arg2" Type="int32_T"/>
+            <Output Name="LANSwitch_U_Arg3" Type="int32_T"/>
+            <Output Name="LANSwitch_Y_Result" Type="int32_T"/>
+            <Output Name="LANSwitch_Y_MSG" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="LANSwitch_init">
+                    <Expression Expression="LANSwitch_M-&gt;blockIO = &amp;LANSwitch_B_instance"/>
+                    <Expression Expression="LANSwitch_M-&gt;dwork = &amp;LANSwitch_DW_instance"/>
+                    <LocalVariable Name="LANSwitch_B" Type="B_LANSwitch_T" IsAddress="1" DefaultValue="LANSwitch_M-&gt;blockIO"/>
+                    <LocalVariable Name="LANSwitch_DW" Type="DW_LANSwitch_T" IsAddress="1" DefaultValue="LANSwitch_M-&gt;dwork"/>
+                    <Expression Expression="(void)memset(((void*)LANSwitch_B), 0, sizeof(B_LANSwitch_T))"/>
+                    <Expression Expression="(void)memset((void*)LANSwitch_DW, 0, sizeof(DW_LANSwitch_T))"/>
+                    <Expression Expression="*LANSwitch_U_PortId = 0"/>
+                    <Expression Expression="*LANSwitch_U_CMD = 0"/>
+                    <Expression Expression="*LANSwitch_U_Arg1 = 0"/>
+                    <Expression Expression="*LANSwitch_U_Arg2 = 0"/>
+                    <Expression Expression="*LANSwitch_U_Arg3 = 0"/>
+                    <Expression Expression="*LANSwitch_Y_Result = 0"/>
+                    <Expression Expression="*LANSwitch_Y_MSG = 0"/>
+                    <Expression Expression="LANSwitch_B-&gt;OutportBufferForMSG = LANSwitch_ConstB.Constant"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="LANSwitch_Error" Type="FunctionNormal" ReturnType="void">
+            <Input Name="rty_Result" Type="int32_T" IsAddress="1"/>
+            <Input Name="rty_MSG" Type="int32_T" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="LANSwitch_Error">
+                    <Expression Expression="*rty_Result = -10001"/>
+                    <Expression Expression="*rty_MSG = 0"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="LANSwitch_FindPortInPool" Type="FunctionNormal" ReturnType="void">
+            <Input Name="rtu_PortId" Type="int32_T"/>
+            <Input Name="rty_Out1" Type="int32_T" IsAddress="1"/>
+            <Input Name="rtd_Found_P_e" Type="int32_T" IsAddress="1"/>
+            <Input Name="rtd_PortPool" Type="int32_T" ArraySize="256"/>
+            <Input Name="rtd_PortPoolF" Type="int32_T" ArraySize="256"/>
+            <Schedule>
+                <Calculate Name="LANSwitch_FindPortInPool">
+                    <LocalVariable Name="rtb_DataStoreRead2_pj" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_j" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <For Condition="i &lt; 256">
+                        <Initial>
+                            <Expression Expression="i = 0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="i++"/>
+                        </Iterator>
+                        <LocalVariable Name="rtb_DataStoreRead1_cy" Type="int32_T"/>
+                        <LocalVariable Name="rtb_ForIterator_e" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Selector1_l" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Selector_o" Type="int32_T"/>
+                        <LocalVariable Name="rtb_AND1_e" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_AND_g" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_cc" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_n1" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Equal_n" Type="boolean_T"/>
+                        <Expression Expression="rtb_DataStoreRead_j[i] = rtd_PortPool[i]"/>
+                        <Expression Expression="rtb_DataStoreRead2_pj[i] = rtd_PortPoolF[i]"/>
+                        <Expression Expression="rtb_ForIterator_e = i"/>
+                        <Expression Expression="rtb_Selector_o = rtb_DataStoreRead_j[rtb_ForIterator_e]"/>
+                        <Expression Expression="rtb_Equal_n = (rtu_PortId == rtb_Selector_o)"/>
+                        <Expression Expression="rtb_Selector1_l = rtb_DataStoreRead2_pj[rtb_ForIterator_e]"/>
+                        <Expression Expression="rtb_Compare_n1 = (rtb_Selector1_l == 1)"/>
+                        <If Condition="rtb_Equal_n"/>
+                        <Else/>
+                        <If Condition="rtb_Compare_n1"/>
+                        <Else/>
+                        <Expression Expression="rtb_AND1_e = (rtb_Equal_n &amp;&amp; rtb_Compare_n1)"/>
+                        <Expression Expression="rtb_DataStoreRead1_cy = *rtd_Found_P_e"/>
+                        <Expression Expression="rtb_Compare_cc = (rtb_DataStoreRead1_cy == -1)"/>
+                        <If Condition="rtb_AND1_e"/>
+                        <Else/>
+                        <If Condition="rtb_Compare_cc"/>
+                        <Else/>
+                        <Expression Expression="rtb_AND_g = (rtb_AND1_e &amp;&amp; rtb_Compare_cc)"/>
+                        <If Condition="rtb_AND_g">
+                            <Expression Expression="*rty_Out1 = rtb_ForIterator_e"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="*rty_Out1 = rtb_DataStoreRead1_cy"/>
+                        </Else>
+                        <Expression Expression="*rtd_Found_P_e = *rty_Out1"/>
+                    </For>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="LANSwitch_Err" Type="FunctionNormal" ReturnType="void">
+            <Input Name="rty_Result" Type="int32_T" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="LANSwitch_Err">
+                    <Expression Expression="*rty_Result = -10003"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="LANSwitch_data">
+        <GlobalVariable Name="LANSwitch_ConstB" Type="ConstB_LANSwitch_T" DefaultValue="{1}"/>
+    </File>
+</Root>

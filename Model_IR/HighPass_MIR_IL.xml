@@ -1,0 +1,1184 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10"/>
+        <MainInitFunction Name="system_root_Init"/>
+        <MainExecFunction Name="system_root_Update"/>
+        <MainCompositeState Name="system_root_state"/>
+    </Config>
+    <File Name="system_14">
+        <Struct Name="system_14_state"/>
+        <GlobalVariable Name="system_14_instance" Type="system_14_state"/>
+        <Function Name="system_14_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_14"/>
+            <Input Name="self" Type="system_14_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant2"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite2"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_14_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_14"/>
+            <Input Name="self" Type="system_14_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant2"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 1.95"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = 2.15"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_14.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = 3"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory_default_hp1 = Constant_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant1_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory1_default_hp2 = Constant1_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="HighPass_MIR.system_14.Data_StoreWrite2"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant2_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory2_default_hp3 = Constant2_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_45">
+        <Struct Name="system_45_state"/>
+        <GlobalVariable Name="system_45_instance" Type="system_45_state"/>
+        <Function Name="system_45_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_45"/>
+            <Input Name="self" Type="system_45_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_45.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="dt">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_45.dt"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_45.Selector"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_45.Assignment"/>
+                </Calculate>
+                <Calculate Name="Add1">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add1"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_45.Product"/>
+                </Calculate>
+                <Calculate Name="Divide">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_45.Divide"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_45.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_45_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_45"/>
+            <Input Name="self" Type="system_45_state" IsAddress="1"/>
+            <Input Name="signal1" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory3_S1[0])">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_45.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="dt_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_45.dt"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_45.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_45.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_45.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Add1_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add1"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_45.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Divide_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_45.Divide"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_45.Switch"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="32">
+                    <Ref Actor="ForIterator" Path="system_45.system_45_Update.For_Iterator"/>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory_default_hp1"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_45.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="HighPass_MIR.system_45.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="dt">
+                        <Ref Actor="Constant" Path="HighPass_MIR.system_45.dt"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="dt_DefaultOutport1 = 3"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="HighPass_MIR.system_45.Selector"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="signal1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = signal1[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Selector_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add_DefaultOutport1 = Data_StoreRead_DefaultOutport1 + Selector_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="HighPass_MIR.system_45.Assignment"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Add_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <BatchCalculation Operation="Assign" DataType="f32">
+                                <Input Name="Data_StoreRead1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                                <Output Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            </BatchCalculation>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Add_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add1">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_45.Add1"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="dt_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Assignment_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Add" DataType="f32">
+                            <Input Name="dt_DefaultOutport1" Type="f32"/>
+                            <Input Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_45.Product"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Add1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Mul" DataType="f32">
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Input Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Divide">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_45.Divide"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Div" DataType="f32">
+                            <Input Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Output Name="Divide_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="HighPass_MIR.system_45.Switch"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Divide_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <For Condition="Switch_i &lt; 32">
+                            <Initial>
+                                <LocalVariable Name="Switch_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch_i++"/>
+                            </Iterator>
+                            <If Condition="Product_DefaultOutport1[Switch_i] &gt; 17.13">
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Divide_DefaultOutport1[Switch_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Product_DefaultOutport1[Switch_i]"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                </Branch>
+                <Calculate Name="signal_o1">
+                    <Ref Actor="Outport" Path="system_45.signal_o1"/>
+                    <Input Name="DefaultOutport1" Type="f32" ArraySize="32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="Switch_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_18">
+        <Struct Name="system_18_state"/>
+        <GlobalVariable Name="system_18_instance" Type="system_18_state"/>
+        <Function Name="system_18_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_18"/>
+            <Input Name="self" Type="system_18_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_18.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_45"/>
+                    <Expression Expression="system_45_Init(&amp;system_45_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_18_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_18"/>
+            <Input Name="self" Type="system_18_state" IsAddress="1"/>
+            <Input Name="signal1" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="For_IteratorSubsystem_signal_o1" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_18.For_IteratorSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_18.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_45"/>
+                    <Input Name="signal1" Type="f32" ArraySize="32" Source="signal1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_45_Update(&amp;system_45_instance, signal1, For_IteratorSubsystem_signal_o1)"/>
+                </Calculate>
+                <Calculate Name="signal_o1">
+                    <Ref Actor="Outport" Path="system_18.signal_o1"/>
+                    <Input Name="signal_o1" Type="f32" ArraySize="32" Source="For_IteratorSubsystem_signal_o1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="For_IteratorSubsystem_signal_o1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_61">
+        <Struct Name="system_61_state"/>
+        <GlobalVariable Name="system_61_instance" Type="system_61_state"/>
+        <Function Name="system_61_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_61"/>
+            <Input Name="self" Type="system_61_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_61.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="T">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_61.T"/>
+                </Calculate>
+                <Calculate Name="dt">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_61.dt"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector"/>
+                </Calculate>
+                <Calculate Name="Selector1">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector1"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add"/>
+                </Calculate>
+                <Calculate Name="Add2">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add2"/>
+                </Calculate>
+                <Calculate Name="Product1">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Product1"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_61.Assignment"/>
+                </Calculate>
+                <Calculate Name="Add1">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add1"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Product"/>
+                </Calculate>
+                <Calculate Name="Divide">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Divide"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_61.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_61_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_61"/>
+            <Input Name="self" Type="system_61_state" IsAddress="1"/>
+            <Input Name="signal2" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory4_S2[0])">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_61.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="T_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_61.T"/>
+                </LocalVariable>
+                <LocalVariable Name="dt_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_61.dt"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector1"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Add2_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add2"/>
+                </LocalVariable>
+                <LocalVariable Name="Product1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Product1"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_61.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_61.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Add1_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add1"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Divide_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_61.Divide"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_61.Switch"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="32">
+                    <Ref Actor="ForIterator" Path="system_61.system_61_Update.For_Iterator"/>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory1_default_hp2"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_61.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="HighPass_MIR.system_61.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="T">
+                        <Ref Actor="Constant" Path="HighPass_MIR.system_61.T"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="T_DefaultOutport1 = 3"/>
+                    </Calculate>
+                    <Calculate Name="dt">
+                        <Ref Actor="Constant" Path="HighPass_MIR.system_61.dt"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="dt_DefaultOutport1 = 4.3"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="signal2"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = signal2[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Selector1">
+                        <Ref Actor="Selector" Path="HighPass_MIR.system_61.Selector1"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector1_DefaultOutport1 = Data_StoreRead1_DefaultOutport1[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Selector_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add_DefaultOutport1 = Data_StoreRead_DefaultOutport1 + Selector_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add2">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add2"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Selector1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Add_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add2_DefaultOutport1 = Selector1_DefaultOutport1 + Add_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Product1">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_61.Product1"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="T_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Add2_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Product1_DefaultOutport1 = T_DefaultOutport1 * Add2_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="HighPass_MIR.system_61.Assignment"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Product1_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <BatchCalculation Operation="Assign" DataType="f32">
+                                <Input Name="Data_StoreRead1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                                <Output Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            </BatchCalculation>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Product1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add1">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_61.Add1"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="dt_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Assignment_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Add" DataType="f32">
+                            <Input Name="dt_DefaultOutport1" Type="f32"/>
+                            <Input Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_61.Product"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Add1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Mul" DataType="f32">
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Input Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Divide">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_61.Divide"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Div" DataType="f32">
+                            <Input Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Output Name="Divide_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="HighPass_MIR.system_61.Switch"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Divide_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <For Condition="Switch_i &lt; 32">
+                            <Initial>
+                                <LocalVariable Name="Switch_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch_i++"/>
+                            </Iterator>
+                            <If Condition="Product_DefaultOutport1[Switch_i] &gt; 17.13">
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Divide_DefaultOutport1[Switch_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Product_DefaultOutport1[Switch_i]"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                </Branch>
+                <Calculate Name="signal_o2">
+                    <Ref Actor="Outport" Path="system_61.signal_o2"/>
+                    <Input Name="DefaultOutport1" Type="f32" ArraySize="32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="Switch_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_22">
+        <Struct Name="system_22_state"/>
+        <GlobalVariable Name="system_22_instance" Type="system_22_state"/>
+        <Function Name="system_22_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_22"/>
+            <Input Name="self" Type="system_22_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_22.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_61"/>
+                    <Expression Expression="system_61_Init(&amp;system_61_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_22_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_22"/>
+            <Input Name="self" Type="system_22_state" IsAddress="1"/>
+            <Input Name="signal2" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="For_IteratorSubsystem_signal_o2" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_22.For_IteratorSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_22.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_61"/>
+                    <Input Name="signal2" Type="f32" ArraySize="32" Source="signal2"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_61_Update(&amp;system_61_instance, signal2, For_IteratorSubsystem_signal_o2)"/>
+                </Calculate>
+                <Calculate Name="signal_o2">
+                    <Ref Actor="Outport" Path="system_22.signal_o2"/>
+                    <Input Name="signal_o2" Type="f32" ArraySize="32" Source="For_IteratorSubsystem_signal_o2"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="For_IteratorSubsystem_signal_o2" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_76">
+        <Struct Name="system_76_state"/>
+        <GlobalVariable Name="system_76_instance" Type="system_76_state"/>
+        <Function Name="system_76_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_76"/>
+            <Input Name="self" Type="system_76_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_76.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="T">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_76.T"/>
+                </Calculate>
+                <Calculate Name="dt">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_76.dt"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector"/>
+                </Calculate>
+                <Calculate Name="Selector1">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector1"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add"/>
+                </Calculate>
+                <Calculate Name="Add2">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add2"/>
+                </Calculate>
+                <Calculate Name="Product1">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Product1"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_76.Assignment"/>
+                </Calculate>
+                <Calculate Name="Add1">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add1"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Product"/>
+                </Calculate>
+                <Calculate Name="Divide">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Divide"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_76.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_76_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_76"/>
+            <Input Name="self" Type="system_76_state" IsAddress="1"/>
+            <Input Name="signal3" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory5_S3[0])">
+                    <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="HighPass_MIR.system_76.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="T_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_76.T"/>
+                </LocalVariable>
+                <LocalVariable Name="dt_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="HighPass_MIR.system_76.dt"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector1"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Add2_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add2"/>
+                </LocalVariable>
+                <LocalVariable Name="Product1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Product1"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_76.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="HighPass_MIR.system_76.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Add1_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add1"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Divide_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Product" Path="HighPass_MIR.system_76.Divide"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="f32" ArraySize="32">
+                    <Ref Actor="Switch" Path="HighPass_MIR.system_76.Switch"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="32">
+                    <Ref Actor="ForIterator" Path="system_76.system_76_Update.For_Iterator"/>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory2_default_hp3"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="HighPass_MIR.system_76.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="HighPass_MIR.system_76.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="T">
+                        <Ref Actor="Constant" Path="HighPass_MIR.system_76.T"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="T_DefaultOutport1 = 3"/>
+                    </Calculate>
+                    <Calculate Name="dt">
+                        <Ref Actor="Constant" Path="HighPass_MIR.system_76.dt"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="dt_DefaultOutport1 = 3.1"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="signal3"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = signal3[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Selector1">
+                        <Ref Actor="Selector" Path="HighPass_MIR.system_76.Selector1"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector1_DefaultOutport1 = Data_StoreRead1_DefaultOutport1[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Selector_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add_DefaultOutport1 = Data_StoreRead_DefaultOutport1 + Selector_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add2">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add2"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Selector1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Add_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add2_DefaultOutport1 = Selector1_DefaultOutport1 + Add_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Product1">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_76.Product1"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="T_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Add2_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Product1_DefaultOutport1 = T_DefaultOutport1 * Add2_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="HighPass_MIR.system_76.Assignment"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Product1_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <BatchCalculation Operation="Assign" DataType="f32">
+                                <Input Name="Data_StoreRead1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                                <Output Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            </BatchCalculation>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Product1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add1">
+                        <Ref Actor="Sum" Path="HighPass_MIR.system_76.Add1"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="dt_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Assignment_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Add" DataType="f32">
+                            <Input Name="dt_DefaultOutport1" Type="f32"/>
+                            <Input Name="Assignment_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_76.Product"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Add1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Mul" DataType="f32">
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Input Name="Add1_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Output Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Divide">
+                        <Ref Actor="Product" Path="HighPass_MIR.system_76.Divide"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <BatchCalculation Operation="Div" DataType="f32">
+                            <Input Name="Product_DefaultOutport1" Type="f32" ArraySize="32"/>
+                            <Input Name="Data_StoreRead_DefaultOutport1" Type="f32"/>
+                            <Output Name="Divide_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="HighPass_MIR.system_76.Switch"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="32" Source="Divide_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="f32" ArraySize="32" Source="Product_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <For Condition="Switch_i &lt; 32">
+                            <Initial>
+                                <LocalVariable Name="Switch_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch_i++"/>
+                            </Iterator>
+                            <If Condition="Product_DefaultOutport1[Switch_i] &gt; 17.13">
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Divide_DefaultOutport1[Switch_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Product_DefaultOutport1[Switch_i]"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                </Branch>
+                <Calculate Name="signal_o3">
+                    <Ref Actor="Outport" Path="system_76.signal_o3"/>
+                    <Input Name="DefaultOutport1" Type="f32" ArraySize="32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="Switch_DefaultOutport1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_26">
+        <Struct Name="system_26_state"/>
+        <GlobalVariable Name="system_26_instance" Type="system_26_state"/>
+        <Function Name="system_26_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_26"/>
+            <Input Name="self" Type="system_26_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_26.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_76"/>
+                    <Expression Expression="system_76_Init(&amp;system_76_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_26_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_26"/>
+            <Input Name="self" Type="system_26_state" IsAddress="1"/>
+            <Input Name="signal3" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="For_IteratorSubsystem_signal_o3" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_26.For_IteratorSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_26.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_76"/>
+                    <Input Name="signal3" Type="f32" ArraySize="32" Source="signal3"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_76_Update(&amp;system_76_instance, signal3, For_IteratorSubsystem_signal_o3)"/>
+                </Calculate>
+                <Calculate Name="signal_o3">
+                    <Ref Actor="Outport" Path="system_26.signal_o3"/>
+                    <Input Name="signal_o3" Type="f32" ArraySize="32" Source="For_IteratorSubsystem_signal_o3"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="For_IteratorSubsystem_signal_o3" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_5">
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory3"/>
+        </HeadFile>
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory4"/>
+        </HeadFile>
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory5"/>
+        </HeadFile>
+        <Struct Name="system_5_state"/>
+        <GlobalVariable Name="Data_StoreMemory_default_hp1" Type="f32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory1_default_hp2" Type="f32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory1"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory2_default_hp3" Type="f32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory2"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory3_S1" Type="f32" ArraySize="32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory3"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory4_S2" Type="f32" ArraySize="32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory4"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory5_S3" Type="f32" ArraySize="32">
+            <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory5"/>
+        </GlobalVariable>
+        <GlobalVariable Name="system_5_instance" Type="system_5_state"/>
+        <Function Name="system_5_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_5"/>
+            <Input Name="self" Type="system_5_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory"/>
+                    <Expression Expression="Data_StoreMemory_default_hp1 = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory1">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory1"/>
+                    <Expression Expression="Data_StoreMemory1_default_hp2 = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory2">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory2"/>
+                    <Expression Expression="Data_StoreMemory2_default_hp3 = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory3">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory3"/>
+                    <Expression Expression="memset(Data_StoreMemory3_S1, 0, sizeof(Data_StoreMemory3_S1))"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory4">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory4"/>
+                    <Expression Expression="memset(Data_StoreMemory4_S2, 0, sizeof(Data_StoreMemory4_S2))"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory5">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory5"/>
+                    <Expression Expression="memset(Data_StoreMemory5_S3, 0, sizeof(Data_StoreMemory5_S3))"/>
+                </Calculate>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="HighPass_MIR.system_5.FunctionCallGenerator"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="HighPass_MIR.system_5.Demux"/>
+                </Calculate>
+                <Calculate Name="Signal_Init">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.Signal_Init"/>
+                    <Ref Actor="CompositeActor" Path="system_14"/>
+                    <Expression Expression="system_14_Init(&amp;system_14_instance)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S1">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S1"/>
+                    <Ref Actor="CompositeActor" Path="system_18"/>
+                    <Expression Expression="system_18_Init(&amp;system_18_instance)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S2">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S2"/>
+                    <Ref Actor="CompositeActor" Path="system_22"/>
+                    <Expression Expression="system_22_Init(&amp;system_22_instance)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S3">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S3"/>
+                    <Ref Actor="CompositeActor" Path="system_26"/>
+                    <Expression Expression="system_26_Init(&amp;system_26_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_5_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_5"/>
+            <Input Name="self" Type="system_5_state" IsAddress="1"/>
+            <Input Name="signal1" Type="f32" ArraySize="32"/>
+            <Input Name="signal2" Type="f32" ArraySize="32"/>
+            <Input Name="signal3" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="HighPass_S1_signal_o1" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S1"/>
+                </LocalVariable>
+                <LocalVariable Name="HighPass_S2_signal_o2" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S2"/>
+                </LocalVariable>
+                <LocalVariable Name="HighPass_S3_signal_o3" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S3"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory1">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory2">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory2"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory3">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory3"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory4">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory4"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory5">
+                    <Ref Actor="DataStoreMemory" Path="HighPass_MIR.system_5.Data_StoreMemory5"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="HighPass_MIR.system_5.FunctionCallGenerator"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="HighPass_MIR.system_5.Demux"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="FunctionCallGenerator_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                    <Output Name="DefaultOutport2" Type="#Default"/>
+                    <Output Name="DefaultOutport3" Type="#Default"/>
+                    <Output Name="DefaultOutport4" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Signal_Init">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.Signal_Init"/>
+                    <Ref Actor="CompositeActor" Path="system_14"/>
+                    <Expression Expression="system_14_Update(&amp;system_14_instance)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S1">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S1"/>
+                    <Ref Actor="CompositeActor" Path="system_18"/>
+                    <Input Name="signal1" Type="f32" ArraySize="32" Source="signal1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_18_Update(&amp;system_18_instance, signal1, HighPass_S1_signal_o1)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S2">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S2"/>
+                    <Ref Actor="CompositeActor" Path="system_22"/>
+                    <Input Name="signal2" Type="f32" ArraySize="32" Source="signal2"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_22_Update(&amp;system_22_instance, signal2, HighPass_S2_signal_o2)"/>
+                </Calculate>
+                <Calculate Name="HighPass_S3">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_5.HighPass_S3"/>
+                    <Ref Actor="CompositeActor" Path="system_26"/>
+                    <Input Name="signal3" Type="f32" ArraySize="32" Source="signal3"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_26_Update(&amp;system_26_instance, signal3, HighPass_S3_signal_o3)"/>
+                </Calculate>
+                <Calculate Name="signal_o1">
+                    <Ref Actor="Outport" Path="system_5.signal_o1"/>
+                    <Input Name="signal_o1" Type="f32" ArraySize="32" Source="HighPass_S1_signal_o1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_S1_signal_o1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+                <Calculate Name="signal_o2">
+                    <Ref Actor="Outport" Path="system_5.signal_o2"/>
+                    <Input Name="signal_o2" Type="f32" ArraySize="32" Source="HighPass_S2_signal_o2"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_S2_signal_o2" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+                <Calculate Name="signal_o3">
+                    <Ref Actor="Outport" Path="system_5.signal_o3"/>
+                    <Input Name="signal_o3" Type="f32" ArraySize="32" Source="HighPass_S3_signal_o3"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_S3_signal_o3" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_root">
+        <Struct Name="system_root_state"/>
+        <Macro Name="length" Value="32" HasIfnodefCheck="">
+            <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+        </Macro>
+        <GlobalVariable Name="system_root_instance" Type="system_root_state"/>
+        <Function Name="system_root_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="HighPass">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+                    <Ref Actor="CompositeActor" Path="system_5"/>
+                    <Expression Expression="system_5_Init(&amp;system_5_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_root_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Input Name="signal1" Type="f32" ArraySize="32"/>
+            <Input Name="signal2" Type="f32" ArraySize="32"/>
+            <Input Name="signal3" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+            <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+            <Schedule>
+                <LocalVariable Name="HighPass_signal_o1" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+                </LocalVariable>
+                <LocalVariable Name="HighPass_signal_o2" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+                </LocalVariable>
+                <LocalVariable Name="HighPass_signal_o3" Type="f32" ArraySize="32">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+                </LocalVariable>
+                <Calculate Name="HighPass">
+                    <Ref Actor="Function" Path="HighPass_MIR.system_root.HighPass"/>
+                    <Ref Actor="CompositeActor" Path="system_5"/>
+                    <Input Name="signal1" Type="f32" ArraySize="32" Source="signal1"/>
+                    <Input Name="signal2" Type="f32" ArraySize="32" Source="signal2"/>
+                    <Input Name="signal3" Type="f32" ArraySize="32" Source="signal3"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <Expression Expression="system_5_Update(&amp;system_5_instance, signal1, signal2, signal3, HighPass_signal_o1, HighPass_signal_o2, HighPass_signal_o3)"/>
+                </Calculate>
+                <Calculate Name="signal_o1">
+                    <Ref Actor="Outport" Path="system_root.signal_o1"/>
+                    <Input Name="signal_o1" Type="f32" ArraySize="32" Source="HighPass_signal_o1"/>
+                    <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_signal_o1" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o1" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+                <Calculate Name="signal_o2">
+                    <Ref Actor="Outport" Path="system_root.signal_o2"/>
+                    <Input Name="signal_o2" Type="f32" ArraySize="32" Source="HighPass_signal_o2"/>
+                    <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_signal_o2" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o2" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+                <Calculate Name="signal_o3">
+                    <Ref Actor="Outport" Path="system_root.signal_o3"/>
+                    <Input Name="signal_o3" Type="f32" ArraySize="32" Source="HighPass_signal_o3"/>
+                    <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    <BatchCalculation Operation="Assign" DataType="f32">
+                        <Input Name="HighPass_signal_o3" Type="f32" ArraySize="32"/>
+                        <Output Name="signal_o3" Type="f32" ArraySize="32"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+</Root>

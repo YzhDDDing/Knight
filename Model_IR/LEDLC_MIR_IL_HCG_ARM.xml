@@ -1,0 +1,3102 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10"/>
+        <MainInitFunction Name="system_root_Init"/>
+        <MainExecFunction Name="system_root_Update"/>
+        <MainCompositeState Name="system_root_state"/>
+    </Config>
+    <File Name="system_1885">
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <Struct Name="system_1885_state"/>
+        <GlobalVariable Name="system_1885_instance" Type="system_1885_state"/>
+        <Function Name="system_1885_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1885"/>
+            <Input Name="self" Type="system_1885_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant2"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_1885.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="delta">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.delta"/>
+                </Calculate>
+                <Calculate Name="shift">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.shift"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment"/>
+                </Calculate>
+                <Calculate Name="Assignment1">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment1"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add"/>
+                </Calculate>
+                <Calculate Name="Add1">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite2"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite3">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite3"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_1885_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1885"/>
+            <Input Name="self" Type="system_1885_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory_Data[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="i32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory6_Satisfied[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_1885.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="delta_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.delta"/>
+                </LocalVariable>
+                <LocalVariable Name="shift_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.shift"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="f32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment1_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment1"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment1_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment1"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="f32" ArraySize="64">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Add1_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add1"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="64">
+                    <Ref Actor="ForIterator" Path="system_1885.system_1885_Update.For_Iterator"/>
+                    <Calculate Name="Constant1">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant1_DefaultOutport1 = 0"/>
+                    </Calculate>
+                    <Calculate Name="Constant2">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.Constant2"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Constant2_DefaultOutport1 = 0"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1885.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="LEDLC_MIR.system_1885.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="delta">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.delta"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="delta_DefaultOutport1 = 15"/>
+                    </Calculate>
+                    <Calculate Name="shift">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_1885.shift"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="shift_DefaultOutport1 = 15"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="64" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Constant2_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <LocalVariable Name="batchIndex" Type="i32"/>
+                            <For Condition="batchIndex &lt; 64">
+                                <Initial>
+                                    <Expression Expression="batchIndex = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="batchIndex += 4"/>
+                                </Iterator>
+                                <LocalVariable Name="Data_StoreRead_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vld1q_f32(Data_StoreRead_DefaultOutport1 + batchIndex)"/>
+                                <Expression Expression="vst1q_f32(Assignment_DefaultOutport1 + batchIndex, Data_StoreRead_DefaultOutport1_Batch)"/>
+                            </For>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Constant2_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Assignment1">
+                        <Ref Actor="Assignment" Path="LEDLC_MIR.system_1885.Assignment1"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Constant1_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <If Condition="Assignment1_init == 0">
+                            <Expression Expression="Assignment1_init = 1"/>
+                            <LocalVariable Name="batchIndex" Type="i32"/>
+                            <For Condition="batchIndex &lt; 64">
+                                <Initial>
+                                    <Expression Expression="batchIndex = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="batchIndex += 4"/>
+                                </Iterator>
+                                <LocalVariable Name="Data_StoreRead1_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Data_StoreRead1_DefaultOutport1 + batchIndex)"/>
+                                <Expression Expression="vst1q_s32(Assignment1_DefaultOutport1 + batchIndex, Data_StoreRead1_DefaultOutport1_Batch)"/>
+                            </For>
+                        </If>
+                        <Expression Expression="Assignment1_DefaultOutport1[For_Iterator_DefaultOutport1] = Constant1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="delta_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                        <LocalVariable Name="delta_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vdupq_n_f32(delta_DefaultOutport1)"/>
+                        <LocalVariable Name="shift_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vdupq_n_s32(shift_DefaultOutport1)"/>
+                        <LocalVariable Name="batchIndex" Type="i32"/>
+                        <For Condition="batchIndex &lt; 64">
+                            <Initial>
+                                <Expression Expression="batchIndex = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="batchIndex += 4"/>
+                            </Iterator>
+                            <LocalVariable Name="Assignment_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vld1q_f32(Assignment_DefaultOutport1 + batchIndex)"/>
+                            <LocalVariable Name="Assignment1_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Assignment1_DefaultOutport1 + batchIndex)"/>
+                            <LocalVariable Name="Add_DefaultOutport1_Batch" Type="float32x4_t"/>
+                            <Expression Expression="Add_DefaultOutport1_Batch = vaddq_f32(delta_DefaultOutport1_Batch, Assignment_DefaultOutport1_Batch)"/>
+                            <LocalVariable Name="Add1_DefaultOutport1_Batch" Type="int32x4_t"/>
+                            <Expression Expression="Add1_DefaultOutport1_Batch = vaddq_s32(Assignment1_DefaultOutport1_Batch, shift_DefaultOutport1_Batch)"/>
+                            <Expression Expression="vst1q_f32(Add_DefaultOutport1 + batchIndex, Add_DefaultOutport1_Batch)"/>
+                            <Expression Expression="vst1q_s32(Add1_DefaultOutport1 + batchIndex, Add1_DefaultOutport1_Batch)"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Add1">
+                        <Ref Actor="Sum" Path="LEDLC_MIR.system_1885.Add1"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="shift_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Assignment_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory_Data[Data_StoreWrite_i] = Assignment_DefaultOutport1[Data_StoreWrite_i]"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite1">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite1"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Assignment1_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite1_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite1_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite1_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory6_Satisfied[Data_StoreWrite1_i] = Assignment1_DefaultOutport1[Data_StoreWrite1_i]"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite2">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite2"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Add_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite2_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite2_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite2_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory8_Data_o[Data_StoreWrite2_i] = Add_DefaultOutport1[Data_StoreWrite2_i]"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite3">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1885.Data_StoreWrite3"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Add1_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite3_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite3_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite3_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory9_Sat_o[Data_StoreWrite3_i] = Add1_DefaultOutport1[Data_StoreWrite3_i]"/>
+                        </For>
+                    </Calculate>
+                </Branch>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_1871">
+        <Struct Name="system_1871_state"/>
+        <GlobalVariable Name="system_1871_instance" Type="system_1871_state"/>
+        <Function Name="system_1871_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1871"/>
+            <Input Name="self" Type="system_1871_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant2"/>
+                </Calculate>
+                <Calculate Name="Constant3">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant3"/>
+                </Calculate>
+                <Calculate Name="Constant4">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant4"/>
+                </Calculate>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1871.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1885"/>
+                    <Expression Expression="system_1885_Init(&amp;system_1885_instance)"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite2"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite3">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite3"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite4">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite4"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_1871_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1871"/>
+            <Input Name="self" Type="system_1871_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant3_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant3"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant4_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant4"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 0"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = 1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = 0"/>
+                </Calculate>
+                <Calculate Name="Constant3">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant3"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant3_DefaultOutport1 = 3142"/>
+                </Calculate>
+                <Calculate Name="Constant4">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_1871.Constant4"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant4_DefaultOutport1 = 0"/>
+                </Calculate>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1871.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1885"/>
+                    <Expression Expression="system_1885_Update(&amp;system_1885_instance)"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant1_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory3_Init = Constant1_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory2_Index = Constant_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite2"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant2_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory4_Terminate = Constant2_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite3">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite3"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant3_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory1_ID = Constant3_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite4">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_1871.Data_StoreWrite4"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant4_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory7_State = Constant4_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_1832">
+        <Struct Name="system_1832_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_1832.If1"/>
+        </Macro>
+        <GlobalVariable Name="system_1832_instance" Type="system_1832_state"/>
+        <Function Name="system_1832_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1832"/>
+            <Input Name="self" Type="system_1832_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1832.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="If1">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_1832.If1"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1832.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_1871"/>
+                    <Expression Expression="system_1871_Init(&amp;system_1871_instance)"/>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_1832.Terminator"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_1832_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1832"/>
+            <Input Name="self" Type="system_1832_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1832.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="If1_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_1832.If1"/>
+                </LocalVariable>
+                <LocalVariable Name="If1_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_1832.If1"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_1832.Data_StoreRead1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Data_StoreRead1_DefaultOutport1 = Data_StoreMemory3_Init"/>
+                </Calculate>
+                <Calculate Name="If1">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_1832.If1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If1_DefaultOutport1 = (Data_StoreRead1_DefaultOutport1 == 0)"/>
+                    <Expression Expression="If1_DefaultOutport2 = !(Data_StoreRead1_DefaultOutport1 == 0)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1832.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_1871"/>
+                    <If Condition="If1_DefaultOutport1">
+                        <Expression Expression="system_1871_Update(&amp;system_1871_instance)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_1832.Terminator"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="If1_DefaultOutport2"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2581">
+        <Struct Name="system_2581_state"/>
+        <GlobalVariable Name="system_2581_instance" Type="system_2581_state"/>
+        <Function Name="system_2581_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2581"/>
+            <Input Name="self" Type="system_2581_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2581.Constant"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2581.Data_StoreWrite"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2581_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2581"/>
+            <Input Name="self" Type="system_2581_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2581.Constant"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2581.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2581.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory2_Index = Constant_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2601">
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <Struct Name="system_2601_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant1"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2601.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2601_instance" Type="system_2601_state"/>
+        <Function Name="system_2601_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2601"/>
+            <Input Name="self" Type="system_2601_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2601.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="delta">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2601.delta"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2601.Selector"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2601.Assignment"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2601.AND"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2601.Add"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="LEDLC_MIR.system_2601.Product"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2601.Data_StoreWrite1"/>
+                </Calculate>
+                <Calculate Name="Switch1">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2601.Data_StoreWrite2"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2601_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2601"/>
+            <Input Name="self" Type="system_2601_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="i32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory6_Satisfied[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2601.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="delta_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2601.delta"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="i32">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2601.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2601.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2601.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2601.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2601.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Product" Path="LEDLC_MIR.system_2601.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch1_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch1"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="64">
+                    <Ref Actor="ForIterator" Path="system_2601.system_2601_Update.For_Iterator"/>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory2_Index"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2601.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2601.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="delta">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2601.delta"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="delta_DefaultOutport1 = 2"/>
+                    </Calculate>
+                    <Calculate Name="CompareTo_Constant1">
+                        <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant1"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="CompareTo_Constant1_DefaultOutport1 = Data_StoreRead_DefaultOutport1 == -1"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="LEDLC_MIR.system_2601.Selector"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = Data_StoreRead1_DefaultOutport1[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="LEDLC_MIR.system_2601.Assignment"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Selector_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <LocalVariable Name="batchIndex" Type="i32"/>
+                            <For Condition="batchIndex &lt; 64">
+                                <Initial>
+                                    <Expression Expression="batchIndex = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="batchIndex += 4"/>
+                                </Iterator>
+                                <LocalVariable Name="Data_StoreRead1_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Data_StoreRead1_DefaultOutport1 + batchIndex)"/>
+                                <Expression Expression="vst1q_s32(Assignment_DefaultOutport1 + batchIndex, Data_StoreRead1_DefaultOutport1_Batch)"/>
+                            </For>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Selector_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="CompareTo_Constant">
+                        <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2601.CompareTo_Constant"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Selector_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="CompareTo_Constant_DefaultOutport1 = Selector_DefaultOutport1 == 0"/>
+                    </Calculate>
+                    <Calculate Name="AND">
+                        <Ref Actor="Logic" Path="LEDLC_MIR.system_2601.AND"/>
+                        <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant1_DefaultOutport1 &amp;&amp; CompareTo_Constant_DefaultOutport1)"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="LEDLC_MIR.system_2601.Add"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <LocalVariable Name="Data_StoreRead_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vdupq_n_s32(Data_StoreRead_DefaultOutport1)"/>
+                        <LocalVariable Name="delta_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vdupq_n_f32(delta_DefaultOutport1)"/>
+                        <LocalVariable Name="batchIndex" Type="i32"/>
+                        <For Condition="batchIndex &lt; 64">
+                            <Initial>
+                                <Expression Expression="batchIndex = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="batchIndex += 4"/>
+                            </Iterator>
+                            <LocalVariable Name="Assignment_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Assignment_DefaultOutport1 + batchIndex)"/>
+                            <LocalVariable Name="Add_DefaultOutport1_Batch" Type="int32x4_t"/>
+                            <Expression Expression="Add_DefaultOutport1_Batch = vaddq_s32(Assignment_DefaultOutport1_Batch, Data_StoreRead_DefaultOutport1_Batch)"/>
+                            <LocalVariable Name="Product_DefaultOutport1_Batch" Type="int32x4_t"/>
+                            <LocalVariable Name="delta_DefaultOutport1_BatchConvert" Type="int32x4_t" DefaultValue="vcvtq_s32_f32(delta_DefaultOutport1_Batch)"/>
+                            <Expression Expression="Product_DefaultOutport1_Batch = vmulq_s32(Add_DefaultOutport1_Batch, delta_DefaultOutport1_BatchConvert)"/>
+                            <Expression Expression="vst1q_s32(Product_DefaultOutport1 + batchIndex, Product_DefaultOutport1_Batch)"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="LEDLC_MIR.system_2601.Product"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Add_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="delta_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch"/>
+                        <Input Name="DefaultInport1" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <If Condition="AND_DefaultOutport1 != 0">
+                            <Expression Expression="Switch_DefaultOutport1 = For_Iterator_DefaultOutport1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="Switch_DefaultOutport1 = Data_StoreRead_DefaultOutport1"/>
+                        </Else>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite1">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2601.Data_StoreWrite1"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Switch_DefaultOutport1"/>
+                        <Expression Expression="Data_StoreMemory2_Index = Switch_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Switch1">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2601.Switch1"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" ArraySize="64" Source="Product_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <For Condition="Switch1_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Switch1_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch1_i++"/>
+                            </Iterator>
+                            <If Condition="Assignment_DefaultOutport1[Switch1_i] &gt; 144">
+                                <Expression Expression="Switch1_DefaultOutport1[Switch1_i] = Assignment_DefaultOutport1[Switch1_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch1_DefaultOutport1[Switch1_i] = Product_DefaultOutport1[Switch1_i]"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite2">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2601.Data_StoreWrite2"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Switch1_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite2_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite2_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite2_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory9_Sat_o[Data_StoreWrite2_i] = Switch1_DefaultOutport1[Data_StoreWrite2_i]"/>
+                        </For>
+                    </Calculate>
+                </Branch>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2599">
+        <Struct Name="system_2599_state"/>
+        <GlobalVariable Name="system_2599_instance" Type="system_2599_state"/>
+        <Function Name="system_2599_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2599"/>
+            <Input Name="self" Type="system_2599_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2599.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2601"/>
+                    <Expression Expression="system_2601_Init(&amp;system_2601_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2599_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2599"/>
+            <Input Name="self" Type="system_2599_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2599.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2601"/>
+                    <Expression Expression="system_2601_Update(&amp;system_2601_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2591">
+        <HeadFile Name="arm_neon"/>
+        <Struct Name="system_2591_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant1"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2591.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2591_instance" Type="system_2591_state"/>
+        <Function Name="system_2591_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2591"/>
+            <Input Name="self" Type="system_2591_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2591.Constant"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2591.AND"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2591.Switch"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2591.Assignment"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2591.Data_StoreWrite"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2591_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2591"/>
+            <Input Name="self" Type="system_2591_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2591.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory_Data[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2591.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="f32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2591.Switch"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="f32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2591.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2591.Assignment"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant_DefaultOutport1 = t &lt;= 2"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2591.CompareTo_Constant1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant1_DefaultOutport1 = t &gt;= 1"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2591.Constant"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 1.5"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory2_Index"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2591.Data_StoreRead1"/>
+                    <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2591.AND"/>
+                    <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant_DefaultOutport1 &amp;&amp; CompareTo_Constant1_DefaultOutport1)"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2591.Switch"/>
+                    <Input Name="DefaultInport1" Type="f32" Source="Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="f32" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <If Condition="AND_DefaultOutport1 != 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = t"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2591.Assignment"/>
+                    <Input Name="DefaultInport1" Type="f32" ArraySize="64" Source="Data_StoreRead1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="f32" Source="Switch_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Data_StoreRead_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                    <If Condition="Assignment_init == 0">
+                        <Expression Expression="Assignment_init = 1"/>
+                        <LocalVariable Name="batchIndex" Type="i32"/>
+                        <For Condition="batchIndex &lt; 64">
+                            <Initial>
+                                <Expression Expression="batchIndex = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="batchIndex += 4"/>
+                            </Iterator>
+                            <LocalVariable Name="Data_StoreRead1_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vld1q_f32(Data_StoreRead1_DefaultOutport1 + batchIndex)"/>
+                            <Expression Expression="vst1q_f32(Assignment_DefaultOutport1 + batchIndex, Data_StoreRead1_DefaultOutport1_Batch)"/>
+                        </For>
+                    </If>
+                    <Expression Expression="Assignment_DefaultOutport1[Data_StoreRead_DefaultOutport1] = Switch_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2591.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Assignment_DefaultOutport1"/>
+                    <For Condition="Data_StoreWrite_i &lt; 64">
+                        <Initial>
+                            <LocalVariable Name="Data_StoreWrite_i" Type="int" DefaultValue="0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="Data_StoreWrite_i++"/>
+                        </Iterator>
+                        <Expression Expression="Data_StoreMemory_Data[Data_StoreWrite_i] = Assignment_DefaultOutport1[Data_StoreWrite_i]"/>
+                    </For>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2585">
+        <Struct Name="system_2585_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2585.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2585_instance" Type="system_2585_state"/>
+        <Function Name="system_2585_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2585"/>
+            <Input Name="self" Type="system_2585_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead2">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2585.Data_StoreRead2"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2585.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2585.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2591"/>
+                    <Expression Expression="system_2591_Init(&amp;system_2591_instance)"/>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2585.Terminator"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2585_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2585"/>
+            <Input Name="self" Type="system_2585_state" IsAddress="1"/>
+            <Input Name="Inport" Type="f32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead2_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2585.Data_StoreRead2"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2585.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2585.If"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreRead2">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2585.Data_StoreRead2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Data_StoreRead2_DefaultOutport1 = Data_StoreMemory2_Index"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2585.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (Data_StoreRead2_DefaultOutport1 != -1)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(Data_StoreRead2_DefaultOutport1 != -1)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2585.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2591"/>
+                    <Input Name="t" Type="f32" Source="Inport"/>
+                    <If Condition="If_DefaultOutport1">
+                        <Expression Expression="system_2591_Update(&amp;system_2591_instance, Inport)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2585.Terminator"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="If_DefaultOutport2"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_1897">
+        <Struct Name="system_1897_state"/>
+        <GlobalVariable Name="system_1897_instance" Type="system_1897_state"/>
+        <Function Name="system_1897_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1897"/>
+            <Input Name="self" Type="system_1897_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_1897.FunctionCallGenerator"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_1897.Demux"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2581"/>
+                    <Expression Expression="system_2581_Init(&amp;system_2581_instance)"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2599"/>
+                    <Expression Expression="system_2599_Init(&amp;system_2599_instance)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2585"/>
+                    <Expression Expression="system_2585_Init(&amp;system_2585_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_1897_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1897"/>
+            <Input Name="self" Type="system_1897_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Schedule>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_1897.FunctionCallGenerator"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_1897.Demux"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="FunctionCallGenerator_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                    <Output Name="DefaultOutport2" Type="#Default"/>
+                    <Output Name="DefaultOutport3" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2581"/>
+                    <Expression Expression="system_2581_Update(&amp;system_2581_instance)"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2599"/>
+                    <Expression Expression="system_2599_Update(&amp;system_2599_instance)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1897.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2585"/>
+                    <Input Name="Inport" Type="f32" Source="t"/>
+                    <Expression Expression="system_2585_Update(&amp;system_2585_instance, t)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2755">
+        <Struct Name="system_2755_state"/>
+        <GlobalVariable Name="system_2755_instance" Type="system_2755_state"/>
+        <Function Name="system_2755_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2755"/>
+            <Input Name="self" Type="system_2755_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2755.Constant"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2755.Data_StoreWrite"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2755_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2755"/>
+            <Input Name="self" Type="system_2755_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2755.Constant"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2755.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2755.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory4_Terminate = Constant_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2751">
+        <Struct Name="system_2751_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2751.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2751_instance" Type="system_2751_state"/>
+        <Function Name="system_2751_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2751"/>
+            <Input Name="self" Type="system_2751_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2751.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2751.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2751.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2755"/>
+                    <Expression Expression="system_2755_Init(&amp;system_2755_instance)"/>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2751.Terminator"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2751_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2751"/>
+            <Input Name="self" Type="system_2751_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2751.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2751.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2751.If"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2751.Data_StoreRead"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory4_Terminate"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2751.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (Data_StoreRead_DefaultOutport1 &gt; 0)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(Data_StoreRead_DefaultOutport1 &gt; 0)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2751.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2755"/>
+                    <If Condition="If_DefaultOutport2">
+                        <Expression Expression="system_2755_Update(&amp;system_2755_instance)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2751.Terminator"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="If_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2762">
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <HeadFile Name="arm_neon"/>
+        <Struct Name="system_2762_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator"/>
+            <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator1"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2762.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2762_instance" Type="system_2762_state"/>
+        <Function Name="system_2762_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2762"/>
+            <Input Name="self" Type="system_2762_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant2"/>
+                </Calculate>
+                <Calculate Name="Constant3">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant3"/>
+                </Calculate>
+                <Calculate Name="Constant4">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant4"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead1">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead2">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead2"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2762.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="T">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.T"/>
+                </Calculate>
+                <Calculate Name="delta">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.delta"/>
+                </Calculate>
+                <Calculate Name="Add_Constant1">
+                    <Ref Actor="Bias" Path="LEDLC_MIR.system_2762.Add_Constant1"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch"/>
+                </Calculate>
+                <Calculate Name="Selector1">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector1"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add"/>
+                </Calculate>
+                <Calculate Name="Gain">
+                    <Ref Actor="Gain" Path="LEDLC_MIR.system_2762.Gain"/>
+                </Calculate>
+                <Calculate Name="RelationalOperator">
+                    <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator"/>
+                </Calculate>
+                <Calculate Name="RelationalOperator1">
+                    <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator1"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2762.AND"/>
+                </Calculate>
+                <Calculate Name="Switch1">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch1"/>
+                </Calculate>
+                <Calculate Name="Switch2">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch2"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2762.Assignment"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Add1">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite1">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite1"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="LEDLC_MIR.system_2762.Product"/>
+                </Calculate>
+                <Calculate Name="Switch3">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch3"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite2">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite2"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2762_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2762"/>
+            <Input Name="self" Type="system_2762_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant3_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant3"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant4_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant4"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory_Data[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead1_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead1"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead2_DefaultOutport1" Type="i32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory6_Satisfied[0])">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead2"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2762.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="T_DefaultOutport1" Type="f32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.T"/>
+                </LocalVariable>
+                <LocalVariable Name="delta_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.delta"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Bias" Path="LEDLC_MIR.system_2762.Add_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector1_DefaultOutport1" Type="f32">
+                    <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector1"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="f32">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Gain_DefaultOutport1" Type="f32">
+                    <Ref Actor="Gain" Path="LEDLC_MIR.system_2762.Gain"/>
+                </LocalVariable>
+                <LocalVariable Name="RelationalOperator_DefaultOutport1" Type="bool">
+                    <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator"/>
+                </LocalVariable>
+                <LocalVariable Name="RelationalOperator1_DefaultOutport1" Type="bool">
+                    <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator1"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2762.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch1"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch2"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2762.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="LEDLC_MIR.system_2762.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Add1_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add1"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Product" Path="LEDLC_MIR.system_2762.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch3_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch3"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="64">
+                    <Ref Actor="ForIterator" Path="system_2762.system_2762_Update.For_Iterator"/>
+                    <Calculate Name="Constant">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant_DefaultOutport1 = 0"/>
+                    </Calculate>
+                    <Calculate Name="Constant1">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Constant1_DefaultOutport1 = 18.4"/>
+                    </Calculate>
+                    <Calculate Name="Constant2">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant2"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Constant2_DefaultOutport1 = 1.2"/>
+                    </Calculate>
+                    <Calculate Name="Constant3">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant3"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant3_DefaultOutport1 = 1"/>
+                    </Calculate>
+                    <Calculate Name="Constant4">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.Constant4"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant4_DefaultOutport1 = 0"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="f32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead1">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Data_StoreRead1_DefaultOutport1 = Data_StoreMemory4_Terminate"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead2">
+                        <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2762.Data_StoreRead2"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="LEDLC_MIR.system_2762.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="T">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.T"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="T_DefaultOutport1 = 2"/>
+                    </Calculate>
+                    <Calculate Name="delta">
+                        <Ref Actor="Constant" Path="LEDLC_MIR.system_2762.delta"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="delta_DefaultOutport1 = 2"/>
+                    </Calculate>
+                    <Calculate Name="Add_Constant1">
+                        <Ref Actor="Bias" Path="LEDLC_MIR.system_2762.Add_Constant1"/>
+                        <Input Name="DefaultInport1" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Add_Constant1_DefaultOutport1 = For_Iterator_DefaultOutport1 + -1"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="64" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = Data_StoreRead_DefaultOutport1[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch"/>
+                        <Input Name="DefaultInport1" Type="i32" Source="Add_Constant1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <If Condition="For_Iterator_DefaultOutport1 != 0">
+                            <Expression Expression="Switch_DefaultOutport1 = Add_Constant1_DefaultOutport1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="Switch_DefaultOutport1 = For_Iterator_DefaultOutport1"/>
+                        </Else>
+                    </Calculate>
+                    <Calculate Name="Selector1">
+                        <Ref Actor="Selector" Path="LEDLC_MIR.system_2762.Selector1"/>
+                        <Input Name="DefaultInport1" Type="f32" ArraySize="64" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="Switch_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Selector1_DefaultOutport1 = Data_StoreRead_DefaultOutport1[Switch_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Selector_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="Selector1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Add_DefaultOutport1 = Selector_DefaultOutport1 + Selector1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Gain">
+                        <Ref Actor="Gain" Path="LEDLC_MIR.system_2762.Gain"/>
+                        <Input Name="DefaultInport1" Type="f32" Source="Add_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="f32"/>
+                        <Expression Expression="Gain_DefaultOutport1 = 2.34 * Add_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="RelationalOperator">
+                        <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Gain_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="#Default" Source="Constant1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="RelationalOperator_DefaultOutport1 = Gain_DefaultOutport1 &lt;= Constant1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="RelationalOperator1">
+                        <Ref Actor="RelationalOperator" Path="LEDLC_MIR.system_2762.RelationalOperator1"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Gain_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="#Default" Source="Constant2_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="RelationalOperator1_DefaultOutport1 = Gain_DefaultOutport1 &gt;= Constant2_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="AND">
+                        <Ref Actor="Logic" Path="LEDLC_MIR.system_2762.AND"/>
+                        <Input Name="DefaultInport1" Type="bool" Source="RelationalOperator_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="bool" Source="RelationalOperator1_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="bool"/>
+                        <Expression Expression="AND_DefaultOutport1 = (RelationalOperator_DefaultOutport1 &amp;&amp; RelationalOperator1_DefaultOutport1)"/>
+                    </Calculate>
+                    <Calculate Name="Switch1">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch1"/>
+                        <Input Name="DefaultInport1" Type="i32" Source="Data_StoreRead1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="Constant_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <If Condition="AND_DefaultOutport1 &gt; 0">
+                            <Expression Expression="Switch1_DefaultOutport1 = Data_StoreRead1_DefaultOutport1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="Switch1_DefaultOutport1 = Constant_DefaultOutport1"/>
+                        </Else>
+                    </Calculate>
+                    <Calculate Name="Switch2">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch2"/>
+                        <Input Name="DefaultInport1" Type="i32" Source="Constant3_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="Constant4_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <If Condition="AND_DefaultOutport1 &gt; 0">
+                            <Expression Expression="Switch2_DefaultOutport1 = Constant3_DefaultOutport1"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="Switch2_DefaultOutport1 = Constant4_DefaultOutport1"/>
+                        </Else>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="LEDLC_MIR.system_2762.Assignment"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Data_StoreRead2_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Switch2_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <LocalVariable Name="batchIndex" Type="i32"/>
+                            <For Condition="batchIndex &lt; 64">
+                                <Initial>
+                                    <Expression Expression="batchIndex = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="batchIndex += 4"/>
+                                </Iterator>
+                                <LocalVariable Name="Data_StoreRead2_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Data_StoreRead2_DefaultOutport1 + batchIndex)"/>
+                                <Expression Expression="vst1q_s32(Assignment_DefaultOutport1 + batchIndex, Data_StoreRead2_DefaultOutport1_Batch)"/>
+                            </For>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Switch2_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Switch1_DefaultOutport1"/>
+                        <Expression Expression="Data_StoreMemory4_Terminate = Switch1_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add1">
+                        <Ref Actor="Sum" Path="LEDLC_MIR.system_2762.Add1"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="f32" Source="T_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <LocalVariable Name="T_DefaultOutport1_Batch" Type="float32x4_t" DefaultValue="vdupq_n_f32(T_DefaultOutport1)"/>
+                        <LocalVariable Name="delta_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vdupq_n_s32(delta_DefaultOutport1)"/>
+                        <LocalVariable Name="batchIndex" Type="i32"/>
+                        <For Condition="batchIndex &lt; 64">
+                            <Initial>
+                                <Expression Expression="batchIndex = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="batchIndex += 4"/>
+                            </Iterator>
+                            <LocalVariable Name="Assignment_DefaultOutport1_Batch" Type="int32x4_t" DefaultValue="vld1q_s32(Assignment_DefaultOutport1 + batchIndex)"/>
+                            <LocalVariable Name="Add1_DefaultOutport1_Batch" Type="int32x4_t"/>
+                            <LocalVariable Name="T_DefaultOutport1_BatchConvert" Type="int32x4_t" DefaultValue="vcvtq_s32_f32(T_DefaultOutport1_Batch)"/>
+                            <Expression Expression="Add1_DefaultOutport1_Batch = vaddq_s32(Assignment_DefaultOutport1_Batch, T_DefaultOutport1_BatchConvert)"/>
+                            <LocalVariable Name="Product_DefaultOutport1_Batch" Type="int32x4_t"/>
+                            <Expression Expression="Product_DefaultOutport1_Batch = vmulq_s32(Add1_DefaultOutport1_Batch, delta_DefaultOutport1_Batch)"/>
+                            <Expression Expression="vst1q_s32(Product_DefaultOutport1 + batchIndex, Product_DefaultOutport1_Batch)"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite1">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite1"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Assignment_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite1_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite1_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite1_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory6_Satisfied[Data_StoreWrite1_i] = Assignment_DefaultOutport1[Data_StoreWrite1_i]"/>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="LEDLC_MIR.system_2762.Product"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Add1_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="delta_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="Switch3">
+                        <Ref Actor="Switch" Path="LEDLC_MIR.system_2762.Switch3"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" ArraySize="64" Source="Product_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <For Condition="Switch3_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Switch3_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch3_i++"/>
+                            </Iterator>
+                            <If Condition="Assignment_DefaultOutport1[Switch3_i] &gt; 144">
+                                <Expression Expression="Switch3_DefaultOutport1[Switch3_i] = Assignment_DefaultOutport1[Switch3_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch3_DefaultOutport1[Switch3_i] = Product_DefaultOutport1[Switch3_i]"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                    <Calculate Name="Data_StoreWrite2">
+                        <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2762.Data_StoreWrite2"/>
+                        <Input Name="DefaultInport1" Type="#Default" Source="Switch3_DefaultOutport1"/>
+                        <For Condition="Data_StoreWrite2_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Data_StoreWrite2_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Data_StoreWrite2_i++"/>
+                            </Iterator>
+                            <Expression Expression="Data_StoreMemory9_Sat_o[Data_StoreWrite2_i] = Switch3_DefaultOutport1[Data_StoreWrite2_i]"/>
+                        </For>
+                    </Calculate>
+                </Branch>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2760">
+        <Struct Name="system_2760_state"/>
+        <GlobalVariable Name="system_2760_instance" Type="system_2760_state"/>
+        <Function Name="system_2760_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2760"/>
+            <Input Name="self" Type="system_2760_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2760.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2762"/>
+                    <Expression Expression="system_2762_Init(&amp;system_2762_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2760_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2760"/>
+            <Input Name="self" Type="system_2760_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2760.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2762"/>
+                    <Expression Expression="system_2762_Update(&amp;system_2762_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2747">
+        <Struct Name="system_2747_state"/>
+        <GlobalVariable Name="system_2747_instance" Type="system_2747_state"/>
+        <Function Name="system_2747_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2747"/>
+            <Input Name="self" Type="system_2747_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_2747.FunctionCallGenerator"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_2747.Demux"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2747.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2751"/>
+                    <Expression Expression="system_2751_Init(&amp;system_2751_instance)"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2747.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2760"/>
+                    <Expression Expression="system_2760_Init(&amp;system_2760_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2747_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2747"/>
+            <Input Name="self" Type="system_2747_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_2747.FunctionCallGenerator"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_2747.Demux"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="FunctionCallGenerator_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                    <Output Name="DefaultOutport2" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2747.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2751"/>
+                    <Expression Expression="system_2751_Update(&amp;system_2751_instance)"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2747.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2760"/>
+                    <Expression Expression="system_2760_Update(&amp;system_2760_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2687">
+        <Struct Name="system_2687_state"/>
+        <GlobalVariable Name="system_2687_instance" Type="system_2687_state"/>
+        <Function Name="system_2687_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2687"/>
+            <Input Name="self" Type="system_2687_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2687.Constant"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2687.Data_StoreWrite"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2687_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2687"/>
+            <Input Name="self" Type="system_2687_state" IsAddress="1"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2687.Constant"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2687.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 1"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2687.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory7_State = Constant_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2687.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Constant_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Constant_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2692">
+        <Struct Name="system_2692_state"/>
+        <GlobalVariable Name="system_2692_instance" Type="system_2692_state"/>
+        <Function Name="system_2692_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2692"/>
+            <Input Name="self" Type="system_2692_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2692.Constant"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2692_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2692"/>
+            <Input Name="self" Type="system_2692_state" IsAddress="1"/>
+            <Output Name="Output1" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2692.Constant"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2692.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Output1">
+                    <Ref Actor="Outport" Path="system_2692.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Constant_DefaultOutport1"/>
+                    <Output Name="Output1" Type="i32"/>
+                    <Expression Expression="*Output1 = Constant_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2700">
+        <Struct Name="system_2700_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant1"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2700.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2700_instance" Type="system_2700_state"/>
+        <Function Name="system_2700_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2700"/>
+            <Input Name="self" Type="system_2700_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant1"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2700.AND"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2700.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2700_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2700"/>
+            <Input Name="self" Type="system_2700_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2700.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2700.Switch"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant_DefaultOutport1 = t &gt; 7"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2700.CompareTo_Constant1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant1_DefaultOutport1 = t &lt; 11"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2700.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = -3"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2700.AND"/>
+                    <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant_DefaultOutport1 &amp;&amp; CompareTo_Constant1_DefaultOutport1)"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2700.Switch"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Constant1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <If Condition="AND_DefaultOutport1 &gt; 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = Constant1_DefaultOutport1"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2700.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Switch_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2705">
+        <Struct Name="system_2705_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant1"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant2"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2705.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2705_instance" Type="system_2705_state"/>
+        <Function Name="system_2705_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2705"/>
+            <Input Name="self" Type="system_2705_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant2">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant2"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant2"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2705.AND"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2705.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2705.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2705_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2705"/>
+            <Input Name="self" Type="system_2705_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Out1" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant2_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2705.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2705.Switch"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant1_DefaultOutport1 = t &gt; 0.5"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant2">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2705.CompareTo_Constant2"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant2_DefaultOutport1 = t &lt; 1"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 2"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = 1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2705.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = 3"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2705.AND"/>
+                    <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant1_DefaultOutport1 &amp;&amp; CompareTo_Constant2_DefaultOutport1)"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2705.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory7_State = Constant_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2705.Switch"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Constant1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Constant2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <If Condition="AND_DefaultOutport1 &gt; 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant1_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = Constant2_DefaultOutport1"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Out1">
+                    <Ref Actor="Outport" Path="system_2705.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Out1" Type="i32"/>
+                    <Expression Expression="*Out1 = Switch_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2696">
+        <Struct Name="system_2696_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2696.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2696_instance" Type="system_2696_state"/>
+        <Function Name="system_2696_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2696"/>
+            <Input Name="self" Type="system_2696_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2696.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2696.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2700"/>
+                    <Expression Expression="system_2700_Init(&amp;system_2700_instance)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2696.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2705"/>
+                    <Expression Expression="system_2705_Init(&amp;system_2705_instance)"/>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2696.Merge"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2696_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2696"/>
+            <Input Name="self" Type="system_2696_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2696.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2696.If"/>
+                </LocalVariable>
+                <LocalVariable Name="Merge_DefaultOutport1" Type="i32">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2696.Merge"/>
+                </LocalVariable>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2696.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (t &gt;= 2)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(t &gt;= 2)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2696.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2700"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="If_DefaultOutport1">
+                        <Expression Expression="system_2700_Update(&amp;system_2700_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2696.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2705"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Out1" Type="i32"/>
+                    <If Condition="If_DefaultOutport2">
+                        <Expression Expression="system_2705_Update(&amp;system_2705_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2696.Merge"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="If_ActionSubsystem_Output"/>
+                    <Input Name="DefaultInport2" Type="i32" Source="If_ActionSubsystem1_Out1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2696.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Merge_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Merge_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2714">
+        <Struct Name="system_2714_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant1"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2714.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2714_instance" Type="system_2714_state"/>
+        <Function Name="system_2714_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2714"/>
+            <Input Name="self" Type="system_2714_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant2"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2714.AND"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2714.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2714_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2714"/>
+            <Input Name="self" Type="system_2714_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2714.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2714.Switch"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant_DefaultOutport1 = t &gt; 19"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2714.CompareTo_Constant1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant1_DefaultOutport1 = t &lt; 23"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2714.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = -3"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2714.AND"/>
+                    <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant_DefaultOutport1 &amp;&amp; CompareTo_Constant1_DefaultOutport1)"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2714.Switch"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Constant1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Constant2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <If Condition="AND_DefaultOutport1 &gt; 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant1_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = Constant2_DefaultOutport1"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2714.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Switch_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2719">
+        <Struct Name="system_2719_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant"/>
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant1"/>
+            <Ref Actor="Logic" Path="LEDLC_MIR.system_2719.AND"/>
+        </Macro>
+        <GlobalVariable Name="system_2719_instance" Type="system_2719_state"/>
+        <Function Name="system_2719_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2719"/>
+            <Input Name="self" Type="system_2719_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant2"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2719.AND"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2719.Data_StoreWrite"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2719.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2719_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2719"/>
+            <Input Name="self" Type="system_2719_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Out1" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="CompareTo_Constant1_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="AND_DefaultOutport1" Type="bool">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2719.AND"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2719.Switch"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant_DefaultOutport1 = t &gt; 2.5"/>
+                </Calculate>
+                <Calculate Name="CompareTo_Constant1">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2719.CompareTo_Constant1"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant1_DefaultOutport1 = t &lt; 5.5"/>
+                </Calculate>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 3"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2719.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = -3"/>
+                </Calculate>
+                <Calculate Name="AND">
+                    <Ref Actor="Logic" Path="LEDLC_MIR.system_2719.AND"/>
+                    <Input Name="DefaultInport1" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant1_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="AND_DefaultOutport1 = (CompareTo_Constant_DefaultOutport1 &amp;&amp; CompareTo_Constant1_DefaultOutport1)"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2719.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory7_State = Constant_DefaultOutport1"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2719.Switch"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Constant1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="AND_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Constant2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <If Condition="AND_DefaultOutport1 &gt; 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant1_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = Constant2_DefaultOutport1"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Out1">
+                    <Ref Actor="Outport" Path="system_2719.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Out1" Type="i32"/>
+                    <Expression Expression="*Out1 = Switch_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2710">
+        <Struct Name="system_2710_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2710.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2710_instance" Type="system_2710_state"/>
+        <Function Name="system_2710_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2710"/>
+            <Input Name="self" Type="system_2710_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2710.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2710.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2714"/>
+                    <Expression Expression="system_2714_Init(&amp;system_2714_instance)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2710.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2719"/>
+                    <Expression Expression="system_2719_Init(&amp;system_2719_instance)"/>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2710.Merge"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2710_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2710"/>
+            <Input Name="self" Type="system_2710_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2710.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2710.If"/>
+                </LocalVariable>
+                <LocalVariable Name="Merge_DefaultOutport1" Type="i32">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2710.Merge"/>
+                </LocalVariable>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2710.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (t &gt; 9)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(t &gt; 9)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2710.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2714"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="If_DefaultOutport1">
+                        <Expression Expression="system_2714_Update(&amp;system_2714_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2710.If_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2719"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Out1" Type="i32"/>
+                    <If Condition="If_DefaultOutport2">
+                        <Expression Expression="system_2719_Update(&amp;system_2719_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2710.Merge"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="If_ActionSubsystem_Output"/>
+                    <Input Name="DefaultInport2" Type="i32" Source="If_ActionSubsystem1_Out1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2710.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Merge_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Merge_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2724">
+        <Struct Name="system_2724_state"/>
+        <GlobalVariable Name="system_2724_instance" Type="system_2724_state"/>
+        <Function Name="system_2724_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2724"/>
+            <Input Name="self" Type="system_2724_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2724.Constant"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2724.Data_StoreWrite"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2724_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2724"/>
+            <Input Name="self" Type="system_2724_state" IsAddress="1"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2724.Constant"/>
+                </LocalVariable>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2724.Constant"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant_DefaultOutport1 = 4"/>
+                </Calculate>
+                <Calculate Name="Data_StoreWrite">
+                    <Ref Actor="DataStoreWrite" Path="LEDLC_MIR.system_2724.Data_StoreWrite"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Constant_DefaultOutport1"/>
+                    <Expression Expression="Data_StoreMemory7_State = Constant_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2732">
+        <Struct Name="system_2732_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2732.CompareTo_Constant"/>
+        </Macro>
+        <GlobalVariable Name="system_2732_instance" Type="system_2732_state"/>
+        <Function Name="system_2732_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2732"/>
+            <Input Name="self" Type="system_2732_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2732.CompareTo_Constant"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant2"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2732.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2732_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2732"/>
+            <Input Name="self" Type="system_2732_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="CompareTo_Constant_DefaultOutport1" Type="bool">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2732.CompareTo_Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant1_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant1"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2732.Switch"/>
+                </LocalVariable>
+                <Calculate Name="CompareTo_Constant">
+                    <Ref Actor="CompareToConstant" Path="LEDLC_MIR.system_2732.CompareTo_Constant"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Expression Expression="CompareTo_Constant_DefaultOutport1 = t != 9"/>
+                </Calculate>
+                <Calculate Name="Constant1">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant1_DefaultOutport1 = -1"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="LEDLC_MIR.system_2732.Constant2"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Constant2_DefaultOutport1 = -3"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="LEDLC_MIR.system_2732.Switch"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Constant1_DefaultOutport1"/>
+                    <Input Name="DefaultInport2" Type="bool" Source="CompareTo_Constant_DefaultOutport1"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Constant2_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <If Condition="CompareTo_Constant_DefaultOutport1 &gt; 0">
+                        <Expression Expression="Switch_DefaultOutport1 = Constant1_DefaultOutport1"/>
+                    </If>
+                    <Else>
+                        <Expression Expression="Switch_DefaultOutport1 = Constant2_DefaultOutport1"/>
+                    </Else>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2732.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Switch_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2728">
+        <Struct Name="system_2728_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2728.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2728_instance" Type="system_2728_state"/>
+        <Function Name="system_2728_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2728"/>
+            <Input Name="self" Type="system_2728_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2728.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2728.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2732"/>
+                    <Expression Expression="system_2732_Init(&amp;system_2732_instance)"/>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2728.Terminator"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2728_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2728"/>
+            <Input Name="self" Type="system_2728_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2728.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2728.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_ActionSubsystem_Output" Type="i32">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2728.If_ActionSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2728.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="t"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (t != -1)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(t != -1)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2728.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2732"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="If_DefaultOutport1">
+                        <Expression Expression="system_2732_Update(&amp;system_2732_instance, t, &amp;If_ActionSubsystem_Output)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2728.Terminator"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="If_DefaultOutport2"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2728.Outport"/>
+                    <Input Name="Output" Type="i32" Source="If_ActionSubsystem_Output"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = If_ActionSubsystem_Output"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2681">
+        <Struct Name="system_2681_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+        </Macro>
+        <GlobalVariable Name="system_2681_instance" Type="system_2681_state"/>
+        <Function Name="system_2681_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2681"/>
+            <Input Name="self" Type="system_2681_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2681.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="Switch_Case">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2687"/>
+                    <Expression Expression="system_2687_Init(&amp;system_2687_instance)"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2692"/>
+                    <Expression Expression="system_2692_Init(&amp;system_2692_instance)"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem2">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem2"/>
+                    <Ref Actor="CompositeActor" Path="system_2696"/>
+                    <Expression Expression="system_2696_Init(&amp;system_2696_instance)"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem3">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem3"/>
+                    <Ref Actor="CompositeActor" Path="system_2710"/>
+                    <Expression Expression="system_2710_Init(&amp;system_2710_instance)"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem4">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem4"/>
+                    <Ref Actor="CompositeActor" Path="system_2724"/>
+                    <Expression Expression="system_2724_Init(&amp;system_2724_instance)"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem5">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem5"/>
+                    <Ref Actor="CompositeActor" Path="system_2728"/>
+                    <Expression Expression="system_2728_Init(&amp;system_2728_instance)"/>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2681.Merge"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2681_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2681"/>
+            <Input Name="self" Type="system_2681_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output1" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="f32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2681.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport1" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport2" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport3" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport4" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport5" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_Case_DefaultOutport6" Type="bool">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                </LocalVariable>
+                <LocalVariable Name="Merge_DefaultOutport1" Type="i32">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2681.Merge"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2681.Data_StoreRead"/>
+                    <Output Name="DefaultOutport1" Type="f32"/>
+                    <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory7_State"/>
+                </Calculate>
+                <Calculate Name="Switch_Case">
+                    <Ref Actor="SwitchCase" Path="LEDLC_MIR.system_2681.Switch_Case"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Output Name="DefaultOutport3" Type="bool"/>
+                    <Output Name="DefaultOutport4" Type="bool"/>
+                    <Output Name="DefaultOutport5" Type="bool"/>
+                    <Output Name="DefaultOutport6" Type="bool"/>
+                    <Expression Expression="Switch_Case_DefaultOutport1 = Data_StoreRead_DefaultOutport1 == 0"/>
+                    <Expression Expression="Switch_Case_DefaultOutport2 = Data_StoreRead_DefaultOutport1 == 1"/>
+                    <Expression Expression="Switch_Case_DefaultOutport3 = Data_StoreRead_DefaultOutport1 == 2"/>
+                    <Expression Expression="Switch_Case_DefaultOutport4 = Data_StoreRead_DefaultOutport1 == 3"/>
+                    <Expression Expression="Switch_Case_DefaultOutport5 = Data_StoreRead_DefaultOutport1 == 4"/>
+                    <Expression Expression="Switch_Case_DefaultOutport6 = !Switch_Case_DefaultOutport1 &amp;&amp; !Switch_Case_DefaultOutport2 &amp;&amp; !Switch_Case_DefaultOutport3 &amp;&amp; !Switch_Case_DefaultOutport4 &amp;&amp; !Switch_Case_DefaultOutport5"/>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2687"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="Switch_Case_DefaultOutport1">
+                        <Expression Expression="system_2687_Update(&amp;system_2687_instance, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem1">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem1"/>
+                    <Ref Actor="CompositeActor" Path="system_2692"/>
+                    <Output Name="Output1" Type="i32"/>
+                    <If Condition="Switch_Case_DefaultOutport6">
+                        <Expression Expression="system_2692_Update(&amp;system_2692_instance, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem2">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem2"/>
+                    <Ref Actor="CompositeActor" Path="system_2696"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="Switch_Case_DefaultOutport2">
+                        <Expression Expression="system_2696_Update(&amp;system_2696_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem3">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem3"/>
+                    <Ref Actor="CompositeActor" Path="system_2710"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="Switch_Case_DefaultOutport3">
+                        <Expression Expression="system_2710_Update(&amp;system_2710_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem4">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem4"/>
+                    <Ref Actor="CompositeActor" Path="system_2724"/>
+                    <If Condition="Switch_Case_DefaultOutport4">
+                        <Expression Expression="system_2724_Update(&amp;system_2724_instance)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Switch_Case_ActionSubsystem5">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2681.Switch_Case_ActionSubsystem5"/>
+                    <Ref Actor="CompositeActor" Path="system_2728"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <If Condition="Switch_Case_DefaultOutport5">
+                        <Expression Expression="system_2728_Update(&amp;system_2728_instance, t, &amp;Merge_DefaultOutport1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Merge">
+                    <Ref Actor="Merge" Path="LEDLC_MIR.system_2681.Merge"/>
+                    <Input Name="DefaultInport1" Type="i32" Source="Switch_Case_ActionSubsystem_Output"/>
+                    <Input Name="DefaultInport2" Type="i32" Source="Switch_Case_ActionSubsystem2_Output"/>
+                    <Input Name="DefaultInport3" Type="i32" Source="Switch_Case_ActionSubsystem3_Output"/>
+                    <Input Name="DefaultInport4" Type="i32" Source="Switch_Case_ActionSubsystem5_Output"/>
+                    <Input Name="DefaultInport5" Type="i32" Source="Switch_Case_ActionSubsystem1_Output1"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                </Calculate>
+                <Calculate Name="Output1">
+                    <Ref Actor="Outport" Path="system_2681.Outport"/>
+                    <Input Name="DefaultOutport1" Type="i32" Source="Merge_DefaultOutport1"/>
+                    <Output Name="Output1" Type="i32"/>
+                    <Expression Expression="*Output1 = Merge_DefaultOutport1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_2676">
+        <Struct Name="system_2676_state"/>
+        <Macro Name="bool" Value="unsigned char" HasIfnodefCheck="">
+            <Ref Actor="If" Path="LEDLC_MIR.system_2676.If"/>
+        </Macro>
+        <GlobalVariable Name="system_2676_instance" Type="system_2676_state"/>
+        <Function Name="system_2676_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2676"/>
+            <Input Name="self" Type="system_2676_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2676.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2676.If"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2676.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2681"/>
+                    <Expression Expression="system_2681_Init(&amp;system_2681_instance)"/>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2676.Terminator"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_2676_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_2676"/>
+            <Input Name="self" Type="system_2676_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="i32">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2676.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport1" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2676.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_DefaultOutport2" Type="bool">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2676.If"/>
+                </LocalVariable>
+                <LocalVariable Name="If_ActionSubsystem_Output1" Type="i32">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2676.If_ActionSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="LEDLC_MIR.system_2676.Data_StoreRead"/>
+                    <Output Name="DefaultOutport1" Type="i32"/>
+                    <Expression Expression="Data_StoreRead_DefaultOutport1 = Data_StoreMemory4_Terminate"/>
+                </Calculate>
+                <Calculate Name="If">
+                    <Ref Actor="If" Path="LEDLC_MIR.system_2676.If"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="Data_StoreRead_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="bool"/>
+                    <Output Name="DefaultOutport2" Type="bool"/>
+                    <Expression Expression="If_DefaultOutport1 = (Data_StoreRead_DefaultOutport1 == 0)"/>
+                    <Expression Expression="If_DefaultOutport2 = !(Data_StoreRead_DefaultOutport1 == 0)"/>
+                </Calculate>
+                <Calculate Name="If_ActionSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_2676.If_ActionSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_2681"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output1" Type="i32"/>
+                    <If Condition="If_DefaultOutport2">
+                        <Expression Expression="system_2681_Update(&amp;system_2681_instance, t, &amp;If_ActionSubsystem_Output1)"/>
+                    </If>
+                </Calculate>
+                <Calculate Name="Terminator">
+                    <Ref Actor="Terminator" Path="LEDLC_MIR.system_2676.Terminator"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="If_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_2676.Outport"/>
+                    <Input Name="Output1" Type="i32" Source="If_ActionSubsystem_Output1"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = If_ActionSubsystem_Output1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_1827">
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory"/>
+        </HeadFile>
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory6"/>
+        </HeadFile>
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory8"/>
+        </HeadFile>
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory9"/>
+        </HeadFile>
+        <Struct Name="system_1827_state"/>
+        <GlobalVariable Name="Data_StoreMemory_Data" Type="f32" ArraySize="64">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory1_ID" Type="i32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory1"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory2_Index" Type="i32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory2"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory3_Init" Type="i32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory3"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory4_Terminate" Type="i32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory4"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory5_Error" Type="i32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory5"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory6_Satisfied" Type="i32" ArraySize="64">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory6"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory7_State" Type="f32">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory7"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory8_Data_o" Type="f32" ArraySize="64">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory8"/>
+        </GlobalVariable>
+        <GlobalVariable Name="Data_StoreMemory9_Sat_o" Type="i32" ArraySize="64">
+            <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory9"/>
+        </GlobalVariable>
+        <GlobalVariable Name="system_1827_instance" Type="system_1827_state"/>
+        <Function Name="system_1827_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1827"/>
+            <Input Name="self" Type="system_1827_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory"/>
+                    <Expression Expression="memset(Data_StoreMemory_Data, 0, sizeof(Data_StoreMemory_Data))"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory1">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory1"/>
+                    <Expression Expression="Data_StoreMemory1_ID = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory2">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory2"/>
+                    <Expression Expression="Data_StoreMemory2_Index = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory3">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory3"/>
+                    <Expression Expression="Data_StoreMemory3_Init = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory4">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory4"/>
+                    <Expression Expression="Data_StoreMemory4_Terminate = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory5">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory5"/>
+                    <Expression Expression="Data_StoreMemory5_Error = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory6">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory6"/>
+                    <Expression Expression="memset(Data_StoreMemory6_Satisfied, 0, sizeof(Data_StoreMemory6_Satisfied))"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory7">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory7"/>
+                    <Expression Expression="Data_StoreMemory7_State = 0"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory8">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory8"/>
+                    <Expression Expression="memset(Data_StoreMemory8_Data_o, 0, sizeof(Data_StoreMemory8_Data_o))"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory9">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory9"/>
+                    <Expression Expression="memset(Data_StoreMemory9_Sat_o, 0, sizeof(Data_StoreMemory9_Sat_o))"/>
+                </Calculate>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_1827.FunctionCallGenerator"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_1827.Demux"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1832"/>
+                    <Expression Expression="system_1832_Init(&amp;system_1832_instance)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1897"/>
+                    <Expression Expression="system_1897_Init(&amp;system_1897_instance)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem3">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem3"/>
+                    <Ref Actor="CompositeActor" Path="system_2747"/>
+                    <Expression Expression="system_2747_Init(&amp;system_2747_instance)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem2">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem2"/>
+                    <Ref Actor="CompositeActor" Path="system_2676"/>
+                    <Expression Expression="system_2676_Init(&amp;system_2676_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_1827_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_1827"/>
+            <Input Name="self" Type="system_1827_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="FunctionCallSubsystem2_Output" Type="i32">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem2"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory1">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory2">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory2"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory3">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory3"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory4">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory4"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory5">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory5"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory6">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory6"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory7">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory7"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory8">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory8"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Data_StoreMemory9">
+                    <Ref Actor="DataStoreMemory" Path="LEDLC_MIR.system_1827.Data_StoreMemory9"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="FunctionCallGenerator">
+                    <Ref Actor="FunctionCallGenerator" Path="LEDLC_MIR.system_1827.FunctionCallGenerator"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Demux">
+                    <Ref Actor="Demux" Path="LEDLC_MIR.system_1827.Demux"/>
+                    <Input Name="DefaultInport1" Type="#Default" Source="FunctionCallGenerator_DefaultOutport1"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                    <Output Name="DefaultOutport2" Type="#Default"/>
+                    <Output Name="DefaultOutport3" Type="#Default"/>
+                    <Output Name="DefaultOutport4" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1832"/>
+                    <Expression Expression="system_1832_Update(&amp;system_1832_instance)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1897"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Expression Expression="system_1897_Update(&amp;system_1897_instance, t)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem3">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem3"/>
+                    <Ref Actor="CompositeActor" Path="system_2747"/>
+                    <Expression Expression="system_2747_Update(&amp;system_2747_instance)"/>
+                </Calculate>
+                <Calculate Name="FunctionCallSubsystem2">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_1827.FunctionCallSubsystem2"/>
+                    <Ref Actor="CompositeActor" Path="system_2676"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="system_2676_Update(&amp;system_2676_instance, t, &amp;FunctionCallSubsystem2_Output)"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_1827.Outport"/>
+                    <Input Name="Output" Type="i32" Source="FunctionCallSubsystem2_Output"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = FunctionCallSubsystem2_Output"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_root">
+        <Struct Name="system_root_state"/>
+        <Macro Name="id" Value="3142" HasIfnodefCheck="">
+            <Ref Actor="Function" Path="LEDLC_MIR.system_root.Subsystem"/>
+        </Macro>
+        <Macro Name="length" Value="64" HasIfnodefCheck="">
+            <Ref Actor="Function" Path="LEDLC_MIR.system_root.Subsystem"/>
+        </Macro>
+        <GlobalVariable Name="system_root_instance" Type="system_root_state"/>
+        <Function Name="system_root_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_root.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1827"/>
+                    <Expression Expression="system_1827_Init(&amp;system_1827_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_root_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Input Name="t" Type="f32"/>
+            <Output Name="Output" Type="i32"/>
+            <Schedule>
+                <LocalVariable Name="Subsystem_Output" Type="i32">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_root.Subsystem"/>
+                </LocalVariable>
+                <Calculate Name="Subsystem">
+                    <Ref Actor="Function" Path="LEDLC_MIR.system_root.Subsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_1827"/>
+                    <Input Name="t" Type="f32" Source="t"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="system_1827_Update(&amp;system_1827_instance, t, &amp;Subsystem_Output)"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_root.Outport"/>
+                    <Input Name="Output" Type="i32" Source="Subsystem_Output"/>
+                    <Output Name="Output" Type="i32"/>
+                    <Expression Expression="*Output = Subsystem_Output"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+</Root>

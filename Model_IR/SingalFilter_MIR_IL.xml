@@ -1,0 +1,246 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10"/>
+        <MainInitFunction Name="system_root_Init"/>
+        <MainExecFunction Name="system_root_Update"/>
+        <MainCompositeState Name="system_root_state"/>
+    </Config>
+    <File Name="system_34">
+        <Struct Name="system_34_state"/>
+        <GlobalVariable Name="system_34_instance" Type="system_34_state"/>
+        <Function Name="system_34_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_34"/>
+            <Input Name="self" Type="system_34_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Constant">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant"/>
+                </Calculate>
+                <Calculate Name="Constant2">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant2"/>
+                </Calculate>
+                <Calculate Name="Constant3">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant3"/>
+                </Calculate>
+                <Calculate Name="Data_StoreRead">
+                    <Ref Actor="DataStoreRead" Path="SingalFilter_MIR.system_34.Data_StoreRead"/>
+                </Calculate>
+                <Calculate Name="For_Iterator">
+                    <Ref Actor="ForIterator" Path="SingalFilter_MIR.system_34.For_Iterator"/>
+                </Calculate>
+                <Calculate Name="Selector">
+                    <Ref Actor="Selector" Path="SingalFilter_MIR.system_34.Selector"/>
+                </Calculate>
+                <Calculate Name="Assignment">
+                    <Ref Actor="Assignment" Path="SingalFilter_MIR.system_34.Assignment"/>
+                </Calculate>
+                <Calculate Name="Add">
+                    <Ref Actor="Sum" Path="SingalFilter_MIR.system_34.Add"/>
+                </Calculate>
+                <Calculate Name="Product">
+                    <Ref Actor="Product" Path="SingalFilter_MIR.system_34.Product"/>
+                </Calculate>
+                <Calculate Name="Switch">
+                    <Ref Actor="Switch" Path="SingalFilter_MIR.system_34.Switch"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_34_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_34"/>
+            <Input Name="self" Type="system_34_state" IsAddress="1"/>
+            <Input Name="Inport" Type="i32" ArraySize="32"/>
+            <Output Name="Output" Type="i32" ArraySize="64"/>
+            <Schedule>
+                <LocalVariable Name="Constant_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant2_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant2"/>
+                </LocalVariable>
+                <LocalVariable Name="Constant3_DefaultOutport1" Type="i32">
+                    <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant3"/>
+                </LocalVariable>
+                <LocalVariable Name="Data_StoreRead_DefaultOutport1" Type="i32" IsAddress="1" DefaultValue="&amp;(Data_StoreMemory_signal[0])">
+                    <Ref Actor="DataStoreRead" Path="SingalFilter_MIR.system_34.Data_StoreRead"/>
+                </LocalVariable>
+                <LocalVariable Name="For_Iterator_DefaultOutport1" Type="i32" DefaultValue="-1">
+                    <Ref Actor="ForIterator" Path="SingalFilter_MIR.system_34.For_Iterator"/>
+                </LocalVariable>
+                <LocalVariable Name="Selector_DefaultOutport1" Type="i32">
+                    <Ref Actor="Selector" Path="SingalFilter_MIR.system_34.Selector"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Assignment" Path="SingalFilter_MIR.system_34.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Assignment_init" Type="u8" DefaultValue="0">
+                    <Ref Actor="Assignment" Path="SingalFilter_MIR.system_34.Assignment"/>
+                </LocalVariable>
+                <LocalVariable Name="Add_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Sum" Path="SingalFilter_MIR.system_34.Add"/>
+                </LocalVariable>
+                <LocalVariable Name="Product_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Product" Path="SingalFilter_MIR.system_34.Product"/>
+                </LocalVariable>
+                <LocalVariable Name="Switch_DefaultOutport1" Type="i32" ArraySize="64">
+                    <Ref Actor="Switch" Path="SingalFilter_MIR.system_34.Switch"/>
+                </LocalVariable>
+                <Branch Type="For" Condition="32">
+                    <Ref Actor="ForIterator" Path="system_34.system_34_Update.For_Iterator"/>
+                    <Calculate Name="Constant">
+                        <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant_DefaultOutport1 = 3"/>
+                    </Calculate>
+                    <Calculate Name="Constant2">
+                        <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant2"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant2_DefaultOutport1 = 0"/>
+                    </Calculate>
+                    <Calculate Name="Constant3">
+                        <Ref Actor="Constant" Path="SingalFilter_MIR.system_34.Constant3"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Constant3_DefaultOutport1 = 11"/>
+                    </Calculate>
+                    <Calculate Name="Data_StoreRead">
+                        <Ref Actor="DataStoreRead" Path="SingalFilter_MIR.system_34.Data_StoreRead"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                    </Calculate>
+                    <Calculate Name="For_Iterator">
+                        <Ref Actor="ForIterator" Path="SingalFilter_MIR.system_34.For_Iterator"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="For_Iterator_DefaultOutport1++"/>
+                    </Calculate>
+                    <Calculate Name="Selector">
+                        <Ref Actor="Selector" Path="SingalFilter_MIR.system_34.Selector"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="32" Source="Inport"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32"/>
+                        <Expression Expression="Selector_DefaultOutport1 = Inport[For_Iterator_DefaultOutport1]"/>
+                    </Calculate>
+                    <Calculate Name="Assignment">
+                        <Ref Actor="Assignment" Path="SingalFilter_MIR.system_34.Assignment"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Data_StoreRead_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Selector_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="For_Iterator_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <If Condition="Assignment_init == 0">
+                            <Expression Expression="Assignment_init = 1"/>
+                            <BatchCalculation Operation="Assign" DataType="i32">
+                                <Input Name="Data_StoreRead_DefaultOutport1" Type="i32" ArraySize="64"/>
+                                <Output Name="Assignment_DefaultOutport1" Type="i32" ArraySize="64"/>
+                            </BatchCalculation>
+                        </If>
+                        <Expression Expression="Assignment_DefaultOutport1[For_Iterator_DefaultOutport1] = Selector_DefaultOutport1"/>
+                    </Calculate>
+                    <Calculate Name="Add">
+                        <Ref Actor="Sum" Path="SingalFilter_MIR.system_34.Add"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Assignment_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Constant_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <BatchCalculation Operation="Add" DataType="i32">
+                            <Input Name="Assignment_DefaultOutport1" Type="i32" ArraySize="64"/>
+                            <Input Name="Constant_DefaultOutport1" Type="i32"/>
+                            <Output Name="Add_DefaultOutport1" Type="i32" ArraySize="64"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Product">
+                        <Ref Actor="Product" Path="SingalFilter_MIR.system_34.Product"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Add_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" Source="Constant3_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <BatchCalculation Operation="Mul" DataType="i32">
+                            <Input Name="Add_DefaultOutport1" Type="i32" ArraySize="64"/>
+                            <Input Name="Constant3_DefaultOutport1" Type="i32"/>
+                            <Output Name="Product_DefaultOutport1" Type="i32" ArraySize="64"/>
+                        </BatchCalculation>
+                    </Calculate>
+                    <Calculate Name="Switch">
+                        <Ref Actor="Switch" Path="SingalFilter_MIR.system_34.Switch"/>
+                        <Input Name="DefaultInport1" Type="i32" ArraySize="64" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport2" Type="i32" ArraySize="64" Source="Product_DefaultOutport1"/>
+                        <Input Name="DefaultInport3" Type="i32" Source="Constant2_DefaultOutport1"/>
+                        <Output Name="DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <For Condition="Switch_i &lt; 64">
+                            <Initial>
+                                <LocalVariable Name="Switch_i" Type="int" DefaultValue="0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="Switch_i++"/>
+                            </Iterator>
+                            <If Condition="Product_DefaultOutport1[Switch_i] &gt; 32">
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Product_DefaultOutport1[Switch_i]"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="Switch_DefaultOutport1[Switch_i] = Constant2_DefaultOutport1"/>
+                            </Else>
+                        </For>
+                    </Calculate>
+                </Branch>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_34.Output"/>
+                    <Input Name="DefaultOutport1" Type="i32" ArraySize="64" Source="Switch_DefaultOutport1"/>
+                    <Output Name="Output" Type="i32" ArraySize="64"/>
+                    <BatchCalculation Operation="Assign" DataType="i32">
+                        <Input Name="Switch_DefaultOutport1" Type="i32" ArraySize="64"/>
+                        <Output Name="Output" Type="i32" ArraySize="64"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="system_root">
+        <HeadFile Name="string">
+            <Ref Actor="DataStoreMemory" Path="SingalFilter_MIR.system_root.Data_StoreMemory"/>
+        </HeadFile>
+        <Struct Name="system_root_state"/>
+        <GlobalVariable Name="Data_StoreMemory_signal" Type="i32" ArraySize="64">
+            <Ref Actor="DataStoreMemory" Path="SingalFilter_MIR.system_root.Data_StoreMemory"/>
+        </GlobalVariable>
+        <GlobalVariable Name="system_root_instance" Type="system_root_state"/>
+        <Function Name="system_root_Init" Type="FunctionInit" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="SingalFilter_MIR.system_root.Data_StoreMemory"/>
+                    <Expression Expression="memset(Data_StoreMemory_signal, 0, sizeof(Data_StoreMemory_signal))"/>
+                </Calculate>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="SingalFilter_MIR.system_root.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_34"/>
+                    <Expression Expression="system_34_Init(&amp;system_34_instance)"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="system_root_Update" Type="FunctionExec" ReturnType="void">
+            <Ref Actor="CompositeActor" Path="system_root"/>
+            <Input Name="self" Type="system_root_state" IsAddress="1"/>
+            <Input Name="Inport" Type="i32" ArraySize="32"/>
+            <Output Name="Output" Type="i32" ArraySize="64"/>
+            <Schedule>
+                <LocalVariable Name="For_IteratorSubsystem_Output" Type="i32" ArraySize="64">
+                    <Ref Actor="Function" Path="SingalFilter_MIR.system_root.For_IteratorSubsystem"/>
+                </LocalVariable>
+                <Calculate Name="Data_StoreMemory">
+                    <Ref Actor="DataStoreMemory" Path="SingalFilter_MIR.system_root.Data_StoreMemory"/>
+                    <Output Name="DefaultOutport1" Type="#Default"/>
+                </Calculate>
+                <Calculate Name="For_IteratorSubsystem">
+                    <Ref Actor="Function" Path="SingalFilter_MIR.system_root.For_IteratorSubsystem"/>
+                    <Ref Actor="CompositeActor" Path="system_34"/>
+                    <Input Name="Inport" Type="i32" ArraySize="32" Source="Inport"/>
+                    <Output Name="Output" Type="i32" ArraySize="64"/>
+                    <Expression Expression="system_34_Update(&amp;system_34_instance, Inport, For_IteratorSubsystem_Output)"/>
+                </Calculate>
+                <Calculate Name="Output">
+                    <Ref Actor="Outport" Path="system_root.Output"/>
+                    <Input Name="Output" Type="i32" ArraySize="64" Source="For_IteratorSubsystem_Output"/>
+                    <Output Name="Output" Type="i32" ArraySize="64"/>
+                    <BatchCalculation Operation="Assign" DataType="i32">
+                        <Input Name="For_IteratorSubsystem_Output" Type="i32" ArraySize="64"/>
+                        <Output Name="Output" Type="i32" ArraySize="64"/>
+                    </BatchCalculation>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+</Root>

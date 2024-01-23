@@ -1,0 +1,8 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10"/>
+        <MainInitFunction Name="_Init"/>
+        <MainExecFunction Name="_Update"/>
+        <MainCompositeState Name="_state"/>
+    </Config>
+</Root>

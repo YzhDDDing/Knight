@@ -1,0 +1,9 @@
+<Root>
+    <ModelInfo>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="LANSwitch_init"/>
+        <MainExecFunction Name="LANSwitch_step"/>
+        <MainCompositeState Name="RT_MODEL_LANSwitch_T"/>
+    </ModelInfo>
+</Root>
+

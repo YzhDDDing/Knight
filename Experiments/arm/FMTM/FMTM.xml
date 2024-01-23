@@ -1,0 +1,754 @@
+<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.example.org/IRMetadata">
+    <Config>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="FMTM_init"/>
+        <MainExecFunction Name="FMTM_step"/>
+        <MainCompositeState Name="RT_MODEL_FMTM_T"/>
+    </Config>
+    <File Name="FMTM">
+        <HeadFile Name="string"/>
+        <Struct Name="B_FMTM_T">
+            <Member Name="Merge" Type="int32_T"/>
+            <Member Name="Merge1" Type="int32_T"/>
+            <Member Name="OutportBufferForR" Type="int32_T"/>
+            <Member Name="Switch_l" Type="int32_T"/>
+            <Member Name="Switch_p" Type="int32_T"/>
+        </Struct>
+        <Struct Name="DW_FMTM_T">
+            <Member Name="SenserIdData" Type="int32_T" ArraySize="256"/>
+            <Member Name="SenserIdUsed" Type="int32_T" ArraySize="256"/>
+        </Struct>
+        <Struct Name="ConstB_FMTM_T">
+            <Member Name="Constant" Type="int32_T"/>
+        </Struct>
+        <Struct Name="creal32_T">
+            <Member Name="re" Type="real32_T"/>
+            <Member Name="im" Type="real32_T"/>
+        </Struct>
+        <Struct Name="creal64_T">
+            <Member Name="re" Type="real64_T"/>
+            <Member Name="im" Type="real64_T"/>
+        </Struct>
+        <Struct Name="creal_T">
+            <Member Name="re" Type="real_T"/>
+            <Member Name="im" Type="real_T"/>
+        </Struct>
+        <Struct Name="cint8_T">
+            <Member Name="re" Type="int8_T"/>
+            <Member Name="im" Type="int8_T"/>
+        </Struct>
+        <Struct Name="cuint8_T">
+            <Member Name="re" Type="uint8_T"/>
+            <Member Name="im" Type="uint8_T"/>
+        </Struct>
+        <Struct Name="cint16_T">
+            <Member Name="re" Type="int16_T"/>
+            <Member Name="im" Type="int16_T"/>
+        </Struct>
+        <Struct Name="cuint16_T">
+            <Member Name="re" Type="uint16_T"/>
+            <Member Name="im" Type="uint16_T"/>
+        </Struct>
+        <Struct Name="cint32_T">
+            <Member Name="re" Type="int32_T"/>
+            <Member Name="im" Type="int32_T"/>
+        </Struct>
+        <Struct Name="cuint32_T">
+            <Member Name="re" Type="uint32_T"/>
+            <Member Name="im" Type="uint32_T"/>
+        </Struct>
+        <Struct Name="TaskCounters_FMTM_T">
+            <Member Name="TID" Type="uint16_T" ArraySize="2"/>
+        </Struct>
+        <Struct Name="TIME_FMTM_T">
+            <Member Name="TaskCounters" Type="TaskCounters_FMTM_T"/>
+        </Struct>
+        <Struct Name="tag_RTM_FMTM_T">
+            <Member Name="errorStatus" Type="char_T" IsAddress="1"/>
+            <Member Name="blockIO" Type="B_FMTM_T" IsAddress="1"/>
+            <Member Name="dwork" Type="DW_FMTM_T" IsAddress="1"/>
+            <Member Name="Timing" Type="TIME_FMTM_T"/>
+        </Struct>
+        <Macro Name="RT_PI" Value="3.14159265358979323846" HasIfnodefCheck=""/>
+        <Macro Name="RT_PIF" Value="3.1415927F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10" Value="2.30258509299404568402" HasIfnodefCheck=""/>
+        <Macro Name="RT_LN_10F" Value="2.3025851F" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10E" Value="0.43429448190325182765" HasIfnodefCheck=""/>
+        <Macro Name="RT_LOG10EF" Value="0.43429449F" HasIfnodefCheck=""/>
+        <Macro Name="RT_E" Value="2.7182818284590452354" HasIfnodefCheck=""/>
+        <Macro Name="RT_EF" Value="2.7182817F" HasIfnodefCheck=""/>
+        <Macro Name="false" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="true" Value="1" HasIfnodefCheck=""/>
+        <Macro Name="NULL" Value="0" HasIfnodefCheck=""/>
+        <Macro Name="UNUSED_PARAMETER(x)" Value="(void)(x)" HasIfnodefCheck=""/>
+        <Macro Name="rtmGetErrorStatus(rtm)" Value="((rtm)-&gt;errorStatus)" HasIfnodefCheck=""/>
+        <Macro Name="rtmSetErrorStatus(rtm,val)" Value="((rtm)-&gt;errorStatus=(val))" HasIfnodefCheck=""/>
+        <TypeDefine Name="signed char" Value="int8_T"/>
+        <TypeDefine Name="unsigned char" Value="uint8_T"/>
+        <TypeDefine Name="short" Value="int16_T"/>
+        <TypeDefine Name="unsigned short" Value="uint16_T"/>
+        <TypeDefine Name="int" Value="int32_T"/>
+        <TypeDefine Name="unsigned int" Value="uint32_T"/>
+        <TypeDefine Name="float" Value="real32_T"/>
+        <TypeDefine Name="double" Value="real64_T"/>
+        <TypeDefine Name="double" Value="real_T"/>
+        <TypeDefine Name="double" Value="time_T"/>
+        <TypeDefine Name="unsigned char" Value="boolean_T"/>
+        <TypeDefine Name="int" Value="int_T"/>
+        <TypeDefine Name="unsigned int" Value="uint_T"/>
+        <TypeDefine Name="unsigned long" Value="ulong_T"/>
+        <TypeDefine Name="char" Value="char_T"/>
+        <TypeDefine Name="unsigned char" Value="uchar_T"/>
+        <TypeDefine Name="char_T" Value="byte_T"/>
+        <TypeDefine Name="creal32_T" Value="creal32_T"/>
+        <TypeDefine Name="creal64_T" Value="creal64_T"/>
+        <TypeDefine Name="creal_T" Value="creal_T"/>
+        <TypeDefine Name="cint8_T" Value="cint8_T"/>
+        <TypeDefine Name="cuint8_T" Value="cuint8_T"/>
+        <TypeDefine Name="cint16_T" Value="cint16_T"/>
+        <TypeDefine Name="cuint16_T" Value="cuint16_T"/>
+        <TypeDefine Name="cint32_T" Value="cint32_T"/>
+        <TypeDefine Name="cuint32_T" Value="cuint32_T"/>
+        <TypeDefine Name="void *" Value="pointer_T"/>
+        <TypeDefine Name="int" Value="ZCEventType"/>
+        <TypeDefine Name="struct _ssMdlInfo" Value="_ssMdlInfo"/>
+        <TypeDefine Name="tag_RTM_FMTM_T" Value="RT_MODEL_FMTM_T"/>
+        <TypeDefine Name="B_FMTM_T" Value="B_FMTM_T"/>
+        <TypeDefine Name="DW_FMTM_T" Value="DW_FMTM_T"/>
+        <TypeDefine Name="ConstB_FMTM_T" Value="ConstB_FMTM_T"/>
+        <TypeDefine Name="TaskCounters_FMTM_T" Value="TaskCounters_FMTM_T"/>
+        <TypeDefine Name="TIME_FMTM_T" Value="TIME_FMTM_T"/>
+        <GlobalVariable Name="FMTM_instance" Type="tag_RTM_FMTM_T"/>
+        <GlobalVariable Name="FMTM_DW_instance" Type="DW_FMTM_T"/>
+        <GlobalVariable Name="FMTM_B_instance" Type="B_FMTM_T"/>
+        <Function Name="FMTM_step" Type="FunctionExec" ReturnType="void">
+            <Ref Path="FMTM"/>
+            <Input Name="FMTM_M" Type="RT_MODEL_FMTM_T" IsAddress="1"/>
+            <Input Name="FMTM_U_SenserId" Type="int32_T"/>
+            <Input Name="FMTM_U_Opcode" Type="int32_T"/>
+            <Input Name="FMTM_U_TValue" Type="int32_T"/>
+            <Output Name="FMTM_Y_Res" Type="int32_T"/>
+            <Output Name="FMTM_Y_R" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="FMTM_step">
+                    <LocalVariable Name="FMTM_B" Type="B_FMTM_T" IsAddress="1" DefaultValue="FMTM_M-&gt;blockIO"/>
+                    <LocalVariable Name="FMTM_DW" Type="DW_FMTM_T" IsAddress="1" DefaultValue="FMTM_M-&gt;dwork"/>
+                    <LocalVariable Name="rtb_Assignment" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment1" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment1_o" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_Assignment_h" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead1_e" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_i" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_l" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_ny" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead2_o1" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_d" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_e" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_o" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_oz" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="FoundE" Type="int32_T"/>
+                    <LocalVariable Name="Switch_m" Type="int32_T"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <LocalVariable Name="rtb_Switch_l" Type="int32_T"/>
+                    <LocalVariable Name="s15_iter" Type="int32_T"/>
+                    <LocalVariable Name="Switch_l4" Type="boolean_T"/>
+                    <Switch Condition="FMTM_U_Opcode">
+                        <Case Value="1"/>
+                        <LocalVariable Name="rtb_Compare_o4" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_o4 = (FMTM_U_SenserId == 0)"/>
+                        <If Condition="rtb_Compare_o4">
+                            <Expression Expression="FMTM_Error(&amp;FMTM_B-&gt;Merge, &amp;FMTM_B-&gt;Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="Found" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_AND_lk" Type="boolean_T"/>
+                            <Expression Expression="Found = false"/>
+                            <Expression Expression="FoundE = -1"/>
+                            <For Condition="s15_iter &lt; 256">
+                                <Initial>
+                                    <Expression Expression="s15_iter = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="s15_iter++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead1_f" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_h" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_ox" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND_g" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_AND_l" Type="boolean_T"/>
+                                <Expression Expression="rtb_ForIterator_h = s15_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead_oz[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                    <Expression Expression="rtb_DataStoreRead2_l[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_j" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Selector_e" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Compare_py" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Equal_j" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector_e = rtb_DataStoreRead_oz[rtb_ForIterator_h]"/>
+                                <Expression Expression="rtb_Equal_j = (rtb_Selector_e == FMTM_U_SenserId)"/>
+                                <Expression Expression="rtb_Selector1_j = rtb_DataStoreRead2_l[rtb_ForIterator_h]"/>
+                                <Expression Expression="rtb_Compare_py = (rtb_Selector1_j == 1)"/>
+                                <Expression Expression="rtb_AND_g = (rtb_Equal_j &amp;&amp; rtb_Compare_py)"/>
+                                <If Condition="rtb_AND_g">
+                                    <Expression Expression="Switch_l4 = true"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_DataStoreRead1_k" Type="boolean_T"/>
+                                    <Expression Expression="rtb_DataStoreRead1_k = Found"/>
+                                    <Expression Expression="Switch_l4 = rtb_DataStoreRead1_k"/>
+                                </Else>
+                                <Expression Expression="Found = Switch_l4"/>
+                                <Expression Expression="rtb_ForIterator_ox = s15_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead2_o1[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_l" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Compare_aa" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_ik" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector1_l = rtb_DataStoreRead2_o1[rtb_ForIterator_ox]"/>
+                                <Expression Expression="rtb_Compare_aa = (rtb_Selector1_l == 0)"/>
+                                <Expression Expression="rtb_DataStoreRead1_f = FoundE"/>
+                                <Expression Expression="rtb_Compare_ik = (rtb_DataStoreRead1_f == -1)"/>
+                                <Expression Expression="rtb_AND_l = (rtb_Compare_aa &amp;&amp; rtb_Compare_ik)"/>
+                                <If Condition="rtb_AND_l">
+                                    <Expression Expression="Switch_m = rtb_ForIterator_ox"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="Switch_m = rtb_DataStoreRead1_f"/>
+                                </Else>
+                                <Expression Expression="FoundE = Switch_m"/>
+                            </For>
+                            <LocalVariable Name="rtb_Compare_fx" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_Compare_i" Type="boolean_T"/>
+                            <Expression Expression="rtb_Compare_i = !Switch_l4"/>
+                            <Expression Expression="rtb_Compare_fx = (Switch_m != -1)"/>
+                            <Expression Expression="rtb_AND_lk = (rtb_Compare_i &amp;&amp; rtb_Compare_fx)"/>
+                            <If Condition="rtb_AND_lk">
+                                <LocalVariable Name="rtb_Compare_p" Type="boolean_T"/>
+                                <Expression Expression="FMTM_B-&gt;Merge = 1"/>
+                                <For Condition="FoundE &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="FoundE = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="FoundE++"/>
+                                    </Iterator>
+                                    <LocalVariable Name="rtb_ForIterator_o" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch1_f" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch_c" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Equal_m" Type="boolean_T"/>
+                                    <Expression Expression="rtb_ForIterator_o = FoundE"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="rtb_DataStoreRead_e[i] = FMTM_DW-&gt;SenserIdData[i]"/>
+                                    </For>
+                                    <Expression Expression="rtb_Equal_m = (Switch_m == rtb_ForIterator_o)"/>
+                                    <If Condition="rtb_Equal_m">
+                                        <Expression Expression="rtb_Switch_c = FMTM_U_SenserId"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector_i" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector_i = rtb_DataStoreRead_e[rtb_ForIterator_o]"/>
+                                        <Expression Expression="rtb_Switch_c = rtb_Selector_i"/>
+                                    </Else>
+                                    <If Condition="FoundE == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment_h[i] = rtb_DataStoreRead_e[i]"/>
+                                        </For>
+                                    </If>
+                                    <Expression Expression="rtb_Assignment_h[rtb_ForIterator_o] = rtb_Switch_c"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="FMTM_DW-&gt;SenserIdData[i] = rtb_Assignment_h[i]"/>
+                                        <Expression Expression="rtb_DataStoreRead1_e[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                    </For>
+                                    <If Condition="rtb_Equal_m">
+                                        <Expression Expression="rtb_Switch1_f = 1"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector1_c" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector1_c = rtb_DataStoreRead1_e[rtb_ForIterator_o]"/>
+                                        <Expression Expression="rtb_Switch1_f = rtb_Selector1_c"/>
+                                    </Else>
+                                    <If Condition="FoundE == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment1_o[i] = rtb_DataStoreRead1_e[i]"/>
+                                        </For>
+                                    </If>
+                                    <Expression Expression="rtb_Assignment1_o[rtb_ForIterator_o] = rtb_Switch1_f"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="FMTM_DW-&gt;SenserIdUsed[i] = rtb_Assignment1_o[i]"/>
+                                    </For>
+                                </For>
+                                <Expression Expression="rtb_Compare_p = (Switch_m == 0)"/>
+                                <If Condition="rtb_Compare_p">
+                                    <Expression Expression="FMTM_B-&gt;Switch_p = 1"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_Switch1_i5" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Compare_da" Type="boolean_T"/>
+                                    <Expression Expression="rtb_Compare_da = (Switch_m == 1)"/>
+                                    <If Condition="rtb_Compare_da">
+                                        <Expression Expression="rtb_Switch1_i5 = 2"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Switch2_d" Type="int32_T"/>
+                                        <LocalVariable Name="rtb_Compare_nxr" Type="boolean_T"/>
+                                        <Expression Expression="rtb_Compare_nxr = (Switch_m == 2)"/>
+                                        <If Condition="rtb_Compare_nxr">
+                                            <Expression Expression="rtb_Switch2_d = 3"/>
+                                        </If>
+                                        <Else>
+                                            <Expression Expression="rtb_Switch2_d = 4"/>
+                                        </Else>
+                                        <Expression Expression="rtb_Switch1_i5 = rtb_Switch2_d"/>
+                                    </Else>
+                                    <Expression Expression="FMTM_B-&gt;Switch_p = rtb_Switch1_i5"/>
+                                </Else>
+                            </If>
+                            <Else>
+                                <Expression Expression="FMTM_B-&gt;Merge = -10004"/>
+                            </Else>
+                            <Expression Expression="FMTM_B-&gt;Merge1 = FMTM_B-&gt;Switch_p"/>
+                        </Else>
+                        <Break/>
+                        <Case Value="3"/>
+                        <LocalVariable Name="rtb_Compare_ck" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_ck = (FMTM_U_SenserId == 0)"/>
+                        <If Condition="rtb_Compare_ck">
+                            <Expression Expression="FMTM_Error(&amp;FMTM_B-&gt;Merge, &amp;FMTM_B-&gt;Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_AND_m" Type="boolean_T"/>
+                            <Expression Expression="s15_iter = -1"/>
+                            <Expression Expression="FoundE = -1"/>
+                            <Expression Expression="FMTM_FindSenserId(FMTM_U_SenserId, &amp;FMTM_B-&gt;Switch_l, &amp;s15_iter, FMTM_DW-&gt;SenserIdData, FMTM_DW-&gt;SenserIdUsed, 256)"/>
+                            <For Condition="s15_iter &lt; 256">
+                                <Initial>
+                                    <Expression Expression="s15_iter = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="s15_iter++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead1_al" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_a" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND_f" Type="boolean_T"/>
+                                <Expression Expression="rtb_ForIterator_a = s15_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead_o[i] = FMTM_DW-&gt;SenserIdData[i]"/>
+                                    <Expression Expression="rtb_DataStoreRead2_ny[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_b" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Selector_o" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND1_i" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_c" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_j" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Equal_o" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector_o = rtb_DataStoreRead_o[rtb_ForIterator_a]"/>
+                                <Expression Expression="rtb_Equal_o = (FMTM_U_TValue == rtb_Selector_o)"/>
+                                <Expression Expression="rtb_Selector1_b = rtb_DataStoreRead2_ny[rtb_ForIterator_a]"/>
+                                <Expression Expression="rtb_Compare_c = (rtb_Selector1_b == 1)"/>
+                                <Expression Expression="rtb_AND1_i = (rtb_Equal_o &amp;&amp; rtb_Compare_c)"/>
+                                <Expression Expression="rtb_DataStoreRead1_al = FoundE"/>
+                                <Expression Expression="rtb_Compare_j = (rtb_DataStoreRead1_al == -1)"/>
+                                <Expression Expression="rtb_AND_f = (rtb_AND1_i &amp;&amp; rtb_Compare_j)"/>
+                                <If Condition="rtb_AND_f">
+                                    <Expression Expression="i = rtb_ForIterator_a"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="i = rtb_DataStoreRead1_al"/>
+                                </Else>
+                                <Expression Expression="FoundE = i"/>
+                            </For>
+                            <LocalVariable Name="rtb_Compare_kf" Type="boolean_T"/>
+                            <LocalVariable Name="rtb_Compare_o" Type="boolean_T"/>
+                            <Expression Expression="rtb_Compare_o = (FMTM_B-&gt;Switch_l != -1)"/>
+                            <Expression Expression="rtb_Compare_kf = (i != -1)"/>
+                            <Expression Expression="rtb_AND_m = (rtb_Compare_o &amp;&amp; rtb_Compare_kf)"/>
+                            <If Condition="rtb_AND_m">
+                                <LocalVariable Name="rtb_Compare_e" Type="boolean_T"/>
+                                <Expression Expression="rtb_Compare_e = (FMTM_U_SenserId == 1)"/>
+                                <If Condition="rtb_Compare_e">
+                                    <Expression Expression="FMTM_B-&gt;Merge = 1001"/>
+                                </If>
+                                <Else>
+                                    <LocalVariable Name="rtb_Switch1_p" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Compare_bv" Type="boolean_T"/>
+                                    <Expression Expression="rtb_Compare_bv = (FMTM_U_SenserId == 2)"/>
+                                    <If Condition="rtb_Compare_bv">
+                                        <Expression Expression="rtb_Switch1_p = 1002"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Switch2" Type="int32_T"/>
+                                        <LocalVariable Name="rtb_Compare_oe" Type="boolean_T"/>
+                                        <Expression Expression="rtb_Compare_oe = (FMTM_U_SenserId == 4)"/>
+                                        <If Condition="rtb_Compare_oe">
+                                            <Expression Expression="rtb_Switch2 = 1004"/>
+                                        </If>
+                                        <Else>
+                                            <LocalVariable Name="rtb_Switch3" Type="int32_T"/>
+                                            <LocalVariable Name="rtb_Compare_ko" Type="boolean_T"/>
+                                            <Expression Expression="rtb_Compare_ko = (FMTM_U_SenserId == 8)"/>
+                                            <If Condition="rtb_Compare_ko">
+                                                <Expression Expression="rtb_Switch3 = 1008"/>
+                                            </If>
+                                            <Else>
+                                                <LocalVariable Name="rtb_Switch4" Type="int32_T"/>
+                                                <LocalVariable Name="rtb_Compare_n" Type="boolean_T"/>
+                                                <Expression Expression="rtb_Compare_n = (FMTM_U_SenserId == 16)"/>
+                                                <If Condition="rtb_Compare_n">
+                                                    <Expression Expression="rtb_Switch4 = 1016"/>
+                                                </If>
+                                                <Else>
+                                                    <LocalVariable Name="rtb_Switch5" Type="int32_T"/>
+                                                    <LocalVariable Name="rtb_Compare_h" Type="boolean_T"/>
+                                                    <Expression Expression="rtb_Compare_h = (FMTM_U_SenserId == 32)"/>
+                                                    <If Condition="rtb_Compare_h">
+                                                        <Expression Expression="rtb_Switch5 = 1032"/>
+                                                    </If>
+                                                    <Else>
+                                                        <Expression Expression="rtb_Switch5 = FMTM_U_TValue"/>
+                                                    </Else>
+                                                    <Expression Expression="rtb_Switch4 = rtb_Switch5"/>
+                                                </Else>
+                                                <Expression Expression="rtb_Switch3 = rtb_Switch4"/>
+                                            </Else>
+                                            <Expression Expression="rtb_Switch2 = rtb_Switch3"/>
+                                        </Else>
+                                        <Expression Expression="rtb_Switch1_p = rtb_Switch2"/>
+                                    </Else>
+                                    <Expression Expression="FMTM_B-&gt;Merge = rtb_Switch1_p"/>
+                                </Else>
+                                <Expression Expression="FMTM_B-&gt;OutportBufferForR = FMTM_ConstB.Constant"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="FMTM_B-&gt;Merge = -8"/>
+                            </Else>
+                            <Expression Expression="FMTM_B-&gt;Merge1 = FMTM_B-&gt;OutportBufferForR"/>
+                        </Else>
+                        <Break/>
+                        <Case Value="4"/>
+                        <LocalVariable Name="rtb_Compare_ct" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_ct = (FMTM_U_SenserId == 0)"/>
+                        <If Condition="rtb_Compare_ct">
+                            <Expression Expression="FMTM_Error(&amp;FMTM_B-&gt;Merge, &amp;FMTM_B-&gt;Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_Compare_eq" Type="boolean_T"/>
+                            <Expression Expression="FoundE = -1"/>
+                            <For Condition="s15_iter &lt; 256">
+                                <Initial>
+                                    <Expression Expression="s15_iter = 0"/>
+                                </Initial>
+                                <Iterator>
+                                    <Expression Expression="s15_iter++"/>
+                                </Iterator>
+                                <LocalVariable Name="rtb_DataStoreRead1" Type="int32_T"/>
+                                <LocalVariable Name="rtb_ForIterator_b" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND" Type="boolean_T"/>
+                                <Expression Expression="rtb_ForIterator_b = s15_iter"/>
+                                <For Condition="i &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="i = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="i++"/>
+                                    </Iterator>
+                                    <Expression Expression="rtb_DataStoreRead_d[i] = FMTM_DW-&gt;SenserIdData[i]"/>
+                                    <Expression Expression="rtb_DataStoreRead2_i[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                </For>
+                                <LocalVariable Name="rtb_Selector1_f" Type="int32_T"/>
+                                <LocalVariable Name="rtb_Selector_l" Type="int32_T"/>
+                                <LocalVariable Name="rtb_AND1" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_if" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Compare_lx" Type="boolean_T"/>
+                                <LocalVariable Name="rtb_Equal_h" Type="boolean_T"/>
+                                <Expression Expression="rtb_Selector_l = rtb_DataStoreRead_d[rtb_ForIterator_b]"/>
+                                <Expression Expression="rtb_Equal_h = (FMTM_U_SenserId == rtb_Selector_l)"/>
+                                <Expression Expression="rtb_Selector1_f = rtb_DataStoreRead2_i[rtb_ForIterator_b]"/>
+                                <Expression Expression="rtb_Compare_if = (rtb_Selector1_f == 1)"/>
+                                <Expression Expression="rtb_AND1 = (rtb_Equal_h &amp;&amp; rtb_Compare_if)"/>
+                                <Expression Expression="rtb_DataStoreRead1 = FoundE"/>
+                                <Expression Expression="rtb_Compare_lx = (rtb_DataStoreRead1 == -1)"/>
+                                <Expression Expression="rtb_AND = (rtb_AND1 &amp;&amp; rtb_Compare_lx)"/>
+                                <If Condition="rtb_AND">
+                                    <Expression Expression="i = rtb_ForIterator_b"/>
+                                </If>
+                                <Else>
+                                    <Expression Expression="i = rtb_DataStoreRead1"/>
+                                </Else>
+                                <Expression Expression="FoundE = i"/>
+                            </For>
+                            <Expression Expression="rtb_Compare_eq = (i != -1)"/>
+                            <If Condition="rtb_Compare_eq">
+                                <Expression Expression="FMTM_B-&gt;Merge = i"/>
+                                <Expression Expression="FMTM_B-&gt;Merge1 = 1"/>
+                            </If>
+                            <Else>
+                                <Expression Expression="FMTM_B-&gt;Merge = -1"/>
+                                <Expression Expression="FMTM_B-&gt;Merge1 = -1"/>
+                            </Else>
+                        </Else>
+                        <Break/>
+                        <Case Value="5"/>
+                        <LocalVariable Name="rtb_Compare_f0" Type="boolean_T"/>
+                        <Expression Expression="rtb_Compare_f0 = (FMTM_U_SenserId == 0)"/>
+                        <If Condition="rtb_Compare_f0">
+                            <Expression Expression="FMTM_Error(&amp;FMTM_B-&gt;Merge, &amp;FMTM_B-&gt;Merge1)"/>
+                        </If>
+                        <Else>
+                            <LocalVariable Name="rtb_Compare" Type="uint8_T"/>
+                            <Expression Expression="FoundE = -1"/>
+                            <Expression Expression="FMTM_FindSenserId(FMTM_U_SenserId, &amp;rtb_Switch_l, &amp;FoundE, FMTM_DW-&gt;SenserIdData, FMTM_DW-&gt;SenserIdUsed, 256)"/>
+                            <Expression Expression="rtb_Compare = (uint8_T)(rtb_Switch_l == -1)"/>
+                            <If Condition="rtb_Compare != 0">
+                                <Expression Expression="FoundE = -8"/>
+                            </If>
+                            <Else>
+                                <LocalVariable Name="rtb_SenserId" Type="int32_T"/>
+                                <Expression Expression="rtb_SenserId = FMTM_U_SenserId"/>
+                                <For Condition="FoundE &lt; 256">
+                                    <Initial>
+                                        <Expression Expression="FoundE = 0"/>
+                                    </Initial>
+                                    <Iterator>
+                                        <Expression Expression="FoundE++"/>
+                                    </Iterator>
+                                    <LocalVariable Name="rtb_ForIterator" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Switch1" Type="int32_T"/>
+                                    <LocalVariable Name="rtb_Equal" Type="boolean_T"/>
+                                    <Expression Expression="rtb_ForIterator = FoundE"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="rtb_DataStoreRead[i] = FMTM_DW-&gt;SenserIdData[i]"/>
+                                    </For>
+                                    <Expression Expression="rtb_Equal = (rtb_SenserId == rtb_ForIterator)"/>
+                                    <If Condition="rtb_Equal">
+                                        <Expression Expression="rtb_Switch = 0"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector = rtb_DataStoreRead[rtb_ForIterator]"/>
+                                        <Expression Expression="rtb_Switch = rtb_Selector"/>
+                                    </Else>
+                                    <If Condition="FoundE == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment[i] = rtb_DataStoreRead[i]"/>
+                                        </For>
+                                    </If>
+                                    <Expression Expression="rtb_Assignment[rtb_ForIterator] = rtb_Switch"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="FMTM_DW-&gt;SenserIdData[i] = rtb_Assignment[i]"/>
+                                        <Expression Expression="rtb_DataStoreRead2[i] = FMTM_DW-&gt;SenserIdUsed[i]"/>
+                                    </For>
+                                    <If Condition="rtb_Equal">
+                                        <Expression Expression="rtb_Switch1 = 0"/>
+                                    </If>
+                                    <Else>
+                                        <LocalVariable Name="rtb_Selector1" Type="int32_T"/>
+                                        <Expression Expression="rtb_Selector1 = rtb_DataStoreRead2[rtb_ForIterator]"/>
+                                        <Expression Expression="rtb_Switch1 = rtb_Selector1"/>
+                                    </Else>
+                                    <If Condition="FoundE == 0">
+                                        <For Condition="i &lt; 256">
+                                            <Initial>
+                                                <Expression Expression="i = 0"/>
+                                            </Initial>
+                                            <Iterator>
+                                                <Expression Expression="i++"/>
+                                            </Iterator>
+                                            <Expression Expression="rtb_Assignment1[i] = rtb_DataStoreRead2[i]"/>
+                                        </For>
+                                    </If>
+                                    <Expression Expression="rtb_Assignment1[rtb_ForIterator] = rtb_Switch1"/>
+                                    <For Condition="i &lt; 256">
+                                        <Initial>
+                                            <Expression Expression="i = 0"/>
+                                        </Initial>
+                                        <Iterator>
+                                            <Expression Expression="i++"/>
+                                        </Iterator>
+                                        <Expression Expression="FMTM_DW-&gt;SenserIdUsed[i] = rtb_Assignment1[i]"/>
+                                    </For>
+                                </For>
+                                <Expression Expression="FoundE = rtb_SenserId"/>
+                            </Else>
+                            <Expression Expression="FMTM_B-&gt;Merge1 = 1"/>
+                            <Expression Expression="FMTM_B-&gt;Merge = FoundE"/>
+                        </Else>
+                        <Break/>
+                    </Switch>
+                    <Expression Expression="*FMTM_Y_Res = FMTM_B-&gt;Merge"/>
+                    <Expression Expression="*FMTM_Y_R = FMTM_B-&gt;Merge1"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="FMTM_init" Type="FunctionInit" ReturnType="void">
+            <Ref Path="FMTM"/>
+            <Input Name="FMTM_M" Type="RT_MODEL_FMTM_T" IsAddress="1"/>
+            <Output Name="FMTM_U_SenserId" Type="int32_T"/>
+            <Output Name="FMTM_U_Opcode" Type="int32_T"/>
+            <Output Name="FMTM_U_TValue" Type="int32_T"/>
+            <Output Name="FMTM_Y_Res" Type="int32_T"/>
+            <Output Name="FMTM_Y_R" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="FMTM_init">
+                    <Expression Expression="FMTM_M-&gt;blockIO = &amp;FMTM_B_instance"/>
+                    <Expression Expression="FMTM_M-&gt;dwork = &amp;FMTM_DW_instance"/>
+                    <LocalVariable Name="FMTM_B" Type="B_FMTM_T" IsAddress="1" DefaultValue="FMTM_M-&gt;blockIO"/>
+                    <LocalVariable Name="FMTM_DW" Type="DW_FMTM_T" IsAddress="1" DefaultValue="FMTM_M-&gt;dwork"/>
+                    <Expression Expression="(void)memset(((void*)FMTM_B), 0, sizeof(B_FMTM_T))"/>
+                    <Expression Expression="(void)memset((void*)FMTM_DW, 0, sizeof(DW_FMTM_T))"/>
+                    <Expression Expression="*FMTM_U_SenserId = 0"/>
+                    <Expression Expression="*FMTM_U_Opcode = 0"/>
+                    <Expression Expression="*FMTM_U_TValue = 0"/>
+                    <Expression Expression="*FMTM_Y_Res = 0"/>
+                    <Expression Expression="*FMTM_Y_R = 0"/>
+                    <Expression Expression="FMTM_B-&gt;OutportBufferForR = FMTM_ConstB.Constant"/>
+                    <Expression Expression="FMTM_B-&gt;Merge = 0"/>
+                    <Expression Expression="FMTM_B-&gt;Merge1 = 0"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="FMTM_Error" Type="FunctionExec" ReturnType="void">
+            <Input Name="rty_Res" Type="int32_T" IsAddress="1"/>
+            <Input Name="rty_R" Type="int32_T" IsAddress="1"/>
+            <Schedule>
+                <Calculate Name="FMTM_Error">
+                    <Expression Expression="*rty_Res = -2"/>
+                    <Expression Expression="*rty_R = 0"/>
+                </Calculate>
+            </Schedule>
+        </Function>
+        <Function Name="FMTM_FindSenserId" Type="FunctionExec" ReturnType="void">
+            <Input Name="rtu_SenserId" Type="int32_T"/>
+            <Input Name="rty_Out1" Type="int32_T" IsAddress="1"/>
+            <Input Name="rtd_FoundId_o" Type="int32_T" IsAddress="1"/>
+            <Input Name="rtd_SenserIdData" Type="int32_T" ArraySize="256"/>
+            <Input Name="rtd_SenserIdUsed" Type="int32_T" ArraySize="256"/>
+            <Input Name="rtp_POOL_SIZE" Type="int32_T"/>
+            <Schedule>
+                <Calculate Name="FMTM_FindSenserId">
+                    <LocalVariable Name="rtb_DataStoreRead2_pj" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="rtb_DataStoreRead_j" Type="int32_T" ArraySize="256"/>
+                    <LocalVariable Name="i" Type="int32_T"/>
+                    <If Condition="rtp_POOL_SIZE &gt; 0">
+                        <For Condition="i &lt; 256">
+                            <Initial>
+                                <Expression Expression="i = 0"/>
+                            </Initial>
+                            <Iterator>
+                                <Expression Expression="i++"/>
+                            </Iterator>
+                            <Expression Expression="rtb_DataStoreRead_j[i] = rtd_SenserIdData[i]"/>
+                            <Expression Expression="rtb_DataStoreRead2_pj[i] = rtd_SenserIdUsed[i]"/>
+                        </For>
+                    </If>
+                    <For Condition="i &lt; rtp_POOL_SIZE">
+                        <Initial>
+                            <Expression Expression="i = 0"/>
+                        </Initial>
+                        <Iterator>
+                            <Expression Expression="i++"/>
+                        </Iterator>
+                        <LocalVariable Name="rtb_DataStoreRead1_cy" Type="int32_T"/>
+                        <LocalVariable Name="rtb_ForIterator_e" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Selector1_l" Type="int32_T"/>
+                        <LocalVariable Name="rtb_Selector_o" Type="int32_T"/>
+                        <LocalVariable Name="rtb_AND1_e" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_AND_g" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_e" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Compare_n1" Type="boolean_T"/>
+                        <LocalVariable Name="rtb_Equal_n" Type="boolean_T"/>
+                        <Expression Expression="rtb_ForIterator_e = i"/>
+                        <Expression Expression="rtb_Selector_o = rtb_DataStoreRead_j[rtb_ForIterator_e]"/>
+                        <Expression Expression="rtb_Equal_n = (rtu_SenserId == rtb_Selector_o)"/>
+                        <Expression Expression="rtb_Selector1_l = rtb_DataStoreRead2_pj[rtb_ForIterator_e]"/>
+                        <Expression Expression="rtb_Compare_n1 = (rtb_Selector1_l == 1)"/>
+                        <Expression Expression="rtb_AND1_e = (rtb_Equal_n &amp;&amp; rtb_Compare_n1)"/>
+                        <Expression Expression="rtb_DataStoreRead1_cy = *rtd_FoundId_o"/>
+                        <Expression Expression="rtb_Compare_e = (rtb_DataStoreRead1_cy == -1)"/>
+                        <Expression Expression="rtb_AND_g = (rtb_AND1_e &amp;&amp; rtb_Compare_e)"/>
+                        <If Condition="rtb_AND_g">
+                            <Expression Expression="*rty_Out1 = rtb_ForIterator_e"/>
+                        </If>
+                        <Else>
+                            <Expression Expression="*rty_Out1 = rtb_DataStoreRead1_cy"/>
+                        </Else>
+                        <Expression Expression="*rtd_FoundId_o = *rty_Out1"/>
+                    </For>
+                </Calculate>
+            </Schedule>
+        </Function>
+    </File>
+    <File Name="FMTM_data">
+        <GlobalVariable Name="FMTM_ConstB" Type="ConstB_FMTM_T" DefaultValue="{1023}"/>
+    </File>
+</Root>

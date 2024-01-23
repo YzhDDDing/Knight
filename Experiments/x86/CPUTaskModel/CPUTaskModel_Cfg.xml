@@ -1,0 +1,9 @@
+<Root>
+    <ModelInfo>
+        <IterationCount Value="10000"/>
+        <MainInitFunction Name="CPUTaskModel_init"/>
+        <MainExecFunction Name="CPUTaskModel_step"/>
+        <MainCompositeState Name="RT_MODEL_CPUTaskModel_T"/>
+    </ModelInfo>
+</Root>
+

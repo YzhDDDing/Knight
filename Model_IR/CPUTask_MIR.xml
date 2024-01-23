@@ -1,0 +1,2446 @@
+<Root>
+    <ModelEntity MainFunction="system_root">
+        <Function Name="system_root" Type="Dataflow">
+            <Inport Name="op" Type="i32"/>
+            <Inport Name="taskId" Type="i32"/>
+            <Inport Name="para" Type="i32"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <Actor Name="Data_StoreMemory" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Dimensions" Value="64"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory1" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="Dimensions" Value="64"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory2" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Init"/>
+                <Parameter Name="Dimensions" Value="1"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Demux" Type="Demux">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Parameter Name="Outputs" Value="2"/>
+            </Actor>
+            <Actor Name="FunctionCallGenerator" Type="FunctionCallGenerator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DisallowWideOutput" Value="off"/>
+                <Parameter Name="LibraryVersion" Value="3.4"/>
+                <Parameter Name="MultithreadedSim" Value="auto"/>
+                <Parameter Name="NumberOfIterations" Value="1"/>
+                <Parameter Name="Sample_time" Value="1"/>
+                <Parameter Name="ShowEnablePort" Value="off"/>
+                <Parameter Name="SourceBlock" Value="simulink/Ports &amp;
+Subsystems/Function-Call
+Generator"/>
+            </Actor>
+            <Actor Name="Subsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_353"/>
+            </Actor>
+            <Actor Name="Subsystem1" Type="Function">
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_362"/>
+            </Actor>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="Subsystem.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="op"/>
+                <Dst Dst="Subsystem.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="para"/>
+                <Dst Dst="Subsystem.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Subsystem.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Subsystem.#DefaultOutport2"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport1"/>
+                <Dst Dst="Subsystem1.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallGenerator.#DefaultOutport1"/>
+                <Dst Dst="Demux.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport2"/>
+                <Dst Dst="Subsystem.#DefaultTrigger"/>
+            </Relation>
+        </Function>
+        <Function Name="system_353" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Inport Name="op" Type="#Default"/>
+            <Inport Name="para" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Data_StoreMemory3" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="B"/>
+                <Parameter Name="Dimensions" Value="64"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="From" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res1"/>
+            </Actor>
+            <Actor Name="From1" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res2"/>
+            </Actor>
+            <Actor Name="From10" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="para"/>
+            </Actor>
+            <Actor Name="From11" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out1"/>
+            </Actor>
+            <Actor Name="From12" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out2"/>
+            </Actor>
+            <Actor Name="From13" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out3"/>
+            </Actor>
+            <Actor Name="From14" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out4"/>
+            </Actor>
+            <Actor Name="From15" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out5"/>
+            </Actor>
+            <Actor Name="From16" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="para"/>
+            </Actor>
+            <Actor Name="From2" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res3"/>
+            </Actor>
+            <Actor Name="From3" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res4"/>
+            </Actor>
+            <Actor Name="From4" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res5"/>
+            </Actor>
+            <Actor Name="From5" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="From6" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="From7" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="From8" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="From9" Type="From">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="Goto" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res1"/>
+            </Actor>
+            <Actor Name="Goto1" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res2"/>
+            </Actor>
+            <Actor Name="Goto10" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="taskId"/>
+            </Actor>
+            <Actor Name="Goto11" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="para"/>
+            </Actor>
+            <Actor Name="Goto2" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out1"/>
+            </Actor>
+            <Actor Name="Goto3" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res3"/>
+            </Actor>
+            <Actor Name="Goto4" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res4"/>
+            </Actor>
+            <Actor Name="Goto5" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="res5"/>
+            </Actor>
+            <Actor Name="Goto6" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out2"/>
+            </Actor>
+            <Actor Name="Goto7" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out3"/>
+            </Actor>
+            <Actor Name="Goto8" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out4"/>
+            </Actor>
+            <Actor Name="Goto9" Type="Goto">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="GotoTag" Value="out5"/>
+            </Actor>
+            <Actor Name="Merge" Type="Merge">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Inport Name="#DefaultInport4" Type="#Default"/>
+                <Inport Name="#DefaultInport5" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Inputs" Value="5"/>
+            </Actor>
+            <Actor Name="Merge1" Type="Merge">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Inport Name="#DefaultInport4" Type="#Default"/>
+                <Inport Name="#DefaultInport5" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Inputs" Value="5"/>
+            </Actor>
+            <Actor Name="Switch_Case" Type="SwitchCase">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport4" Type="#Default"/>
+                <Outport Name="#DefaultOutport5" Type="#Default"/>
+                <Parameter Name="CaseConditions" Value="{1,2,3,4}"/>
+            </Actor>
+            <Actor Name="Switch_Case_ActionSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_15"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="Switch_Case_ActionSubsystem1" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_19"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="Switch_Case_ActionSubsystem2" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_23"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="Switch_Case_ActionSubsystem3" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_27"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="Switch_Case_ActionSubsystem4" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_39"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="Merge.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="op"/>
+                <Dst Dst="Switch_Case.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem.#DefaultOutport1"/>
+                <Dst Dst="Goto.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Merge1.#DefaultOutport1"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="From.#DefaultOutport1"/>
+                <Dst Dst="Merge.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From1.#DefaultOutport1"/>
+                <Dst Dst="Merge.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="From2.#DefaultOutport1"/>
+                <Dst Dst="Merge.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="From3.#DefaultOutport1"/>
+                <Dst Dst="Merge.#DefaultInport4"/>
+            </Relation>
+            <Relation>
+                <Src Src="From4.#DefaultOutport1"/>
+                <Dst Dst="Merge.#DefaultInport5"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem1.#DefaultOutport1"/>
+                <Dst Dst="Goto1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem.#DefaultOutport2"/>
+                <Dst Dst="Goto2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem2.#DefaultOutport1"/>
+                <Dst Dst="Goto3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem3.#DefaultOutport1"/>
+                <Dst Dst="Goto4.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem4.#DefaultOutport1"/>
+                <Dst Dst="Goto5.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem1.#DefaultOutport2"/>
+                <Dst Dst="Goto6.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem2.#DefaultOutport2"/>
+                <Dst Dst="Goto7.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem3.#DefaultOutport2"/>
+                <Dst Dst="Goto8.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case_ActionSubsystem4.#DefaultOutport2"/>
+                <Dst Dst="Goto9.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="Goto10.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="para"/>
+                <Dst Dst="Goto11.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case.#DefaultOutport2"/>
+                <Dst Dst="Switch_Case_ActionSubsystem1.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case.#DefaultOutport3"/>
+                <Dst Dst="Switch_Case_ActionSubsystem2.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case.#DefaultOutport4"/>
+                <Dst Dst="Switch_Case_ActionSubsystem3.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch_Case.#DefaultOutport5"/>
+                <Dst Dst="Switch_Case_ActionSubsystem4.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="From5.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From6.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From7.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From8.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From9.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem4.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From10.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem2.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="From11.#DefaultOutport1"/>
+                <Dst Dst="Merge1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="From12.#DefaultOutport1"/>
+                <Dst Dst="Merge1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="From13.#DefaultOutport1"/>
+                <Dst Dst="Merge1.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="From14.#DefaultOutport1"/>
+                <Dst Dst="Merge1.#DefaultInport4"/>
+            </Relation>
+            <Relation>
+                <Src Src="From15.#DefaultOutport1"/>
+                <Dst Dst="Merge1.#DefaultInport5"/>
+            </Relation>
+            <Relation>
+                <Src Src="From16.#DefaultOutport1"/>
+                <Dst Dst="Switch_Case_ActionSubsystem3.#DefaultInport2"/>
+            </Relation>
+        </Function>
+        <Function Name="system_15" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Data_StoreMemory" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory1" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Demux" Type="Demux">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport3" Type="#Default"/>
+                <Parameter Name="Outputs" Value="3"/>
+            </Actor>
+            <Actor Name="FunctionCallGenerator" Type="FunctionCallGenerator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DisallowWideOutput" Value="off"/>
+                <Parameter Name="LibraryVersion" Value="3.4"/>
+                <Parameter Name="MultithreadedSim" Value="auto"/>
+                <Parameter Name="NumberOfIterations" Value="1"/>
+                <Parameter Name="Sample_time" Value="-1"/>
+                <Parameter Name="ShowEnablePort" Value="off"/>
+                <Parameter Name="SourceBlock" Value="simulink/Ports &amp;
+Subsystems/Function-Call
+Generator"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem" Type="Function">
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_109"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem1" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_113"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem2" Type="Function">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_125"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallGenerator.#DefaultOutport1"/>
+                <Dst Dst="Demux.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport1"/>
+                <Dst Dst="FunctionCallSubsystem.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport2"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport3"/>
+                <Dst Dst="FunctionCallSubsystem2.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport2"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+        </Function>
+        <Function Name="system_109" Type="Dataflow">
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_113" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="For_IteratorSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="FunctionRef" Value="system_85"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_85" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Actor Name="AND" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Add" Type="Sum">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+            </Actor>
+            <Actor Name="Assignment" Type="Assignment">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DiagnosticForDimensions" Value="Warning"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Assignment1" Type="Assignment">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DiagnosticForDimensions" Value="Warning"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Constant2" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead2" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead3" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead4" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite2" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite3" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite4" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="B"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_Iterator" Type="ForIterator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IterationLimit" Value="16"/>
+            </Actor>
+            <Actor Name="NOT" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR1" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Product" Type="Product">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Selector" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Selector1" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Switch" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch1" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch2" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch3" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="Switch.#DefaultInport3"/>
+                <Dst Dst="Product.#DefaultInport2"/>
+                <Dst Dst="Add.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="Assignment1.#DefaultInport1"/>
+                <Dst Dst="Selector.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport2"/>
+                <Dst Dst="Assignment1.#DefaultInport2"/>
+                <Dst Dst="Switch2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="Selector1.#DefaultInport1"/>
+                <Dst Dst="Assignment.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector1.#DefaultOutport1"/>
+                <Dst Dst="Switch.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch.#DefaultOutport1"/>
+                <Dst Dst="Assignment.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Assignment.#DefaultOutport1"/>
+                <Dst Dst="Add.#DefaultInport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead2.#DefaultOutport1"/>
+                <Dst Dst="OR1.#DefaultInport1"/>
+                <Dst Dst="OR.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant2.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead3.#DefaultOutport1"/>
+                <Dst Dst="NOT.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="AND.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT.#DefaultOutport1"/>
+                <Dst Dst="AND.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Switch2.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead4.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch3.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport2"/>
+                <Dst Dst="AND.#DefaultInport1"/>
+                <Dst Dst="Switch.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="For_Iterator.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport2"/>
+                <Dst Dst="Switch3.#DefaultInport3"/>
+                <Dst Dst="Selector1.#DefaultInport2"/>
+                <Dst Dst="Assignment1.#DefaultInport3"/>
+                <Dst Dst="Assignment.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Add.#DefaultOutport1"/>
+                <Dst Dst="Product.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Product.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite4.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch2.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Assignment1.#DefaultOutport1"/>
+                <Dst Dst="OR1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR1.#DefaultOutport1"/>
+                <Dst Dst="Switch2.#DefaultInport2"/>
+            </Relation>
+        </Function>
+        <Function Name="system_125" Type="Dataflow">
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="value_out" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead2" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Switch" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Relation>
+                <Src Src="Switch.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="value_out"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead2.#DefaultOutport1"/>
+                <Dst Dst="Switch.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Switch.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Switch.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_19" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Data_StoreMemory" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory1" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Demux" Type="Demux">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport3" Type="#Default"/>
+                <Parameter Name="Outputs" Value="3"/>
+            </Actor>
+            <Actor Name="FunctionCallGenerator" Type="FunctionCallGenerator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DisallowWideOutput" Value="off"/>
+                <Parameter Name="LibraryVersion" Value="3.4"/>
+                <Parameter Name="MultithreadedSim" Value="auto"/>
+                <Parameter Name="NumberOfIterations" Value="1"/>
+                <Parameter Name="Sample_time" Value="-1"/>
+                <Parameter Name="ShowEnablePort" Value="off"/>
+                <Parameter Name="SourceBlock" Value="simulink/Ports &amp;
+Subsystems/Function-Call
+Generator"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem" Type="Function">
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_179"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem1" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_183"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem2" Type="Function">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_209"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport2"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport1"/>
+                <Dst Dst="FunctionCallSubsystem.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallGenerator.#DefaultOutport1"/>
+                <Dst Dst="Demux.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport2"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport3"/>
+                <Dst Dst="FunctionCallSubsystem2.#DefaultTrigger"/>
+            </Relation>
+        </Function>
+        <Function Name="system_179" Type="Dataflow">
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_183" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="For_IteratorSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="FunctionRef" Value="system_186"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_186" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Actor Name="AND" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Assignment1" Type="Assignment">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DiagnosticForDimensions" Value="Warning"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Constant2" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead2" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead3" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead4" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite2" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_Iterator" Type="ForIterator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IterationLimit" Value="16"/>
+            </Actor>
+            <Actor Name="NOT" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="NOT1" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR1" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Selector" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Selector1" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Subtract" Type="Sum">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Inputs" Value="+-"/>
+            </Actor>
+            <Actor Name="Switch1" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch2" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch3" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Relation>
+                <Src Src="For_Iterator.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport2"/>
+                <Dst Dst="Switch3.#DefaultInport3"/>
+                <Dst Dst="Assignment1.#DefaultInport3"/>
+                <Dst Dst="Selector1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="Assignment1.#DefaultInport1"/>
+                <Dst Dst="Selector.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector.#DefaultOutport1"/>
+                <Dst Dst="Switch2.#DefaultInport1"/>
+                <Dst Dst="NOT1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="Selector1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport2"/>
+                <Dst Dst="AND.#DefaultInport1"/>
+                <Dst Dst="Switch2.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead2.#DefaultOutport1"/>
+                <Dst Dst="OR1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant2.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead3.#DefaultOutport1"/>
+                <Dst Dst="NOT.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="AND.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT.#DefaultOutport1"/>
+                <Dst Dst="AND.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Switch2.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch2.#DefaultOutport1"/>
+                <Dst Dst="Assignment1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Assignment1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT1.#DefaultOutport1"/>
+                <Dst Dst="OR1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector1.#DefaultOutport1"/>
+                <Dst Dst="Subtract.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="Subtract.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Subtract.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch3.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead4.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR1.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_209" Type="Dataflow">
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="value_out" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="value_out"/>
+            </Relation>
+        </Function>
+        <Function Name="system_23" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Inport Name="para" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Data_StoreMemory" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory1" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Demux" Type="Demux">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport3" Type="#Default"/>
+                <Parameter Name="Outputs" Value="3"/>
+            </Actor>
+            <Actor Name="FunctionCallGenerator" Type="FunctionCallGenerator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DisallowWideOutput" Value="off"/>
+                <Parameter Name="LibraryVersion" Value="3.4"/>
+                <Parameter Name="MultithreadedSim" Value="auto"/>
+                <Parameter Name="NumberOfIterations" Value="1"/>
+                <Parameter Name="Sample_time" Value="-1"/>
+                <Parameter Name="ShowEnablePort" Value="off"/>
+                <Parameter Name="SourceBlock" Value="simulink/Ports &amp;
+Subsystems/Function-Call
+Generator"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem" Type="Function">
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_245"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem1" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_251"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem2" Type="Function">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_279"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport2"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallGenerator.#DefaultOutport1"/>
+                <Dst Dst="Demux.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport3"/>
+                <Dst Dst="FunctionCallSubsystem2.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport1"/>
+                <Dst Dst="FunctionCallSubsystem.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport2"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="para"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport2"/>
+            </Relation>
+        </Function>
+        <Function Name="system_245" Type="Dataflow">
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_251" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Inport Name="value2" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="For_IteratorSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Parameter Name="FunctionRef" Value="system_254"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="value2"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport2"/>
+            </Relation>
+        </Function>
+        <Function Name="system_254" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Inport Name="value2" Type="#Default"/>
+            <Actor Name="AND" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Add" Type="Sum">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+            </Actor>
+            <Actor Name="Assignment1" Type="Assignment">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DiagnosticForDimensions" Value="Warning"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Constant2" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead2" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead3" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead4" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite2" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite3" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite4" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="B"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_Iterator" Type="ForIterator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IterationLimit" Value="16"/>
+            </Actor>
+            <Actor Name="NOT" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="NOT1" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Inputs" Value="3"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Product" Type="Product">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Selector" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Selector1" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Subtract" Type="Sum">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Inputs" Value="+-"/>
+            </Actor>
+            <Actor Name="Switch1" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch2" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch3" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Relation>
+                <Src Src="For_Iterator.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport2"/>
+                <Dst Dst="Switch3.#DefaultInport3"/>
+                <Dst Dst="Assignment1.#DefaultInport3"/>
+                <Dst Dst="Selector1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector.#DefaultOutport1"/>
+                <Dst Dst="NOT1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="Assignment1.#DefaultInport1"/>
+                <Dst Dst="Selector1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport2"/>
+                <Dst Dst="AND.#DefaultInport1"/>
+                <Dst Dst="Switch2.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead2.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant2.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead3.#DefaultOutport1"/>
+                <Dst Dst="NOT.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="AND.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT.#DefaultOutport1"/>
+                <Dst Dst="AND.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch2.#DefaultOutport1"/>
+                <Dst Dst="Assignment1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT1.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector1.#DefaultOutport1"/>
+                <Dst Dst="Switch2.#DefaultInport1"/>
+                <Dst Dst="Subtract.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="Subtract.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Subtract.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch3.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead4.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Assignment1.#DefaultOutport1"/>
+                <Dst Dst="Add.#DefaultInport2"/>
+                <Dst Dst="Data_StoreWrite3.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Product.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite4.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Add.#DefaultOutport1"/>
+                <Dst Dst="Product.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="value2"/>
+                <Dst Dst="Switch2.#DefaultInport3"/>
+                <Dst Dst="Product.#DefaultInport2"/>
+                <Dst Dst="Add.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_279" Type="Dataflow">
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="value_out" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="value_out"/>
+            </Relation>
+        </Function>
+        <Function Name="system_27" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Inport Name="para" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Data_StoreMemory" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Data_StoreMemory1" Type="DataStoreMemory">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="ReadBeforeWriteMsg" Value="warning"/>
+                <Parameter Name="ShowAdditionalParam" Value="off"/>
+                <Parameter Name="WriteAfterReadMsg" Value="warning"/>
+                <Parameter Name="WriteAfterWriteMsg" Value="warning"/>
+            </Actor>
+            <Actor Name="Demux" Type="Demux">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport3" Type="#Default"/>
+                <Parameter Name="Outputs" Value="3"/>
+            </Actor>
+            <Actor Name="FunctionCallGenerator" Type="FunctionCallGenerator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DisallowWideOutput" Value="off"/>
+                <Parameter Name="LibraryVersion" Value="3.4"/>
+                <Parameter Name="MultithreadedSim" Value="auto"/>
+                <Parameter Name="NumberOfIterations" Value="1"/>
+                <Parameter Name="Sample_time" Value="-1"/>
+                <Parameter Name="ShowEnablePort" Value="off"/>
+                <Parameter Name="SourceBlock" Value="simulink/Ports &amp;
+Subsystems/Function-Call
+Generator"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem" Type="Function">
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_295"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem1" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_301"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="FunctionCallSubsystem2" Type="Function">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+                <ActionPort Name="#DefaultTrigger" Type="Trigger"/>
+                <Parameter Name="FunctionRef" Value="system_330"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="FunctionCallGenerator.#DefaultOutport1"/>
+                <Dst Dst="Demux.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport3"/>
+                <Dst Dst="FunctionCallSubsystem2.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="FunctionCallSubsystem2.#DefaultOutport2"/>
+                <Dst Dst="out"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport1"/>
+                <Dst Dst="FunctionCallSubsystem.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="Demux.#DefaultOutport2"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultTrigger"/>
+            </Relation>
+            <Relation>
+                <Src Src="para"/>
+                <Dst Dst="FunctionCallSubsystem1.#DefaultInport2"/>
+            </Relation>
+        </Function>
+        <Function Name="system_295" Type="Dataflow">
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite1" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_301" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Inport Name="para" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="For_IteratorSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="FunctionRef" Value="system_305"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_305" Type="Dataflow">
+            <Inport Name="value" Type="#Default"/>
+            <Actor Name="AND" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+            </Actor>
+            <Actor Name="Constant2" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead2" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead3" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead4" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite2" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_Iterator" Type="ForIterator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IterationLimit" Value="16"/>
+            </Actor>
+            <Actor Name="NOT" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="NOT1" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Operator" Value="NOT"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="OR" Type="Logic">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="AllPortsSameDT" Value="off"/>
+                <Parameter Name="Inputs" Value="3"/>
+                <Parameter Name="Operator" Value="OR"/>
+                <Parameter Name="OutDataTypeStr" Value="boolean"/>
+            </Actor>
+            <Actor Name="Selector" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Selector1" Type="Selector">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="[1 3]"/>
+                <Parameter Name="InputPortWidth" Value="64"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Subtract" Type="Sum">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Inputs" Value="+-"/>
+            </Actor>
+            <Actor Name="Switch1" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Actor Name="Switch3" Type="Switch">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="Criteria" Value="u2 ~= 0"/>
+                <Parameter Name="InputSameDT" Value="off"/>
+                <Parameter Name="SaturateOnIntegerOverflow" Value="off"/>
+            </Actor>
+            <Relation>
+                <Src Src="For_Iterator.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport2"/>
+                <Dst Dst="Selector1.#DefaultInport2"/>
+                <Dst Dst="Switch3.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="Selector.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector.#DefaultOutport1"/>
+                <Dst Dst="NOT1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="Selector1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="OR.#DefaultOutport1"/>
+                <Dst Dst="AND.#DefaultInport1"/>
+                <Dst Dst="Switch3.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead2.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite2.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant2.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead3.#DefaultOutport1"/>
+                <Dst Dst="NOT.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="AND.#DefaultOutport1"/>
+                <Dst Dst="Switch1.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT.#DefaultOutport1"/>
+                <Dst Dst="AND.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="NOT1.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Selector1.#DefaultOutport1"/>
+                <Dst Dst="Subtract.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="value"/>
+                <Dst Dst="Subtract.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="Subtract.#DefaultOutport1"/>
+                <Dst Dst="OR.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Switch3.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead4.#DefaultOutport1"/>
+                <Dst Dst="Switch3.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_330" Type="Dataflow">
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="value_out" Type="#Default"/>
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="find"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead1" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="ret_index"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead1.#DefaultOutport1"/>
+                <Dst Dst="value_out"/>
+            </Relation>
+        </Function>
+        <Function Name="system_39" Type="Dataflow">
+            <Inport Name="taskId" Type="#Default"/>
+            <Outport Name="res" Type="#Default"/>
+            <Outport Name="out" Type="#Default"/>
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int32"/>
+                <Parameter Name="Value" Value="-1"/>
+            </Actor>
+            <Actor Name="Terminator" Type="Terminator">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+            </Actor>
+            <Relation>
+                <Src Src="taskId"/>
+                <Dst Dst="Terminator.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="res"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="out"/>
+            </Relation>
+        </Function>
+        <Function Name="system_362" Type="Dataflow">
+            <ActionPort Name="function" Type="Trigger"/>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Init"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="If" Type="If">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Outport Name="#DefaultOutport2" Type="#Default"/>
+            </Actor>
+            <Actor Name="If_ActionSubsystem" Type="Function">
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_368"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Actor Name="If_ActionSubsystem1" Type="Function">
+                <ActionPort Name="#DefaultIfAction" Type="IfAction"/>
+                <Parameter Name="FunctionRef" Value="system_372"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="If.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="If.#DefaultOutport2"/>
+                <Dst Dst="If_ActionSubsystem.#DefaultIfAction"/>
+            </Relation>
+            <Relation>
+                <Src Src="If.#DefaultOutport1"/>
+                <Dst Dst="If_ActionSubsystem1.#DefaultIfAction"/>
+            </Relation>
+        </Function>
+        <Function Name="system_368" Type="Dataflow">
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+            <Actor Name="Constant" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+                <Parameter Name="Value" Value="0"/>
+            </Actor>
+            <Actor Name="Constant1" Type="Constant">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="OutDataTypeStr" Value="int8"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Init"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_IteratorSubsystem" Type="Function">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="FunctionRef" Value="system_58"/>
+                <Parameter Name="TreatAsAtomicUnit" Value="on"/>
+            </Actor>
+            <Relation>
+                <Src Src="Constant.#DefaultOutport1"/>
+                <Dst Dst="For_IteratorSubsystem.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Constant1.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_58" Type="Dataflow">
+            <Inport Name="In1" Type="#Default"/>
+            <Actor Name="Assignment" Type="Assignment">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Inport Name="#DefaultInport2" Type="#Default"/>
+                <Inport Name="#DefaultInport3" Type="#Default"/>
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DiagnosticForDimensions" Value="Warning"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IndexOptions" Value="Index vector (port)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreRead" Type="DataStoreRead">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="Data_StoreWrite" Type="DataStoreWrite">
+                <Inport Name="#DefaultInport1" Type="#Default"/>
+                <Parameter Name="DataStoreName" Value="Aflag"/>
+                <Parameter Name="IndexOptions" Value="Index vector (dialog)"/>
+                <Parameter Name="Indices" Value="1"/>
+                <Parameter Name="OutputSizes" Value="1"/>
+            </Actor>
+            <Actor Name="For_Iterator" Type="ForIterator">
+                <Outport Name="#DefaultOutport1" Type="#Default"/>
+                <Parameter Name="IndexMode" Value="Zero-based"/>
+                <Parameter Name="IterationLimit" Value="16"/>
+            </Actor>
+            <Relation>
+                <Src Src="In1"/>
+                <Dst Dst="Assignment.#DefaultInport2"/>
+            </Relation>
+            <Relation>
+                <Src Src="For_Iterator.#DefaultOutport1"/>
+                <Dst Dst="Assignment.#DefaultInport3"/>
+            </Relation>
+            <Relation>
+                <Src Src="Data_StoreRead.#DefaultOutport1"/>
+                <Dst Dst="Assignment.#DefaultInport1"/>
+            </Relation>
+            <Relation>
+                <Src Src="Assignment.#DefaultOutport1"/>
+                <Dst Dst="Data_StoreWrite.#DefaultInport1"/>
+            </Relation>
+        </Function>
+        <Function Name="system_372" Type="Dataflow">
+            <ActionPort Name="Action_Port" Type="IfAction"/>
+        </Function>
+    </ModelEntity>
+</Root>
