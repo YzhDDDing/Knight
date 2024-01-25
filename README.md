@@ -56,6 +56,12 @@ To generate efficient code, you should use the following executable files.
    - -i: input file path of target Simulink model
    - -o: output file path of the generated MIR file
 
+   **Instruction Example:**
+
+   ```shell
+   ParserForSimulink.exe -i $Simulink_Model_Path$ -o $Output_MIR_File_Path$
+   ```
+
 2. **ILGenerator.exe**
 
    > Convert the MIR file into IL file, which contains simplified code information and can be used for redundancy elimination.
@@ -66,6 +72,12 @@ To generate efficient code, you should use the following executable files.
    - -i: input file path of MIR file
    - -o: output file path of the generated IL file
 
+   **Instruction Example:**
+
+   ```shell
+   ILGenerator.exe -i $MIR_File_Path$ -O $Output_IL_File_Path$
+   ```
+
 3. **ILOptimizer.exe**
 
    > Optimize the obtained IL file
@@ -74,7 +86,15 @@ To generate efficient code, you should use the following executable files.
 
    - -help: help information
    - -i: input file path of IL file
+   - -m: input file path of MIR file
    - -o: output file path of optimized IL file
+   - -lp: loop reshaping (default is false)
+
+   For enabling optimization of loop reshaping, you should use the following instructions.
+
+   ```shell
+   ILOptimizer.exe -i $IL_File_Path$ -m $MIR_File_Path$ -o $Output_File_Path$ -lp true
+   ```
 
 4. **ILTranslator.exe**
 
@@ -83,9 +103,16 @@ To generate efficient code, you should use the following executable files.
    **Useful Flags:**
 
    - -help: help information
-   - -i: input file path of Optimized IL file
+   - -i: input file path of IL file or optimized IL file
    - -o: output directory of the generated code
+   - -l: the language of the generated  code
    - -c: generate comment (default is true)
+   
+   **Instruction Example:**
+   
+   ```shell
+   ILTranslator.exe -i $IL_File_Path$ -o $Output_Code_Path$ -c -l c
+   ```
 
 In general, the building workflow is:
 
