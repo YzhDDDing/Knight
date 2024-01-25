@@ -24,8 +24,8 @@ The evaluation results on x86 and ARM architectures. Each sub-folder named by "M
 For quick start and reproducing our evaluation results, you can simply run the following instructions.
 
 ```shell
-	sh build.sh
-	sh run.sh $execution_times$
+sh build.sh
+sh run.sh $execution_times$
 ```
 
 ### Model_IR
